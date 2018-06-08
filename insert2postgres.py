@@ -15,22 +15,22 @@ import psycopg2.extras
 from os import listdir
 from os.path import isfile, join
 
-mypath = 'G:\\data2'
+mypath = 'C:\/Users\/no281\Documents\harVeyTwitter\harvey_twitter_dataset\/02_archive_only\/testSubset'
 onlyfiles = []
 for f in listdir(mypath):
     if isfile(join(mypath, f)):
         onlyfiles.append(f)
 print(onlyfiles)
 
-try:
-    conn = psycopg2.connect("dbname='twitter' user='postgres' host='localhost' password=''")
-except:
-    print("I am unable to connect to the database")
-cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-sql = "insert into information values (%s,%s, %s, %s,%s)"
-
-# Read file and write file are separated
-startpath = 'G:\\data2'
+# try:
+#     conn = psycopg2.connect("dbname='twitter' user='postgres' host='localhost' password=''")
+# except:
+#     print("I am unable to connect to the database")
+# cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+# sql = "insert into information values (%s,%s, %s, %s,%s)"
+#
+# # Read file and write file are separated
+startpath = 'C:\/Users\/no281\Documents\harVeyTwitter\harvey_twitter_dataset\/02_archive_only\/testSubset'
 
 pr = onlyfiles
 
@@ -39,21 +39,26 @@ for f in pr:
     filename = f
     docpath_read = os.path.join(startpath, str(filename))
     doc_read = open(docpath_read, 'r')
-    pattern = re.compile("[\,\\t]")
+    # pattern = re.compile("[\,\\t]")
     for tweet in doc_read.readlines():
-        suffix = "}}"
-        check = str(tweet).endswith(suffix)
-        print(check)
+        # suffix = "}}"
+        # strT = str(tweet)
+        # print(strT)
+        # check = strT.endswith(suffix)
+        # print(check)
         # if check == True:
         # if(tweet.endswith(suffix))
+
+        Twt = ''
+
         try:
-            if check:
-                new_tweet = ast.literal_eval(tweet.strip())
-                new_tw = json.loads(json.dumps(new_tweet))
-                for attr, val in new_tw.iteritems():
+            if True:
+                # new_tweet = ast.literal_eval(tweet.strip())
+                new_tw = json.loads(tweet)
+                for attr, val in new_tw.items():
                     if attr == 'coordinates':
                         try:
-                            for x, y in val.iteritems():
+                            for x, y in val.items():
                                 if y != 'Point':
                                     coord = str(y[1]) + ',' + str(y[0])
                         except:
@@ -61,8 +66,8 @@ for f in pr:
                             break
                     if attr == 'text':
                         tw = codecs.encode(val, 'utf-8')
-                        tw = tw.replace(",", " ")
-                        tw = tw.replace("\n", " ")
+                        # tw = tw.replace(",", " ")
+                        # tw = tw.replace("\n", " ")
                     if attr == 'created_at':
                         try:
                             clean_timestamp = datetime.strptime(val, '%a %b %d %H:%M:%S +0000 %Y')
@@ -84,13 +89,13 @@ for f in pr:
                 if coord:
                     data = (Twt, float(y[1]), float(y[0]), final_timestamp, tw)
                     print(data)
-                    try:
-                        cur.execute(sql, data)
-                        conn.commit()
-                    except:
-                        print("I can't insert into information")
+                    # try:
+                    #     cur.execute(sql, data)
+                    #     conn.commit()
+                    # except:
+                    #     print("I can't insert into information")
         except:
             raise
     doc_read.close()
-conn.close()
+# conn.close()
 
