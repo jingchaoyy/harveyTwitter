@@ -23,9 +23,9 @@ if __name__ == "__main__":
             if lines:
                 print(cont*30000)
                 with open(
-                        r"C:\Users\/no281\Documents\harVeyTwitter\harvey_twitter_dataset\/02_archive_only\subsets\ss" + str(
+                        r"C:\Users\/no281\Documents\harVeyTwitter\harvey_twitter_dataset\/02_archive_only\subsets_30000\ss" + str(
                             cont) + ".json", 'w') as outfile:
-                    outfile.write(';'.join(lines))
+                    outfile.write(''.join(lines))
                 outfile.close()
             else:
                 break
