@@ -29,17 +29,16 @@ except:
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-sql = "insert into tweets values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+sql = "insert into original values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
 # Read file and write file are separated
-startpath = 'C:\\Users\\no281\\Documents\\harVeyTwitter\\harvey_twitter_dataset\\02_archive_only\\subsets_30000'
+# startpath = 'C:\\Users\\no281\\Documents\\harVeyTwitter\\harvey_twitter_dataset\\02_archive_only\\testSubset'
+# pr = onlyfiles
 
-pr = onlyfiles
-
-for f in pr:
+for f in onlyfiles:
     print(f)
     filename = f
-    docpath_read = os.path.join(startpath, str(filename))
+    docpath_read = os.path.join(mypath, str(filename))
     doc_read = open(docpath_read, 'r')
     # pattern = re.compile("[\,\\t]")
     for tweet in doc_read.readlines():
@@ -79,10 +78,15 @@ for f in pr:
                             coord = ''
 
                     if attr == 'text':
-                        tText = val
-                        # tw = codecs.encode(val, 'utf-8')
-                        tText = tText.replace(",", " ")
-                        tText = tText.replace("\n", " ")
+                        allText = val
+                        if allText.startswith('RT'):
+                            continue
+                        else:
+                            tText = allText
+                            # tw = codecs.encode(val, 'utf-8')
+                            tText = tText.replace(",", " ")
+                            tText = tText.replace("\n", " ")
+
 
                     if attr == 'entities':
                         try:
@@ -167,7 +171,7 @@ for f in pr:
                         except:
                             print('NO TIME')
 
-                if tID:
+                if tText:
                     data = (tID, tText, LatLon[1], LatLon[0], tEM_url, tEM_murl, tEM_murls, tEM_ID, tEM_type,
                             tEU_URL, t_reCount, t_reID, tU_ID, tU_Geo, tU_Followers, tU_Desc, tU_Fri, tU_Name,
                             tU_Loca, tCreate)
