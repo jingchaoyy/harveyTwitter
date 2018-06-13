@@ -48,8 +48,7 @@ def get_colData_Eng(dbc, tbn, clo):  # filter for collecting tweets written in E
 
         while row is not None:
             engCount = 0
-            row = re.sub(r':.*$', ":", row[0])  # remove link
-            row = row.replace('https:', '')  # remove 'https'
+            row = re.sub(r'https:.*$', ":", row[0])  # remove link
             words = row.split(' ')
             totalWords = len(words)
 
