@@ -70,10 +70,10 @@ for f in onlyfiles:
 
                     if attr == 'coordinates':
                         try:
-                            for x, y in val.iteritems():
-                                LatLon = y
-                                if y != 'Point':
-                                    coord = str(y[1]) + ',' + str(y[0])
+                            for attr, val in val.items():
+                                LatLon = val
+                                if val != 'Point':
+                                    coord = str(val[1]) + ',' + str(val[0])
                         except:
                             coord = ''
 
@@ -87,12 +87,11 @@ for f in onlyfiles:
                             tText = tText.replace(",", " ")
                             tText = tText.replace("\n", " ")
 
-
                     if attr == 'entities':
                         try:
                             for attr, val in val.items():
                                 if attr == 'urls':
-                                    if len(val) >0:
+                                    if len(val) > 0:
                                         try:
                                             for attr, val in val[0].items():
                                                 if attr == 'url':

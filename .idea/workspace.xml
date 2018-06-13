@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/wordCount.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/wordCount.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/psqlOperations/psqlCollector.py" beforeDir="false" afterPath="$PROJECT_DIR$/psqlOperations/psqlCollector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/insert2postgres.py" beforeDir="false" afterPath="$PROJECT_DIR$/insert2postgres.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,19 +15,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="psqlCollector.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/psqlOperations/psqlCollector.py">
+      <file leaf-file-name="insert2postgres.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/insert2postgres.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="55" column="68" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="68" />
+            <state relative-caret-position="199">
+              <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
               <folding>
-                <element signature="e#52#67#0" expanded="true" />
+                <element signature="e#52#61#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="wordCount.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="driver.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis/driver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
+              <folding>
+                <element signature="e#52#61#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wordCount.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysis/wordCount.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
@@ -62,10 +75,10 @@
         <option value="$PROJECT_DIR$/testDBConnection.py" />
         <option value="$PROJECT_DIR$/psqlCollector.py" />
         <option value="$PROJECT_DIR$/driver.py" />
-        <option value="$PROJECT_DIR$/insert2postgres.py" />
-        <option value="$PROJECT_DIR$/analysis/driver.py" />
         <option value="$PROJECT_DIR$/psqlOperations/psqlCollector.py" />
         <option value="$PROJECT_DIR$/analysis/wordCount.py" />
+        <option value="$PROJECT_DIR$/analysis/driver.py" />
+        <option value="$PROJECT_DIR$/insert2postgres.py" />
       </list>
     </option>
   </component>
@@ -221,8 +234,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.wordCount" />
-        <item itemvalue="Python.driver" />
         <item itemvalue="Python.insert2postgres" />
+        <item itemvalue="Python.driver" />
         <item itemvalue="Python.testDBConnection" />
         <item itemvalue="Python.dataCollector" />
       </list>
@@ -242,7 +255,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13224447" />
@@ -250,7 +263,7 @@
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2908497" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.65686274" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -369,29 +382,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/driver.py">
+    <entry file="file://$PROJECT_DIR$/psqlOperations/psqlCollector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="16" lean-forward="true" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/insert2postgres.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-867">
-          <caret line="40" column="32" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+        <state relative-caret-position="34">
+          <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
           <folding>
-            <element signature="e#52#61#0" expanded="true" />
+            <element signature="e#52#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/psqlOperations/psqlCollector.py">
+    <entry file="file://$PROJECT_DIR$/analysis/driver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="55" column="68" selection-start-line="55" selection-start-column="61" selection-end-line="55" selection-end-column="68" />
+        <state relative-caret-position="272">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
           <folding>
-            <element signature="e#52#67#0" expanded="true" />
+            <element signature="e#52#61#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -400,6 +406,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insert2postgres.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="199">
+          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+          <folding>
+            <element signature="e#52#61#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
