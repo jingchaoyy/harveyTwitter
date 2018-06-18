@@ -27,7 +27,7 @@ def get_colData(dbc, tbn, clo):
     try:
         conn = psycopg2.connect(dbc)
         cur = conn.cursor()
-        cur.execute("select " + clo + " from " + tbn)
+        cur.execute("select tid," + clo + " from " + tbn)
         print("The number of parts: ", cur.rowcount)
         row = cur.fetchone()
 
@@ -47,46 +47,46 @@ def get_colData(dbc, tbn, clo):
             conn.close()
 
 
-def get_colData_Eng(dbc, tbn, clo):  # filter for collecting tweets written in English
-    """ query data from a table """
-    conn = None
-    try:
-        conn = psycopg2.connect(dbc)
-        cur = conn.cursor()
-        cur.execute("select " + clo + " from " + tbn)
-        print("The number of parts: ", cur.rowcount)
-        row = cur.fetchone()
-
-        rList = []
-        checkEng = enchant.Dict("en_US")  # check for English words
-
-        while row is not None:
-            engCount = 0
-            row = re.sub(r'https:.*$', ":", row[0])  # remove link
-            row = remove_emoji(row)
-            words = row.split(' ')
-            totalWords = len(words)
-
-            for word in words:
-                word = re.sub(r'[^\w]', ' ', word)  # remove symbols
-                # print(word)
-                if word != '':
-                    if checkEng.check(word):  # count one if a word from string is English
-                        engCount += 1
-
-            if engCount / totalWords >= 0.6:  # consider as useful tweets if 60% or more character are English
-                rList.append(row)
-
-            row = cur.fetchone()
-
-        return rList
-
-        cur.close()
-    except (Exception, psycopg2.DatabaseError) as error:
-        print(error)
-    finally:
-        if conn is not None:
-            conn.close()
+# def get_colData_Eng(dbc, tbn, clo):  # filter for collecting tweets written in English
+#     """ query data from a table """
+#     conn = None
+#     try:
+#         conn = psycopg2.connect(dbc)
+#         cur = conn.cursor()
+#         cur.execute("select " + clo + " from " + tbn)
+#         print("The number of parts: ", cur.rowcount)
+#         row = cur.fetchone()
+#
+#         rList = []
+#         checkEng = enchant.Dict("en_US")  # check for English words
+#
+#         while row is not None:
+#             engCount = 0
+#             row = re.sub(r'https:.*$', ":", row[0])  # remove link
+#             row = remove_emoji(row)
+#             words = row.split(' ')
+#             totalWords = len(words)
+#
+#             for word in words:
+#                 word = re.sub(r'[^\w]', ' ', word)  # remove symbols
+#                 # print(word)
+#                 if word != '':
+#                     if checkEng.check(word):  # count one if a word from string is English
+#                         engCount += 1
+#
+#             if engCount / totalWords >= 0.6:  # consider as useful tweets if 60% or more character are English
+#                 rList.append(row)
+#
+#             row = cur.fetchone()
+#
+#         return rList
+#
+#         cur.close()
+#     except (Exception, psycopg2.DatabaseError) as error:
+#         print(error)
+#     finally:
+#         if conn is not None:
+#             conn.close()
 
 
 def get_coorData(dbc, tbn, lat, lon):
@@ -95,7 +95,7 @@ def get_coorData(dbc, tbn, lat, lon):
     try:
         conn = psycopg2.connect(dbc)
         cur = conn.cursor()
-        cur.execute("select " + lat + "," + lon + " from " + tbn + " where " + lat + " is not null")
+        cur.execute("select tid," + lat + "," + lon + " from " + tbn + " where " + lat + " is not null")
         print("The number of parts: ", cur.rowcount)
         row = cur.fetchone()
 
