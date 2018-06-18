@@ -4,6 +4,7 @@ Created on 6/14/2018
 """
 from psqlOperations import queryFromDB
 import re
+import enchant
 
 def singleColumn_nonFilter(dbConnect, tabName, cloName):
     data = queryFromDB.get_colData_Eng(dbConnect, tabName, cloName)
@@ -15,12 +16,29 @@ def singleColumn_nonFilter(dbConnect, tabName, cloName):
     return rows
 
 def singleColumn_wFilter(dbConnect, tabName, cloName):
-    data = queryFromDB.get_colData_Eng(dbConnect, tabName, cloName)
+    data = queryFromDB.get_colData(dbConnect, tabName, cloName)
+    print(data)
     rows = []
+    checkEng = enchant.Dict("en_US")
     for row in data:
-        row = re.sub(r'[^\w]', ' ', row)  # symbol filter
-        row = re.sub(r'\s+', ' ', row)  # remove extra space between words
-        row = row.strip()
-        rows.append(row)
+        text = row[1]
+        text = text.split('https:')[0]
+        text = queryFromDB.remove_emoji(text)  # remove emoji
+        text = re.sub(r'[^\w]', ' ', text)  # symbol filter
+        text = re.sub(r'\s+', ' ', text)  # remove extra space between words
+        text = text.strip()
+
+        words = text.split(' ')
+        totalWords = len(words)
+
+        engCount = 0
+        for word in words:
+            if word != '':
+                if checkEng.check(word):
+                    engCount += 1
+        # print(engCount / totalWords)
+        if engCount / totalWords >= 0.6:  # consider as useful tweets if 60% or more character are English
+            print(str(row[0]) + ', ' + row[1])
+            # rows.append(str(row[0]) + ', ' + row[1])
 
     return rows
