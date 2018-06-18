@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/loc_Based.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/loc_Based.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geograpy/places.py" beforeDir="false" afterPath="$PROJECT_DIR$/geograpy/places.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/geograpy/tests/test_extractor.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geograpy/tests/test_places.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="loc_Based.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loc_Based.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analysis/loc_Based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
+            <state relative-caret-position="306">
+              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#52#89#0" expanded="true" />
               </folding>
@@ -29,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="places.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="places.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/geograpy/places.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="23">
-              <caret line="161" selection-start-line="161" selection-end-line="161" />
+            <state relative-caret-position="142">
+              <caret line="162" column="31" selection-start-line="162" selection-start-column="31" selection-end-line="162" selection-end-column="31" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -258,6 +255,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15437302" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -286,12 +284,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geograpy/places.py</url>
-          <line>183</line>
+          <line>184</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geograpy/places.py</url>
-          <line>171</line>
+          <line>172</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -301,7 +299,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/geograpy/places.py</url>
-          <line>174</line>
+          <line>175</line>
           <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
@@ -432,9 +430,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/geograpy/places.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="162" column="31" selection-start-line="162" selection-start-column="31" selection-end-line="162" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-185">
+        <state relative-caret-position="833">
           <caret line="70" column="28" selection-start-line="70" selection-start-column="28" selection-end-line="70" selection-end-column="28" />
           <folding>
             <element signature="e#123#138#0" expanded="true" />
@@ -442,22 +450,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/loc_Based.py">
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/geocoder/location.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-          <folding>
-            <element signature="e#52#89#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="132">
+          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/geograpy/places.py">
+    <entry file="file://$PROJECT_DIR$/analysis/loc_Based.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="23">
-          <caret line="161" selection-start-line="161" selection-end-line="161" />
+        <state relative-caret-position="306">
+          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#52#89#0" expanded="true" />
           </folding>
         </state>
       </provider>
