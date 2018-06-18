@@ -5,7 +5,9 @@ Created on 6/13/2018
 from psqlOperations import queryClean
 from psqlOperations import queryFromDB
 import geograpy
-import re
+import geocoder
+import googlemaps
+
 
 if __name__ == "__main__":
     dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
@@ -15,20 +17,30 @@ if __name__ == "__main__":
     clo_Lat = "tlat"
     clo_Lon = "tlon"
     data = queryFromDB.get_coorData(dbConnect, tabName, clo_Lat, clo_Lon)
-    print(data)
+    for coor in data:
+        print(coor)
 
     ############ Location from text
     clo_Text = "ttext"
     data = queryClean.singleColumn_wFilter(dbConnect, tabName, clo_Text)
 
-    locations = []
+    setCountry = 'United States'
+    locFromText, coorFromText = [], []
     for row in data:
-        print(row)
+        # print(row)
         if len(row) > 0:
             places = geograpy.get_place_context(text=row)
-            cities = places.cities
-            print(cities)
-            locations.append(cities)
+            cities = places.address_strings
+            for city in cities:
+                country = city.split(',')[2]  # get country name from extracted address_strings
+                # print(country)
+                if setCountry in country:
+                    print(city)
+                    locFromText.append(city)
+                    g = geocoder.google(city)
+                    print(g.latlng)
+                    coorFromText.append(g.latlng)
 
-    print(locations)
 
+    print(locFromText)
+    print(coorFromText)
