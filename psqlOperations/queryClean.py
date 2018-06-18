@@ -17,7 +17,7 @@ def singleColumn_nonFilter(dbConnect, tabName, cloName):
 
 def singleColumn_wFilter(dbConnect, tabName, cloName):
     data = queryFromDB.get_colData(dbConnect, tabName, cloName)
-    print(data)
+    # print(data)
     rows = []
     checkEng = enchant.Dict("en_US")
     for row in data:
@@ -38,7 +38,7 @@ def singleColumn_wFilter(dbConnect, tabName, cloName):
                     engCount += 1
         # print(engCount / totalWords)
         if engCount / totalWords >= 0.6:  # consider as useful tweets if 60% or more character are English
-            print(str(row[0]) + ', ' + row[1])
-            # rows.append(str(row[0]) + ', ' + row[1])
+            # print(str(row[0]) + ', ' + row[1])
+            rows.append((row[0], row[1]))
 
     return rows
