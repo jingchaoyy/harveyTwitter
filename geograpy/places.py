@@ -168,6 +168,12 @@ class PlaceContext(object):
                 self.countries.append(country_name)
                 self.country_mentions.append((country_name, 1))
 
+            if country_name not in self.country_regions:
+                self.country_regions[country_name] = []
+
+            if region_name not in self.country_regions[country_name]:
+                self.country_regions[country_name].append(region_name)
+
             if country_name not in self.country_cities:
                 self.country_cities[country.name] = []
 
