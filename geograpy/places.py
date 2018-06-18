@@ -159,7 +159,8 @@ class PlaceContext(object):
                 country_name = row[4]
 
             city_name = row[7]
-            region_name = row[6]
+            # region_name = row[6]
+            region_name = row[5]
 
             if city_name not in self.cities:
                 self.cities.append(city_name)
