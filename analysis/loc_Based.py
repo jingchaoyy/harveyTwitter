@@ -87,8 +87,8 @@ if __name__ == "__main__":
     # ############# Location from coordinates
     clo_Lat = "tlat"
     clo_Lon = "tlon"
-    data_coor = queryFromDB.get_coorData(dbConnect, tabName, clo_Lat, clo_Lon)
-    print(data_coor)
+    user_Coors = queryFromDB.get_coorData(dbConnect, tabName, clo_Lat, clo_Lon)
+    print(user_Coors)
     # locFromCoor = coorToLoc(data_coor)
     # print('Coordinates with State', locFromCoor)
 
@@ -108,5 +108,5 @@ if __name__ == "__main__":
     coorFromLoc_nonDup = locToCoor(loc_nonDup)
     print('Associated coordinates', coorFromLoc_nonDup)
 
-    allCoors = coorToTweets(coorFromLoc_nonDup, loc_fromText)
-    print(allCoors)
+    text_Coors = coorToTweets(coorFromLoc_nonDup, loc_fromText)
+    print(text_Coors)

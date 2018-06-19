@@ -15,12 +15,13 @@ def eventBack(twList, eList):
                 twWithEvents.append((tw[0], event))
     return twWithEvents
 
+
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tabName = "test"
 clo_Text = "ttext"
 data_text = queryClean.singleColumn_wFilter(dbConnect, tabName, clo_Text)
 print('Original English Only Tweets', data_text)
 
-events = ['infection', 'toxic']
-tid_Events = eventBack(data_text, events)
-print(tid_Events)
+events = ['infection', 'toxic', 'rescue', 'rescues', 'power', 'mosquitoes', 'harvey relief']
+text_Events = eventBack(data_text, events)
+print(text_Events)
