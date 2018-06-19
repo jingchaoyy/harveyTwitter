@@ -79,34 +79,32 @@ def coorToTweets(coorList, twList):
                 tidWithCoor.append((tw[0], coor[1]))
     return tidWithCoor
 
+dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
+tabName = "test"
 
-if __name__ == "__main__":
-    dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-    tabName = "test"
+# ############# Location from coordinates
+# clo_Lat = "tlat"
+# clo_Lon = "tlon"
+# user_Coors = queryFromDB.get_coorData(dbConnect, tabName, clo_Lat, clo_Lon)
+# print(user_Coors)
+# locFromCoor = coorToLoc(data_coor)
+# print('Coordinates with State', locFromCoor)
 
-    # ############# Location from coordinates
-    clo_Lat = "tlat"
-    clo_Lon = "tlon"
-    user_Coors = queryFromDB.get_coorData(dbConnect, tabName, clo_Lat, clo_Lon)
-    print(user_Coors)
-    # locFromCoor = coorToLoc(data_coor)
-    # print('Coordinates with State', locFromCoor)
+############ Location from text
+clo_Text = "ttext"
+data_text = queryClean.singleColumn_wFilter(dbConnect, tabName, clo_Text)
+print('Original English Only Tweets', data_text)
 
-    ############ Location from text
-    clo_Text = "ttext"
-    data_text = queryClean.singleColumn_wFilter(dbConnect, tabName, clo_Text)
-    print('Original English Only Tweets', data_text)
+setCountry = 'United States'
+loc_fromText = locFromText(setCountry, data_text)
+print('All locations extracted', loc_fromText)
 
-    setCountry = 'United States'
-    loc_fromText = locFromText(setCountry, data_text)
-    print('All locations extracted', loc_fromText)
+locFilter = ['Harvey', 'Hurricane']  # Name list that should not be considered as location under certain event
+loc_nonDup = Remove(loc_fromText, locFilter)
+print('Non duplicate location list', loc_nonDup)
 
-    locFilter = ['Harvey', 'Hurricane']  # Name list that should not be considered as location under certain event
-    loc_nonDup = Remove(loc_fromText, locFilter)
-    print('Non duplicate location list', loc_nonDup)
+coorFromLoc_nonDup = locToCoor(loc_nonDup)
+print('Associated coordinates', coorFromLoc_nonDup)
 
-    coorFromLoc_nonDup = locToCoor(loc_nonDup)
-    print('Associated coordinates', coorFromLoc_nonDup)
-
-    text_Coors = coorToTweets(coorFromLoc_nonDup, loc_fromText)
-    print(text_Coors)
+text_Coors = coorToTweets(coorFromLoc_nonDup, loc_fromText)
+print(text_Coors)
