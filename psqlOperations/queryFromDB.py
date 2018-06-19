@@ -89,14 +89,14 @@ def get_colData(dbc, tbn, clo):
 #             conn.close()
 
 
-def get_coorData(dbc, tbn, lat, lon):
+def get_coorData(dbc, tbn, lat, lng):
     """ query coordinates from a table, two columns together """
     conn = None
     try:
         conn = psycopg2.connect(dbc)
         cur = conn.cursor()
-        cur.execute("select tid," + lat + "," + lon + " from " + tbn + " where " + lat + " is not null")
-        print("The number of parts: ", cur.rowcount)
+        cur.execute("select tid," + lat + "," + lng + " from " + tbn + " where " + lat + " is not null")
+        print("Tweets with coordinates", cur.rowcount)
         row = cur.fetchone()
 
         rList = []
