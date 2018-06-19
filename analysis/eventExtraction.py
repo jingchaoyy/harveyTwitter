@@ -22,6 +22,6 @@ clo_Text = "ttext"
 data_text = queryClean.singleColumn_wFilter(dbConnect, tabName, clo_Text)
 print('Original English Only Tweets', data_text)
 
-events = ['infection', 'toxic', 'rescue', 'rescues', 'power', 'mosquitoes', 'harvey relief']
+events = ['infection', 'toxic', 'rescue', 'power', 'mosquitoes', 'harvey relief']
 text_Events = eventBack(data_text, events)
 print(text_Events)
