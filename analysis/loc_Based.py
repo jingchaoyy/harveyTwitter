@@ -23,7 +23,7 @@ def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
     return locations
 
 
-def locFromText(set_Country, twList):
+def locFromText(set_Country, twList, filterList):
     # set_Country: define a country filter (one location name can associated with multiple countries
     # tw: Twitter text list selected from database
     loc = []
@@ -39,16 +39,16 @@ def locFromText(set_Country, twList):
             for add in addStr:
                 country = add.split(',')[2]  # get country name from extracted address_strings
                 # print(country)
-                if set_Country in country:
+                if set_Country in country and not any(e in add for e in filterList):
                     # print('City:', add)
                     loc.append((tw[0], add))
     return loc
 
 
-def Remove(locList, filterList):
+def Remove(locList):
     final_list = []
     for loc in locList:
-        if loc[1] not in final_list and not any(e in loc[1] for e in filterList):
+        if loc[1] not in final_list:
             final_list.append(loc[1])
 
     return final_list
@@ -76,8 +76,9 @@ def coorToTweets(coorList, twList):
     for tw in twList:
         for coor in coorList:
             if tw[1] == coor[0]:
-                tidWithCoor.append((tw[0], coor[1]))
+                tidWithCoor.append((tw[0], tw[1], coor[1]))
     return tidWithCoor
+
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tabName = "test"
@@ -96,15 +97,16 @@ data_text = queryClean.singleColumn_wFilter(dbConnect, tabName, clo_Text)
 print('Original English Only Tweets', data_text)
 
 setCountry = 'United States'
-loc_fromText = locFromText(setCountry, data_text)
+locFilter = ['Harvey', 'Hurricane']  # Name list that should not be considered as location under certain event
+loc_fromText = locFromText(setCountry, data_text, locFilter)
 print('All locations extracted', loc_fromText)
 
-locFilter = ['Harvey', 'Hurricane']  # Name list that should not be considered as location under certain event
-loc_nonDup = Remove(loc_fromText, locFilter)
+loc_nonDup = Remove(loc_fromText)
 print('Non duplicate location list', loc_nonDup)
 
 coorFromLoc_nonDup = locToCoor(loc_nonDup)
 print('Associated coordinates', coorFromLoc_nonDup)
 
-text_Coors = coorToTweets(coorFromLoc_nonDup, loc_fromText)
-print(text_Coors)
+text_LocCoors = coorToTweets(coorFromLoc_nonDup, loc_fromText)
+print(text_LocCoors)
+
