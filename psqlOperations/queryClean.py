@@ -7,7 +7,7 @@ import re
 import enchant
 
 def singleColumn_nonFilter(dbConnect, tabName, cloName):
-    data = queryFromDB.get_colData_Eng(dbConnect, tabName, cloName)
+    data = queryFromDB.get_colData(dbConnect, tabName, cloName)
     rows = []
     for row in data:
         row = row.strip()
@@ -17,7 +17,7 @@ def singleColumn_nonFilter(dbConnect, tabName, cloName):
 
 def singleColumn_wFilter(dbConnect, tabName, cloName):
     data = queryFromDB.get_colData(dbConnect, tabName, cloName)
-    # print(data)
+    print('Total tweets:', data)
     rows = []
     checkEng = enchant.Dict("en_US")
     for row in data:
@@ -41,4 +41,5 @@ def singleColumn_wFilter(dbConnect, tabName, cloName):
             # print(str(row[0]) + ', ' + row[1])
             rows.append((row[0], row[1]))
 
+    print('English tweets:', len(rows))
     return rows
