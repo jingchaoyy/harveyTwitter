@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="" />
+    <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2db/insert_text_coor.py" beforeDir="false" afterPath="$PROJECT_DIR$/2db/insert_text_coor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/loc_Based.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/loc_Based.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="loc_Based.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="loc_Based.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/analysis/loc_Based.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="109" column="13" selection-start-line="109" selection-end-line="109" selection-end-column="13" />
+            <state relative-caret-position="187">
+              <caret line="66" column="54" lean-forward="true" selection-start-line="66" selection-start-column="54" selection-end-line="66" selection-end-column="54" />
               <folding>
                 <element signature="e#52#89#0" expanded="true" />
               </folding>
@@ -26,11 +30,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="insert_text_coor.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="insert_event.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2db/insert_event.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+              <folding>
+                <element signature="e#53#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insert_text_coor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2db/insert_text_coor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+            <state relative-caret-position="243">
+              <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
               <folding>
                 <element signature="e#53#75#0" expanded="true" />
               </folding>
@@ -82,9 +98,9 @@
         <option value="$PROJECT_DIR$/2db/insert_user_coor.py" />
         <option value="$PROJECT_DIR$/2db/insert_event.py" />
         <option value="$PROJECT_DIR$/analysis/eventExtraction.py" />
-        <option value="$PROJECT_DIR$/analysis/loc_Based.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_loc.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_coor.py" />
+        <option value="$PROJECT_DIR$/analysis/loc_Based.py" />
       </list>
     </option>
   </component>
@@ -279,14 +295,14 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.498" visible="true" weight="0.15437302" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.498" visible="true" weight="0.15437302" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50052685" side_tool="true" weight="0.32897604" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37363833" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40631807" />
       <window_info id="Structure" order="1" sideWeight="0.502" side_tool="true" weight="0.15437302" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3278867" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.33006537" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44008714" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -523,33 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/eventExtraction.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
-          <folding>
-            <element signature="e#53#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/loc_Based.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="109" column="13" selection-start-line="109" selection-end-line="109" selection-end-column="13" />
-          <folding>
-            <element signature="e#52#89#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2db/insert_user_coor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -570,12 +559,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_text_coor.py">
+    <entry file="file://$PROJECT_DIR$/2db/insert_event.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
+        <state relative-caret-position="289">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
           <folding>
             <element signature="e#53#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/eventExtraction.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="36" lean-forward="true" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_text_coor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="243">
+          <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
+          <folding>
+            <element signature="e#53#75#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/loc_Based.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="66" column="54" lean-forward="true" selection-start-line="66" selection-start-column="54" selection-end-line="66" selection-end-column="54" />
+          <folding>
+            <element signature="e#52#89#0" expanded="true" />
           </folding>
         </state>
       </provider>
