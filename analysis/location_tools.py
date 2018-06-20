@@ -22,14 +22,14 @@ def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
     return locations
 
 
-def locFromText(set_Country, twList, filterList):
+def locFromText(set_Country, textList, filterList):
     # set_Country: define a country filter (one location name can associated with multiple countries
     # tw: Twitter text list selected from database
     loc = []
     print('Start extracting locations from texts')
-    for tw in twList:
+    for t in textList:
         # print(row)
-        text = tw[1]
+        text = t[1]
         if len(text) > 0:
             text = re.sub(r'[^\w]', ' ', text)  # remove symbol
 
@@ -40,7 +40,7 @@ def locFromText(set_Country, twList, filterList):
                 # print(country)
                 if set_Country in country and not any(e in add for e in filterList):
                     # print('City:', add)
-                    loc.append((tw[0], add))
+                    loc.append((t[0], add))
     return loc
 
 
@@ -87,13 +87,13 @@ def locToCoor(locList):  # geocoding locations, output coordinates
     return coorFromText
 
 
-def coorToTweets(coorList, twList):
+def coorToTexts(coorList, textList):
     # coor: non duplicate coordinate List
     # tw: tid with location
     # output: tid with coordinates if applicable
     tidWithCoor = []
-    for tw in twList:
+    for t in textList:
         for coor in coorList:
-            if tw[1] == coor[0]:
-                tidWithCoor.append((tw[0], tw[1], coor[1]))
+            if t[1] == coor[0]:
+                tidWithCoor.append((t[0], t[1], coor[1]))
     return tidWithCoor
