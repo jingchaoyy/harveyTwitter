@@ -2,7 +2,7 @@
 Created on 6/20/2018
 @author: Jingchao Yang
 """
-from analysis import location_tools
+from toolBox import location_tools
 from psqlOperations import queryClean
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
