@@ -3,13 +3,7 @@ Created on 6/20/2018
 @author: Jingchao Yang
 """
 from goose3 import Goose
-
-def urlFilter(urlList, filterList):
-    filteredURL = []
-    for url in urlList:
-        if not any(e in url[1] for e in filterList):
-            filteredURL.append(url)
-    return filteredURL
+from toolBox import url_tool
 
 def textExtractor(urlList):
     g = Goose()
@@ -28,5 +22,5 @@ filters = ['twitter.com', 'youtube.com']
 urls = [(1111, 'http://kxan.com/2017/09/12/funeral-wednesday-for-houston-officer-who-died-in-flooding/?utm_medium=social&utm_source=twitter_KXAN_News'),
         (2222, 'https://www.youtube.com/watch?v=4SZxRCmXB4o&feature=share')]
 
-urlAfterFilter = urlFilter(urls, filters)
+urlAfterFilter = url_tool.urlFilter(urls, filters)
 textExtractor(urlAfterFilter)
