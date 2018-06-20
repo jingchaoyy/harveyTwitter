@@ -8,13 +8,14 @@ import geograpy
 import geocoder
 import re
 from time import sleep
+import googlemaps
 
 
 def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
     # coordinates: list of coordinates
     locations = []
     for coor in coorList:
-        sleep(5)
+        sleep(2)
         latlng = (coor[1], coor[2])
         # print(latlng)
         g = geocoder.google(latlng, method='reverse')
@@ -56,12 +57,32 @@ def Remove(locList):
 
 def locToCoor(locList):  # geocoding locations, output coordinates
     # list of location names (e.g. 'City, State, Country')
+    gmaps = googlemaps.Client(key='AIzaSyBNiwEzcU4-BPxp_cyoupC78ak_9PReeAY')
     coorFromText = []
     for loc in locList:
-        sleep(5)
-        g = geocoder.google(loc)
+        sleep(2)
+        g = gmaps.geocode(loc)
+
+        if 'location' in g[0]['geometry'].keys():
+            coor = g[0]['geometry']['location']  # APPROXIMATE location
+            coor_Lat = coor['lat']
+            coor_Lng = coor['lng']
+        else:
+            coor_Lat, coor_Lng = None, None
+
+        if 'bounds' in g[0]['geometry'].keys():  # bounding box
+            bbox = g[0]['geometry']['bounds']
+            bbox_NE_Lat = bbox['northeast']['lat']
+            bbox_NE_Lng = bbox['northeast']['lng']
+            bbox_SW_Lat = bbox['southwest']['lat']
+            bbox_SW_Lng = bbox['southwest']['lng']
+        else:
+            bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
+        # g = geocoder.google(loc)
         # print(loc, g.latlng)
-        coorFromText.append((loc, g.latlng))
+
+        coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
+        coorFromText.append((loc, coors))
 
     # g = geocoder.mapquest(locations, method='batch')
 
@@ -109,4 +130,3 @@ print('Associated coordinates', coorFromLoc_nonDup)
 
 text_LocCoors = coorToTweets(coorFromLoc_nonDup, loc_fromText)
 print(text_LocCoors)
-
