@@ -26,10 +26,10 @@ try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
 except:
     print("I am unable to connect to the database")
-
+tblName = 'original'
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-sql = "insert into original values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+sql = "insert into " + tblName + " values (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
 # Read file and write file are separated
 # startpath = 'C:\\Users\\no281\\Documents\\harVeyTwitter\\harvey_twitter_dataset\\02_archive_only\\testSubset'
@@ -94,7 +94,7 @@ for f in onlyfiles:
                                     if len(val) > 0:
                                         try:
                                             for attr, val in val[0].items():
-                                                if attr == 'url':
+                                                if attr == 'expanded_url':
                                                     tEU_URL = str(val)
 
                                         except:
@@ -180,7 +180,7 @@ for f in onlyfiles:
                         cur.execute(sql, data)
                         conn.commit()
                     except:
-                        print("I can't insert into Test")
+                        print("I can't insert into " + tblName)
         except:
             raise
     doc_read.close()
