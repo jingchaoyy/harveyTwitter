@@ -5,7 +5,7 @@ Created on 6/19/2018
 
 import psycopg2.extras
 from psqlOperations import queryClean
-from analysis import loc_Based
+from analysis import location_tools
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_out_Name = "original"
@@ -18,16 +18,16 @@ data_text = queryClean.singleColumn_wFilter(dbConnect, tb_out_Name, clo_Text)
 
 setCountry = 'United States'
 locFilter = ['Harvey', 'Hurricane']  # Name list that should not be considered as location under certain event
-loc_fromText = loc_Based.locFromText(setCountry, data_text, locFilter)
+loc_fromText = location_tools.locFromText(setCountry, data_text, locFilter)
 # print('All locations extracted', loc_fromText)
 
-loc_nonDup = loc_Based.Remove(loc_fromText)
+loc_nonDup = location_tools.Remove(loc_fromText)
 # print('Non duplicate location list', loc_nonDup)
 
-coorFromLoc_nonDup = loc_Based.locToCoor(loc_nonDup)
+coorFromLoc_nonDup = location_tools.locToCoor(loc_nonDup)
 # print('Associated coordinates', coorFromLoc_nonDup)
 
-text_LocCoors = loc_Based.coorToTweets(coorFromLoc_nonDup, loc_fromText)
+text_LocCoors = location_tools.coorToTweets(coorFromLoc_nonDup, loc_fromText)
 # print(text_LocCoors)
 
 

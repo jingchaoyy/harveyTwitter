@@ -4,7 +4,7 @@ Created on 6/19/2018
 """
 
 import psycopg2.extras
-from analysis import eventExtraction
+from analysis import events_from_tweets
 
 tb_in_Name = 'original_events'
 
@@ -15,7 +15,7 @@ except:
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-eList = eventExtraction.text_Events
+eList = events_from_tweets.text_Events
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
 
