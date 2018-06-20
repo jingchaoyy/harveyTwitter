@@ -7,13 +7,13 @@ import psycopg2.extras
 from psqlOperations import queryFromDB
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-ta_out_Name = "test"
-tb_in_Name = 'test_UserCoor'
+ta_out_Name = "original"
+tb_in_Name = 'original_UserCoor'
 
 clo_Lat = "tlat"
 clo_Lon = "tlon"
 user_Coors = queryFromDB.get_coorData(dbConnect, ta_out_Name, clo_Lat, clo_Lon)
-print(user_Coors)
+# print(user_Coors)
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
