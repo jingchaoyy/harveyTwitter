@@ -4,9 +4,32 @@ Created on 6/19/2018
 """
 
 import psycopg2.extras
+from psqlOperations import queryClean
 from analysis import loc_Based
 
-tb_in_Name = 'test_TextCoor'
+dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
+tb_out_Name = "original"
+tb_in_Name = 'original_textCoor'
+
+############ Location from text
+clo_Text = "ttext"
+data_text = queryClean.singleColumn_wFilter(dbConnect, tb_out_Name, clo_Text)
+# print('Original English Only Tweets', data_text)
+
+setCountry = 'United States'
+locFilter = ['Harvey', 'Hurricane']  # Name list that should not be considered as location under certain event
+loc_fromText = loc_Based.locFromText(setCountry, data_text, locFilter)
+# print('All locations extracted', loc_fromText)
+
+loc_nonDup = loc_Based.Remove(loc_fromText)
+# print('Non duplicate location list', loc_nonDup)
+
+coorFromLoc_nonDup = loc_Based.locToCoor(loc_nonDup)
+# print('Associated coordinates', coorFromLoc_nonDup)
+
+text_LocCoors = loc_Based.coorToTweets(coorFromLoc_nonDup, loc_fromText)
+# print(text_LocCoors)
+
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
@@ -15,7 +38,7 @@ except:
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-textLatlonList = loc_Based.text_LocCoors
+textLatlonList = text_LocCoors
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s, %s, %s, %s, %s, %s)"
 
