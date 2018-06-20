@@ -17,7 +17,7 @@ def singleColumn_nonFilter(dbConnect, tabName, cloName):
 
 def singleColumn_wFilter(dbConnect, tabName, cloName):
     data = queryFromDB.get_colData(dbConnect, tabName, cloName)
-    print('Total tweets:', data)
+    # print('Total tweets:', data)
     rows = []
     checkEng = enchant.Dict("en_US")
     for row in data:

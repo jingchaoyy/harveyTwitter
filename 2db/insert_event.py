@@ -6,7 +6,7 @@ Created on 6/19/2018
 import psycopg2.extras
 from analysis import eventExtraction
 
-tb_in_Name = 'test_events'
+tb_in_Name = 'original_events'
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
