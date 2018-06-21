@@ -4,6 +4,7 @@ import pycountry
 import sqlite3
 from .utils import remove_non_ascii, fuzzy_match
 from collections import Counter
+import math
 
 """
 Takes a list of place names and works place designation (country, region, etc) 
@@ -145,8 +146,24 @@ class PlaceContext(object):
             self.populate_db()
 
         cur = self.conn.cursor()
-        cur.execute("SELECT * FROM cities WHERE city_name IN (" + ",".join("?" * len(self.places)) + ")", self.places)
-        rows = cur.fetchall()
+
+        # print("####################SELECT * FROM cities WHERE city_name IN (" + ",".join("?" * len(self.places)) + ")", self.places)
+
+        sqliteMaxSQL = 999  # SQLITE_MAX_VARIABLE_NUMBER, which defaults to 999
+        if len(self.places) > sqliteMaxSQL:  # to avoid Error: too many SQL variables when query
+            print("exceeding max query limit", len(self.places))
+            loops = math.ceil(len(self.places) / sqliteMaxSQL)
+            rows = []
+            for i in range(loops):
+                croopedPlaces = self.places[i * sqliteMaxSQL:(i + 1) * sqliteMaxSQL]
+                cur.execute("SELECT * FROM cities WHERE city_name IN (" + ",".join("?" * len(croopedPlaces)) + ")",
+                            croopedPlaces)
+                row = cur.fetchall()
+                rows += row
+        else:
+            cur.execute("SELECT * FROM cities WHERE city_name IN (" + ",".join("?" * len(self.places)) + ")",
+                        self.places)
+            rows = cur.fetchall()
 
         for row in rows:
             country = None
