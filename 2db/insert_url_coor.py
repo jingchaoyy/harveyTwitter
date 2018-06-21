@@ -5,7 +5,7 @@ Created on 6/20/2018
 import psycopg2.extras
 from analysis import location_from_urls
 
-tb_in_Name = 'test_urlcoor'
+tb_in_Name = 'original_urlcoor'
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")

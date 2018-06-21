@@ -20,7 +20,7 @@ def locationFilter(locList, filterList, region):  # filter out location out of c
 
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb_out_Name = "test"
+tb_out_Name = "original"
 clo_url = "teu_url"
 allURLs = queryFromDB.get_colData(dbConnect, tb_out_Name, clo_url)
 print('url collecting finished', len(allURLs))
