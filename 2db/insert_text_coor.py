@@ -4,7 +4,7 @@ Created on 6/19/2018
 """
 
 import psycopg2.extras
-from analysis import location_from_tweets
+from dataPreprocessing import location_from_tweets
 
 tb_in_Name = 'original_textCoor'
 

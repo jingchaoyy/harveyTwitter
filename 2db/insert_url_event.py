@@ -5,7 +5,7 @@ Created on 6/21/2018
 import psycopg2.extras
 from toolBox import url_tools
 from psqlOperations import queryFromDB
-from analysis import events_from_tweets
+from dataPreprocessing import events_from_tweets
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in_Name = 'original_urlevents'

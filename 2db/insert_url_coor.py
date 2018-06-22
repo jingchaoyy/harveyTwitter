@@ -3,7 +3,7 @@ Created on 6/20/2018
 @author: Jingchao Yang
 """
 import psycopg2.extras
-from analysis import location_from_urls
+from dataPreprocessing import location_from_urls
 
 tb_in_Name = 'original_urlcoor'
 
