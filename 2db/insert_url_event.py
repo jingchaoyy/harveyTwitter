@@ -9,7 +9,7 @@ from analysis import events_from_tweets
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in_Name = 'original_urlevents'
-tb_out_Name = "test"
+tb_out_Name = "original"
 clo_url = "teu_url"
 allURLs = queryFromDB.get_colData(dbConnect, tb_out_Name, clo_url)
 print('url collecting finished', len(allURLs))
