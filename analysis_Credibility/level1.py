@@ -94,29 +94,29 @@ def coorToCoor(joinlist):
 '''databsed connection variables'''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 user_coor_tb = "test_usercoor"
-text_coor_tb = "test_textcoor"
+tw_coor_tb = "test_textcoor"
 url_coor_tb = "test_urlcoor"
 
 '''data select from db'''
 user_Coors = queryFromDB.get_allData(dbConnect, user_coor_tb)
 print("user shared location select finished", len(user_Coors))
-text_Coors = queryFromDB.get_allData(dbConnect, text_coor_tb)
-print("user twitted location select finished", len(text_Coors))
+tw_Coors = queryFromDB.get_allData(dbConnect, tw_coor_tb)
+print("user twitted location select finished", len(tw_Coors))
 url_Coors = queryFromDB.get_allData(dbConnect, url_coor_tb)
 print("url web page location select finished", len(url_Coors))
 
 '''correlation between 2 location resources'''
-user_tw_join = locExtraction_2(user_Coors, text_Coors)
+user_tw_join = locExtraction_2(user_Coors, tw_Coors)
 user_tw_within = coorToBbox(user_tw_join)
-print("user coor fall within tweets extracted bbox:", user_tw_within)
+print("user coor fall within tweets extracted bbox:", len(user_tw_within))
 
 user_url_join = locExtraction_2(user_Coors, url_Coors)
 user_url_within = coorToBbox(user_url_join)
-print("user coor fall within url extracted bbox:", user_url_within)
+print("user coor fall within url extracted bbox:", len(user_url_within))
 
-tw_url_join = locExtraction_2(text_Coors, url_Coors)
+tw_url_join = locExtraction_2(tw_Coors, url_Coors)
 tw_url_within = coorToCoor(tw_url_join)
-print("text extracted location same as url extracted location:", tw_url_within)
+print("text extracted location same as url extracted location:", len(tw_url_within))
 
 '''correlation between all 3 location resources'''
-user_tw_url_join = locExtraction_3(user_Coors, text_Coors, url_Coors)
+user_tw_url_join = locExtraction_3(user_Coors, tw_Coors, url_Coors)
