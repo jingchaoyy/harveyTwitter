@@ -8,13 +8,15 @@ from toolBox import location_tools
 
 
 def locationFilter(locList, filterList, region):  # filter out location out of certain region
+    print('start filter location')
     filteredLoc = []
     for loc in locList:
+        print(loc[0])
         if len(loc) > 0:
             for l in loc[1]:
                 country = l.split(',')[2]
                 if region in country and not any(e in l for e in filterList):
-                    print((loc[0], l))
+                    print(l)
                     filteredLoc.append((loc[0], l))
     return filteredLoc
 

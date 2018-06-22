@@ -55,10 +55,12 @@ def Remove(locList):
 
 def locToCoor(locList):  # geocoding locations, output coordinates
     # list of location names (e.g. 'City, State, Country')
+    print('start assign goor to location')
     gmaps = googlemaps.Client(key='AIzaSyBNiwEzcU4-BPxp_cyoupC78ak_9PReeAY')
     coorFromText = []
     for loc in locList:
         sleep(2)
+        print(loc)
         g = gmaps.geocode(loc)
 
         if 'location' in g[0]['geometry'].keys():
@@ -78,8 +80,8 @@ def locToCoor(locList):  # geocoding locations, output coordinates
             bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
         # g = geocoder.google(loc)
         # print(loc, g.latlng)
-
         coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
+        print(coors)
         coorFromText.append((loc, coors))
 
     # g = geocoder.mapquest(locations, method='batch')
