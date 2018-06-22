@@ -73,11 +73,31 @@ def coorToBbox(joinlist):
     return fallWithin
 
 
+def coorToCoor(joinlist):
+    """if text extracted location has same mention as url extracted location"""
+    fallWithin = []
+    for join in joinlist:
+        tid = join[0][8]
+        print(tid)
+        lat1 = join[0][2]
+        lng1 = join[0][3]
+        coor1 = (lat1, lng1)
+        lat2 = join[1][2]
+        lng2 = join[1][3]
+        coor2 = (lat2, lng2)
+
+        if coor1 == coor2:  # google api should give same approximate coor for same location
+            fallWithin.append((tid, coor1, coor2))
+    return fallWithin
+
+
+'''databsed connection variables'''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 user_coor_tb = "test_usercoor"
 text_coor_tb = "test_textcoor"
 url_coor_tb = "test_urlcoor"
 
+'''data select from db'''
 user_Coors = queryFromDB.get_allData(dbConnect, user_coor_tb)
 print("user shared location select finished", len(user_Coors))
 text_Coors = queryFromDB.get_allData(dbConnect, text_coor_tb)
@@ -85,6 +105,18 @@ print("user twitted location select finished", len(text_Coors))
 url_Coors = queryFromDB.get_allData(dbConnect, url_coor_tb)
 print("url web page location select finished", len(url_Coors))
 
+'''correlation between 2 location resources'''
 user_tw_join = locExtraction_2(user_Coors, text_Coors)
 user_tw_within = coorToBbox(user_tw_join)
-print(user_tw_within)
+print("user coor fall within tweets extracted bbox:", user_tw_within)
+
+user_url_join = locExtraction_2(user_Coors, url_Coors)
+user_url_within = coorToBbox(user_url_join)
+print("user coor fall within url extracted bbox:", user_url_within)
+
+tw_url_join = locExtraction_2(text_Coors, url_Coors)
+tw_url_within = coorToCoor(tw_url_join)
+print("text extracted location same as url extracted location:", tw_url_within)
+
+'''correlation between all 3 location resources'''
+user_tw_url_join = locExtraction_3(user_Coors, text_Coors, url_Coors)
