@@ -63,21 +63,24 @@ def locToCoor(locList):  # geocoding locations, output coordinates
         print(loc)
         g = gmaps.geocode(loc)
 
-        if 'location' in g[0]['geometry'].keys():
-            coor = g[0]['geometry']['location']  # APPROXIMATE location
-            coor_Lat = coor['lat']
-            coor_Lng = coor['lng']
-        else:
-            coor_Lat, coor_Lng = None, None
+        if len(g) > 0:
+            if 'location' in g[0]['geometry'].keys():
+                coor = g[0]['geometry']['location']  # APPROXIMATE location
+                coor_Lat = coor['lat']
+                coor_Lng = coor['lng']
+            else:
+                coor_Lat, coor_Lng = None, None
 
-        if 'bounds' in g[0]['geometry'].keys():  # bounding box
-            bbox = g[0]['geometry']['bounds']
-            bbox_NE_Lat = bbox['northeast']['lat']
-            bbox_NE_Lng = bbox['northeast']['lng']
-            bbox_SW_Lat = bbox['southwest']['lat']
-            bbox_SW_Lng = bbox['southwest']['lng']
+            if 'bounds' in g[0]['geometry'].keys():  # bounding box
+                bbox = g[0]['geometry']['bounds']
+                bbox_NE_Lat = bbox['northeast']['lat']
+                bbox_NE_Lng = bbox['northeast']['lng']
+                bbox_SW_Lat = bbox['southwest']['lat']
+                bbox_SW_Lng = bbox['southwest']['lng']
+            else:
+                bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
         else:
-            bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
+            coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None, None, None
         # g = geocoder.google(loc)
         # print(loc, g.latlng)
         coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
