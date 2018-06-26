@@ -149,7 +149,7 @@ def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
         print("SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2_1 +
               " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1)
         cur.execute(
-            "SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2_1 +
+            "SELECT " + tbn2 + "." + col2_1 + ", " + tbn1 + "." + col1 +
             " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1)
         print("The number of parts from table join " + tbn1 + " and " + tbn2, cur.rowcount)
         row = cur.fetchone()
