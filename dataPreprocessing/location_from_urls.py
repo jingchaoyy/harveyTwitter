@@ -22,9 +22,12 @@ def locationFilter(locList, filterList, region):  # filter out location out of c
 
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb_out_Name = "original"
-clo_url = "teu_url"
-allURLs = queryFromDB.get_colData(dbConnect, tb_out_Name, clo_url)
+tb1_out_Name = "original"
+tb2_out_Name = "original_texteng"
+tb1_clo_url = "teu_url"
+tb1_clo_tid = "tid"
+tb2_clo_tid = "tid"
+allURLs = queryFromDB.joinQuery(dbConnect, tb1_out_Name, tb2_out_Name, tb1_clo_url, tb1_clo_tid, tb2_clo_tid)
 print('url collecting finished', len(allURLs))
 
 filters = ['twitter.com', 'youtube.com', 'instagram.com']  # remove links that are from social media

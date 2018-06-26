@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/harveyTwitter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/harveyTwitter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis_Credibility/level2.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_Credibility/level2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toolBox/location_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/toolBox/location_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataPreprocessing/location_from_urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataPreprocessing/location_from_urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,13 +17,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="insert_url_text.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="insert_url_text.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2db/insert_url_text.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="63">
-              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+            <state relative-caret-position="170">
+              <caret line="10" selection-start-line="10" selection-end-line="18" selection-end-column="46" />
               <folding>
                 <element signature="e#52#74#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insert_url_coor.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/2db/insert_url_coor.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="49" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="49" />
+              <folding>
+                <element signature="e#52#74#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="location_from_urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataPreprocessing/location_from_urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+              <folding>
+                <element signature="e#52#81#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,13 +134,11 @@
         <option value="$PROJECT_DIR$/analysis/events_from_urls.py" />
         <option value="$PROJECT_DIR$/analysis/events_from_tweets.py" />
         <option value="$PROJECT_DIR$/analysis/location_from_urls.py" />
-        <option value="$PROJECT_DIR$/2db/insert_url_coor.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_event.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_coor.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/level1.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/level2_mix_1.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/level2.py" />
-        <option value="$PROJECT_DIR$/dataPreprocessing/location_from_urls.py" />
         <option value="$PROJECT_DIR$/2db/insert _text_coor_local.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/psqlOperations/queryClean.py" />
@@ -133,6 +152,8 @@
         <option value="$PROJECT_DIR$/psqlOperations/queryFromDB.py" />
         <option value="$PROJECT_DIR$/toolBox/url_tools.py" />
         <option value="$PROJECT_DIR$/2db/insert_url_text.py" />
+        <option value="$PROJECT_DIR$/2db/insert_url_coor.py" />
+        <option value="$PROJECT_DIR$/dataPreprocessing/location_from_urls.py" />
       </list>
     </option>
   </component>
@@ -209,7 +230,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.insert_url_text">
+  <component name="RunManager" selected="Python.insert_url_coor">
     <configuration name="insert_text_eng" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -309,11 +330,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.insert_url_coor" />
         <item itemvalue="Python.insert_url_text" />
         <item itemvalue="Python.insert_url_event" />
         <item itemvalue="Python.insert_text_eng" />
         <item itemvalue="Python.localGazetteer_from_tweets" />
-        <item itemvalue="Python.insert_url_coor" />
       </list>
     </recent_temporary>
   </component>
@@ -343,12 +364,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.2455216" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.2455216" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.37908497" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.24074075" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.30501089" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.30501089" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.28540304" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
@@ -525,13 +546,6 @@
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/location_from_tweets.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataPreprocessing/location_from_urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/wordCount.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -632,16 +646,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_url_coor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-          <folding>
-            <element signature="e#52#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2db/insert_text_eng.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -689,12 +693,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_url_text.py">
+    <entry file="file://$PROJECT_DIR$/2db/insert_url_coor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        <state relative-caret-position="272">
+          <caret line="16" column="49" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="49" />
           <folding>
             <element signature="e#52#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_url_text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="18" selection-end-column="46" />
+          <folding>
+            <element signature="e#52#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/location_from_urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
+          <folding>
+            <element signature="e#52#81#0" expanded="true" />
           </folding>
         </state>
       </provider>
