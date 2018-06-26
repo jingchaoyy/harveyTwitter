@@ -46,6 +46,7 @@ def get_allData(dbc, tbn):
         if conn is not None:
             conn.close()
 
+
 def get_colData(dbc, tbn, clo):
     """ query data from a table """
     conn = None
@@ -122,6 +123,35 @@ def get_coorData(dbc, tbn, lat, lng):
         cur = conn.cursor()
         cur.execute("select tid," + lat + "," + lng + " from " + tbn + " where " + lat + " is not null")
         print("Tweets with coordinates", cur.rowcount)
+        row = cur.fetchone()
+
+        rList = []
+        while row is not None:
+            # print(row)
+            rList.append(row)
+            row = cur.fetchone()
+
+        return rList
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
+    conn = None
+    try:
+        conn = psycopg2.connect(dbc)
+        cur = conn.cursor()
+        print("SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2_1 +
+              " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1)
+        cur.execute(
+            "SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2_1 +
+            " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1)
+        print("The number of parts from table join " + tbn1 + " and " + tbn2, cur.rowcount)
         row = cur.fetchone()
 
         rList = []
