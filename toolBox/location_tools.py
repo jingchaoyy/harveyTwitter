@@ -3,23 +3,23 @@ Created on 6/13/2018
 @author: Jingchao Yang
 """
 import geograpy
-import geocoder
+# import geocoder
 import re
 from time import sleep
 import googlemaps
 
 
-def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
-    # coordinates: list of coordinates
-    locations = []
-    for coor in coorList:
-        sleep(2)
-        latlng = (coor[1], coor[2])
-        # print(latlng)
-        g = geocoder.google(latlng, method='reverse')
-        # print(coor, g.state)
-        locations.append((coor, g.state))
-    return locations
+# def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
+#     # coordinates: list of coordinates
+#     locations = []
+#     for coor in coorList:
+#         sleep(2)
+#         latlng = (coor[1], coor[2])
+#         # print(latlng)
+#         g = geocoder.google(latlng, method='reverse')
+#         # print(coor, g.state)
+#         locations.append((coor, g.state))
+#     return locations
 
 
 def locFromText(set_Country, textList, filterList):
