@@ -13,7 +13,9 @@ clo_Text = "ttext"
 data_text = queryClean.singleColumn_wFilter(dbConnect, tb_out_Name, clo_Text)
 print('Original English Only Tweets', len(data_text))
 
-events = ['infection', 'toxic', 'rescue', 'power', 'mosquitoes', 'harvey relief', 'donate']
+events = ['infect', 'toxic', 'rescu', 'power', 'mosquito', 'harvey relief', 'donat', 'flood', 'suppl', 'aid',
+          'volunteer', 'high water', 'highwater', 'shelter', 'boat', 'grocery', 'gas', 'highway', 'hwy', 'death',
+          'damage', 'destruction', 'debris', 'casualty', 'caution', 'outage', 'water system', 'devastation', 'leak']
 text_Events = events_from_tweets.eventBack(data_text, events)
 print('event extraction finished', len(text_Events))
 
