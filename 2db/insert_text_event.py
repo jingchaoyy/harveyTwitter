@@ -21,6 +21,7 @@ events = ['infect', 'toxic', 'rescu', 'power', 'mosquito', 'harvey relief', 'don
 # print('event extraction finished', len(text_Events))
 
 text_Events = queryFromDB.likeQuery(dbConnect, tb_out_Name, col_Text, events)
+print('event extraction finished', len(text_Events))
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")

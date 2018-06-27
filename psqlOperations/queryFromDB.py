@@ -186,6 +186,7 @@ def likeQuery(dbc, tbn, col, likeList):
 
         rList = []
         for like in likeList:
+            print("START select tid," + col + " from " + tbn + " where " + col + " like '%" + like + "%'")
             cur.execute("select tid," + col + " from " + tbn + " where " + col + " like '%" + like + "%'")
             row = cur.fetchone()
 
