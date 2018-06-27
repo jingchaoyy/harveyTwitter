@@ -5,19 +5,22 @@ Created on 6/19/2018
 import psycopg2.extras
 from dataPreprocessing import events_from_tweets
 from psqlOperations import queryClean
+from psqlOperations import queryFromDB
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb_in_Name = 'original_events'
-tb_out_Name = "original"
-clo_Text = "ttext"
-data_text = queryClean.singleColumn_wFilter(dbConnect, tb_out_Name, clo_Text)
-print('Original English Only Tweets', len(data_text))
+tb_in_Name = 'test_events'
+tb_out_Name = "test_texteng"
+col_Text = "eng_text"
+# data_text = queryClean.singleColumn_wFilter(dbConnect, tb_out_Name, clo_Text)
+# print('Original English Only Tweets', len(data_text))
 
 events = ['infect', 'toxic', 'rescu', 'power', 'mosquito', 'harvey relief', 'donat', 'flood', 'suppl', 'aid',
           'volunteer', 'high water', 'highwater', 'shelter', 'boat', 'grocery', 'gas', 'highway', 'hwy', 'death',
           'damage', 'destruction', 'debris', 'casualty', 'caution', 'outage', 'water system', 'devastation', 'leak']
-text_Events = events_from_tweets.eventBack(data_text, events)
-print('event extraction finished', len(text_Events))
+# text_Events = events_from_tweets.eventBack(data_text, events)
+# print('event extraction finished', len(text_Events))
+
+text_Events = queryFromDB.likeQuery(dbConnect, tb_out_Name, col_Text, events)
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
