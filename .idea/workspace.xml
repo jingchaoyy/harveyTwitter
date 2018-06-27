@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/psqlOperations/queryClean.py" beforeDir="false" afterPath="$PROJECT_DIR$/psqlOperations/queryClean.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataPreprocessing/groundTruth_from_external.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataPreprocessing/localGazetteer_from_tweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataPreprocessing/localGazetteer_from_tweets.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,32 +21,17 @@
       <file leaf-file-name="localGazetteer_from_tweets.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataPreprocessing/localGazetteer_from_tweets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="102">
+              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queryFromDB.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2434">
-              <caret line="189" column="32" lean-forward="true" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="32" />
-              <folding>
-                <element signature="e#123#138#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="queryClean.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/psqlOperations/queryClean.py">
+      <file leaf-file-name="groundTruth_from_external.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dataPreprocessing/groundTruth_from_external.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-start-column="2" selection-end-line="15" selection-end-column="17" />
-              <folding>
-                <element signature="e#52#90#0" expanded="true" />
-              </folding>
+              <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -53,10 +40,19 @@
         <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+              <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
               <folding>
                 <element signature="e#52#74#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -128,16 +124,17 @@
         <option value="$PROJECT_DIR$/dataPreprocessing/events_from_tweets.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_engTWs.py" />
         <option value="$PROJECT_DIR$/2db/insert_url_event.py" />
-        <option value="$PROJECT_DIR$/toolBox/url_tools.py" />
         <option value="$PROJECT_DIR$/2db/insert_url_text.py" />
         <option value="$PROJECT_DIR$/2db/insert_url_coor.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/location_from_urls.py" />
-        <option value="$PROJECT_DIR$/dataPreprocessing/localGazetteer_from_tweets.py" />
-        <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_eng.py" />
-        <option value="$PROJECT_DIR$/2db/insert_text_event.py" />
-        <option value="$PROJECT_DIR$/psqlOperations/queryFromDB.py" />
         <option value="$PROJECT_DIR$/psqlOperations/queryClean.py" />
+        <option value="$PROJECT_DIR$/toolBox/url_tools.py" />
+        <option value="$PROJECT_DIR$/psqlOperations/queryFromDB.py" />
+        <option value="$PROJECT_DIR$/2db/insert_text_event.py" />
+        <option value="$PROJECT_DIR$/test.py" />
+        <option value="$PROJECT_DIR$/dataPreprocessing/groundTruth_from_external.py" />
+        <option value="$PROJECT_DIR$/dataPreprocessing/localGazetteer_from_tweets.py" />
       </list>
     </option>
   </component>
@@ -167,22 +164,17 @@
             <path>
               <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
               <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
-              <item name="analysis_Credibility" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
               <item name="dataPreprocessing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
               <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
-              <item name="geograpy" type="462c0819:PsiDirectoryNode" />
+              <item name="psqlOperations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
               <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
-              <item name="psqlOperations" type="462c0819:PsiDirectoryNode" />
+              <item name="toolBox" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -214,7 +206,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.insert_text_event">
+  <component name="RunManager" selected="Python.test">
     <configuration name="insert_text_eng" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -314,9 +306,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test" />
         <item itemvalue="Python.insert_text_event" />
         <item itemvalue="Python.insert_text_eng" />
-        <item itemvalue="Python.test" />
         <item itemvalue="Python.localGazetteer_from_tweets" />
         <item itemvalue="Python.insert_url_coor" />
       </list>
@@ -353,7 +345,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.37908497" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.57298476" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.2962963" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.39215687" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.28540304" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
@@ -405,13 +397,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/newspaper/article.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="163" column="48" selection-start-line="163" selection-start-column="31" selection-end-line="163" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/chardet/hebrewprober.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3825">
@@ -484,22 +469,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_user_coor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="26" lean-forward="true" selection-start-line="10" selection-start-column="26" selection-end-line="10" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/analysis_Credibility/level1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1819">
           <caret line="107" selection-start-line="107" selection-end-line="107" selection-end-column="46" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataPreprocessing/wordCount.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/geograpy/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -574,13 +549,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="38" lean-forward="true" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/location_from_tweets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -600,39 +568,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataPreprocessing/events_from_tweets.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
-          <folding>
-            <element signature="e#52#76#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2db/insert_url_coor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding>
             <element signature="e#52#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="36" selection-start-line="11" selection-start-column="36" selection-end-line="11" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toolBox/location_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-490">
-          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="52" selection-end-column="21" />
-          <folding>
-            <element signature="e#52#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -647,42 +588,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_text_eng.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="22" />
-          <folding>
-            <element signature="e#52#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-          <folding>
-            <element signature="e#52#74#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2db/insert_url_event.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
           <caret line="43" column="61" lean-forward="true" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
           <folding>
             <element signature="e#44#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_url_text.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-          <folding>
-            <element signature="e#52#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -707,30 +618,123 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataPreprocessing/localGazetteer_from_tweets.py">
+    <entry file="file://$PROJECT_DIR$/2db/insert_user_coor.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="238">
+          <caret line="14" column="37" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="e#53#75#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
+    <entry file="file://$PROJECT_DIR$/toolBox/location_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2434">
-          <caret line="189" column="32" lean-forward="true" selection-start-line="189" selection-start-column="32" selection-end-line="189" selection-end-column="32" />
+        <state relative-caret-position="-175">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="52" selection-end-column="21" />
           <folding>
-            <element signature="e#123#138#0" expanded="true" />
+            <element signature="e#52#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="e#52#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/wordCount.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#52#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_text_eng.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#52#74#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/psqlOperations/queryClean.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-start-column="2" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="68">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
           <folding>
             <element signature="e#52#90#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/events_from_tweets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+          <folding>
+            <element signature="e#52#76#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2431">
+          <caret line="143" column="9" lean-forward="true" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
+          <folding>
+            <element signature="e#123#138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_url_text.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="31" lean-forward="true" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+          <folding>
+            <element signature="e#52#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <folding>
+            <element signature="e#52#74#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/localGazetteer_from_tweets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/groundTruth_from_external.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
