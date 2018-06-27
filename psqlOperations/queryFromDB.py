@@ -47,13 +47,13 @@ def get_allData(dbc, tbn):
             conn.close()
 
 
-def get_colData(dbc, tbn, clo):
+def get_colData(dbc, tbn, col):
     """ query data from a table """
     conn = None
     try:
         conn = psycopg2.connect(dbc)
         cur = conn.cursor()
-        cur.execute("select tid," + clo + " from " + tbn)
+        cur.execute("select tid," + col + " from " + tbn)
         print("The number of parts: ", cur.rowcount)
         row = cur.fetchone()
 
@@ -159,6 +159,40 @@ def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
             # print(row)
             rList.append(row)
             row = cur.fetchone()
+
+        return rList
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
+def likeQuery(dbc, tbn, col, likeList):
+    """
+    Query database using like statement to extract events from text
+
+    dbc: database connector
+    tbn: table name
+    col: column in selected table to be aimed
+    likeList: list contain all keywords should be looking for
+    """
+    conn = None
+    try:
+        conn = psycopg2.connect(dbc)
+        cur = conn.cursor()
+
+        rList = []
+        for like in likeList:
+            cur.execute("select tid," + col + " from " + tbn + " where " + col + " like '%" + like + "%'")
+            row = cur.fetchone()
+
+            while row is not None:
+                # print(row[0])
+                rList.append((row[0] ,like))
+                row = cur.fetchone()
 
         return rList
 
