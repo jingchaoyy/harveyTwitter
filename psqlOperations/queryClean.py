@@ -6,14 +6,14 @@ from psqlOperations import queryFromDB
 import re
 import enchant
 
-def singleColumn_nonFilter(dbConnect, tabName, cloName):
-    data = queryFromDB.get_colData(dbConnect, tabName, cloName)
-    rows = []
-    for row in data:
-        row = row.strip()
-        rows.append(row)
-
-    return rows
+# def singleColumn_nonFilter(dbConnect, tabName, cloName):
+#     data = queryFromDB.get_colData(dbConnect, tabName, cloName)
+#     rows = []
+#     for row in data:
+#         row = row.strip()
+#         rows.append(row)
+#
+#     return rows
 
 def singleColumn_wFilter(dbConnect, tabName, cloName):
     data = queryFromDB.get_colData(dbConnect, tabName, cloName)
