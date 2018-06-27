@@ -38,4 +38,4 @@ url_events = queryFromDB.get_allData(dbConnect, url_event_tb)
 print("events from tweets", len(url_events))
 
 matchEvent = checkEvents(tw_events, url_events)
-print(matchEvent)
+print("matched events", len(matchEvent))
