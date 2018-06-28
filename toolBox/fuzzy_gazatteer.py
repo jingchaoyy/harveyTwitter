@@ -11,17 +11,17 @@ def localGazetter(textList):
     :param textList: text list with twitter id
     :return: extracted location name list
     """
-    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'suqare', 'sq', 'fm', 'blvd', 'hwy']
+    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'blvd', 'hwy']
     placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital']
     road_extracts, place_extracts = [], []
     for text in textList:
         if text[1] is not None:
             print(text[-1])
 
-            '''Check possible road names'''
             twText = re.sub(r'[^\w]', ' ', text[1])
             twText = twText.split()
 
+            '''Check possible road names'''
             road_nos = [str(s) for s in twText if s.isdigit()]
             road_descs = [str(s) for s in twText if s.lower() in roadDesc]
             if len(road_descs) > 0:
@@ -68,4 +68,4 @@ def localGazetter(textList):
                             place_extract.append(place)
                 place_extracts.append((place_extract, text[-1]))
 
-    return place_extracts
+    return road_extracts, place_extracts
