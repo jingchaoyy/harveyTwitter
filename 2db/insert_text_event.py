@@ -3,8 +3,6 @@ Created on 6/19/2018
 @author: Jingchao Yang
 """
 import psycopg2.extras
-from dataPreprocessing import events_from_tweets
-from psqlOperations import queryClean
 from psqlOperations import queryFromDB
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"

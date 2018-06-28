@@ -3,10 +3,8 @@ Created on 6/25/2018
 @author: Jingchao Yang
 """
 import psycopg2.extras
-from toolBox import url_tools
+from toolBox import url_tools, events_from_tweets
 from psqlOperations import queryFromDB
-from dataPreprocessing import events_from_tweets
-import math
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in_Name = 'original_urltext'
