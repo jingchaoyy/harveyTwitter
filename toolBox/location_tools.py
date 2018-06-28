@@ -119,3 +119,24 @@ def coorToTexts(coorList, textList):
             if t[1] == coor[0]:
                 tidWithCoor.append((t[0], t[1], coor[1]))
     return tidWithCoor
+
+
+def locationFilter(locList, filterList, set_Country):  # filter out location out of certain region
+    """
+    Filter out url extracted locations with desired country
+    :param locList: A list of all url extracted location names
+    :param filterList: Name list that should not be considered as location under certain event
+    :param set_Country: define a country filter (one location name can associated with multiple countries
+    :return: a filtered location list
+    """
+    print('start filter location')
+    filteredLoc = []
+    for loc in locList:
+        print(loc[0])
+        if len(loc) > 0:
+            for l in loc[1]:
+                country = l.split(',')[2]
+                if set_Country in country and not any(e in l for e in filterList):
+                    print(l)
+                    filteredLoc.append((loc[0], l))
+    return filteredLoc
