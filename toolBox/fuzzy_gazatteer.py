@@ -26,6 +26,7 @@ def localGazetter(textList):
             if len(road_descs) > 0:
                 road_extract = []
                 for road_desc in road_descs:
+                    road = road_desc
                     ind = twText.index(road_desc)
                     one_word_ahead = str(twText[ind - 1])
                     if one_word_ahead[0].isupper():  # if start with capital latter, more likely to be street name
@@ -40,7 +41,7 @@ def localGazetter(textList):
                     if len(road_nos) > 0:  # attach road No. with road name is applicable
                         for road_no in road_nos:
                             road_extract.append(road_no + ' ' + road)
-                    road_extracts.append((road_extract, text[-1]))
+                road_extracts.append((road_extract, text[-1]))
 
             '''Check possible gazetteer names'''
 
