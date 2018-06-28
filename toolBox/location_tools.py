@@ -23,8 +23,13 @@ import googlemaps
 
 
 def locFromText(set_Country, textList, filterList):
-    # set_Country: define a country filter (one location name can associated with multiple countries
-    # tw: Twitter text list selected from database
+    """
+    Extract location from twitters
+    :param set_Country: define a country filter (one location name can associated with multiple countries
+    :param textList: A list of all Twitter text selected from database
+    :param filterList: Name list that should not be considered as location under certain event
+    :return: A filtered list of location extracted from Twitter text
+    """
     loc = []
     print('Start extracting locations from texts')
     for t in textList:
@@ -45,6 +50,11 @@ def locFromText(set_Country, textList, filterList):
 
 
 def Remove(locList):
+    """
+    remove duplicated location extracted from twitters to prepare for geocoding
+    :param locList: original location list for all twitters (if there is one)
+    :return: non duplicate location List
+    """
     final_list = []
     for loc in locList:
         if loc[1] not in final_list:
@@ -54,7 +64,11 @@ def Remove(locList):
 
 
 def locToCoor(locList):  # geocoding locations, output coordinates
-    # list of location names (e.g. 'City, State, Country')
+    """
+    geocoding, assign coor to location
+    :param locList: non duplicate location List (e.g. 'City, State, Country')
+    :return: non duplicate location List with assigned coors
+    """
     print('start assign goor to location')
     gmaps = googlemaps.Client(key='AIzaSyBNiwEzcU4-BPxp_cyoupC78ak_9PReeAY')
     coorFromText = []
@@ -93,9 +107,12 @@ def locToCoor(locList):  # geocoding locations, output coordinates
 
 
 def coorToTexts(coorList, textList):
-    # coor: non duplicate coordinate List
-    # tw: tid with location
-    # output: tid with coordinates if applicable
+    """
+    assign geocoded coors back to all twitters
+    :param coorList: non duplicate coordinate List associated with extracted location
+    :param textList: tid with location
+    :return: tid with coordinates if applicable
+    """
     tidWithCoor = []
     for t in textList:
         for coor in coorList:
