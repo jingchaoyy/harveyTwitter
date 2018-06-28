@@ -9,6 +9,11 @@ import time
 
 
 def urlFilter(urlList, filterList):
+    """
+    :param urlList: all urls from twitters
+    :param filterList: list of strings that a url may have (these certain urls should be eliminated)
+    :return: filtered urls from twitters
+    """
     print('start filter url')
     filteredURL = []
     for url in urlList:
@@ -18,6 +23,11 @@ def urlFilter(urlList, filterList):
 
 
 def findLocFromURL(urlList):
+    """
+    extract location info directly from a url
+    :param urlList: list of filtered urls
+    :return: location names
+    """
     print('start extract location from url')
     findLoc = []
     for url in urlList:
@@ -31,7 +41,11 @@ def findLocFromURL(urlList):
 
 
 def textExtractor(urlList):
-    """Extract texts from tweets urls, back with tid with extracted text list"""
+    """
+    Extract texts from tweets urls, back with tid with extracted text list
+    :param urlList: list of filtered urls
+    :return: text from url linked page
+    """
     # urlList: list of urls with tid
     print('start text extraction from url')
     g = Goose()
