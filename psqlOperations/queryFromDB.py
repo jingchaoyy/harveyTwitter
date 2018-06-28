@@ -116,7 +116,14 @@ def get_colData(dbc, tbn, col):
 
 
 def get_coorData(dbc, tbn, lat, lng):
-    """ query coordinates from a table, two columns together """
+    """
+    query coordinates from a table, two columns together
+    :param dbc: db connector
+    :param tbn: table name
+    :param lat: column latitude
+    :param lng: column longitude
+    :return: all matching records from db table
+    """
     conn = None
     try:
         conn = psycopg2.connect(dbc)
@@ -142,6 +149,15 @@ def get_coorData(dbc, tbn, lat, lng):
 
 
 def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
+    """
+    :param dbc: db connector
+    :param tbn1: name for table 1
+    :param tbn2: name for table 2
+    :param col1: col1 in table 1
+    :param col1_1: col2 in table 1
+    :param col2_1: col1 in table 2
+    :return: all matching records from db table
+    """
     conn = None
     try:
         conn = psycopg2.connect(dbc)
@@ -173,11 +189,11 @@ def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
 def likeQuery(dbc, tbn, col, likeList):
     """
     Query database using like statement to extract events from text
-
-    dbc: database connector
-    tbn: table name
-    col: column in selected table to be aimed
-    likeList: list contain all keywords should be looking for
+    :param dbc: database connector
+    :param tbn: table name
+    :param col: column in selected table to aim
+    :param likeList: list contain all keywords should be looking for
+    :return: all matching records from db table
     """
     conn = None
     try:
