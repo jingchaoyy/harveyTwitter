@@ -6,8 +6,14 @@ from goose3 import Goose
 from interruptingcow import timeout
 import time
 
+
 def eventBack(twList, eList):
-    """Extract events from text input, back with events and tid"""
+    """
+    Extract events from text input, back with events and tid
+    :param twList: list of text (tweets, of url link pages)
+    :param eList: list of events should be looked for in the text
+    :return: twitter id with found events
+    """
     # twList: original tweet list
     # eList: list of events
     print('start event extraction from text')
@@ -26,7 +32,11 @@ def eventBack(twList, eList):
 
 
 def textExtractor(urlList):
-    """Extract texts from tweets urls, back with tid with extracted text list"""
+    """
+    Extract texts from tweets urls, back with tid with extracted text list
+    :param urlList: filtered url list
+    :return: a list contain twitter ID with all text extracted from url links
+    """
     # urlList: list of urls with tid
     print('start text extraction from url')
     g = Goose()
@@ -46,6 +56,6 @@ def textExtractor(urlList):
                     #             url[0]) + ".txt", 'w') as outfile:
                     #     outfile.write(text)
                     # outfile.close()
-                except :
+                except:
                     print('url break, continue')
     return textList
