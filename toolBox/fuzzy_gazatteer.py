@@ -76,7 +76,9 @@ def localGazetter(textList):
                     # if len(road_nos) > 0:  # attach road No. with road name is applicable
                     #     for road_no in road_nos:
                     #         road_extract.append(road_no + ' ' + road)
-                road_extracts.append((road_extract, text[-1]))
+
+                if len(road_extract) > 0:
+                    road_extracts.append((road_extract, text[-1]))
 
             '''Check possible place names
             Place name rules: Different from road name rules, we ignore the numbers, as usually numbers are not part
@@ -103,6 +105,8 @@ def localGazetter(textList):
                         else:  # stick with one-word name if two-word name is not applicable
                             place = (one_word_ahead + ' ' + place_desc)
                             place_extract.append(place)
-                place_extracts.append((place_extract, text[-1]))
+
+                if len(place_extract) > 0:
+                    place_extracts.append((place_extract, text[-1]))
 
     return road_extracts, place_extracts
