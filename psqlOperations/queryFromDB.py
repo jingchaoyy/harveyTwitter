@@ -219,3 +219,46 @@ def likeQuery(dbc, tbn, col, likeList):
     finally:
         if conn is not None:
             conn.close()
+
+def attQueryWJoin(dbc, tbn1, tbn2, col1, col1_1, col2, col2_1, var1, var2):
+    """
+    :param dbc: db connector
+    :param tbn1: name for join table 1
+    :param tbn2: name for join table 2
+    :param col1: att column in table 1
+    :param col1_1: join column in table 1
+    :param col2: att column in table 2
+    :param col2_1: join column in table 2
+    :param var1: variable1 to search for in col1
+    :param var2: variable2 to search for in col1
+    :return: all matching records from db table
+    """
+    conn = None
+    try:
+        conn = psycopg2.connect(dbc)
+        cur = conn.cursor()
+        print("SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2 + ", " + tbn1 + "." + col1_1 +
+              " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1 +
+              " WHERE " + tbn1 + "." + col1 + " = '" + var1 + "' OR " + tbn1 + "." + col1 + " = '" + var2 + "'")
+
+        cur.execute(
+            "SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2 + ", " + tbn1 + "." + col1_1 +
+            " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1 +
+            " WHERE " + tbn1 + "." + col1 + " = '" + var1 + "' OR " + tbn1 + "." + col1 + " = '" + var2 + "'")
+        print("The number of parts from table join " + tbn1 + " and " + tbn2, cur.rowcount)
+        row = cur.fetchone()
+
+        rList = []
+        while row is not None:
+            # print(row)
+            rList.append(row)
+            row = cur.fetchone()
+
+        return rList
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
