@@ -11,10 +11,11 @@ def localGazetter(textList):
     :param textList: text list with twitter id
     :return: extracted location name lists (one for roads, one for places)
     """
-    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'blvd', 'hwy', 'highway']
+    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'blvd', 'hwy', 'highway', 'avenue',
+                'ave']
     placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital']
     road_extracts, place_extracts = [], []
-    for text in textList:
+    for text in textList:  # (text[0]: events, text[1]: text, text[-1]: tw id)
         if text[1] is not None:
             print(text[-1])
 
@@ -28,10 +29,18 @@ def localGazetter(textList):
             name extraction algorithm.
             These common rules are widely used, and will be examed below. More rules may added when project goes
             '''
+
+            road_extract, road_descs = [], []
+            p = re.compile('D+\d')  # regular expression, for extracting road name like I45
+            for twt in twText:
+                if p.match(twt):
+                    road_extract.append(twt)
+                if twt.lower() in roadDesc:
+                    road_descs.append(str(twt))
+
             # road_nos = [str(s) for s in twText if s.isdigit()]
-            road_descs = [str(s) for s in twText if s.lower() in roadDesc]
+            # road_descs = [str(s) for s in twText if s.lower() in roadDesc]
             if len(road_descs) > 0:
-                road_extract = []
                 for road_desc in road_descs:
                     road = road_desc
                     ind = twText.index(road_desc)
