@@ -9,9 +9,9 @@ def localGazetter(textList):
     """
     Extract local gazetteers from text (twitters or url linked pages)
     :param textList: text list with twitter id
-    :return: extracted location name list
+    :return: extracted location name lists (one for roads, one for places)
     """
-    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'blvd', 'hwy']
+    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'blvd', 'hwy', 'highway']
     placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital']
     road_extracts, place_extracts = [], []
     for text in textList:
@@ -21,8 +21,14 @@ def localGazetter(textList):
             twText = re.sub(r'[^\w]', ' ', text[1])
             twText = twText.split()
 
-            '''Check possible road names'''
-            road_nos = [str(s) for s in twText if s.isdigit()]
+            '''Check possible road names
+            Road name rules: Commonly, there are roads with one-word name (e.g. Main Street); one-word name and a
+            road No. ahead (e.g. 9922 Fairfax Sq), two-word name, two-word name and a road No. ahead, or simply 
+            road/street/hwy and a road No. behind. Road names are usually start with capital letters, crucial to our
+            name extraction algorithm.
+            These common rules are widely used, and will be examed below. More rules may added when project goes
+            '''
+            # road_nos = [str(s) for s in twText if s.isdigit()]
             road_descs = [str(s) for s in twText if s.lower() in roadDesc]
             if len(road_descs) > 0:
                 road_extract = []
@@ -33,18 +39,40 @@ def localGazetter(textList):
                     if one_word_ahead[0].isupper():  # if start with capital latter, more likely to be street name
                         two_word_ahead = str(twText[ind - 2])
                         if two_word_ahead[0].isupper():  # two-word street name are also common
-                            road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road_desc)
-                            road_extract.append(road)
-                        else:  # stick with one-word name if two-word name is not applicable
+                            three_word_ahead = str(twText[ind - 3])
+                            if three_word_ahead.isdigit():  # sometime a No. ahead, but not a three-word street name
+                                road = (three_word_ahead + ' ' + two_word_ahead + ' '
+                                        + one_word_ahead + ' ' + road_desc)
+                                road_extract.append(road)
+                            else:  # maybe a two-word name without a road No.
+                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road_desc)
+                                road_extract.append(road)
+                        else:
+                            if two_word_ahead.isdigit():  # or maybe one-word name with a road No.
+                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road_desc)
+                                road_extract.append(road)
+                            else:  # stick with one-word name if two-word name is not applicable
+                                road = (one_word_ahead + ' ' + road_desc)
+                                road_extract.append(road)
+                    else:  # name with only a No. (ahead or behind)
+                        if one_word_ahead.isdigit():
                             road = (one_word_ahead + ' ' + road_desc)
                             road_extract.append(road)
+                        elif len(twText) > ind + 1:  # if there are any string behind the keyword
+                            one_word_behind = str(twText[ind + 1])
+                            if one_word_behind.isdigit():
+                                road = (road_desc + ' ' + one_word_behind)
+                                road_extract.append(road)
 
-                    if len(road_nos) > 0:  # attach road No. with road name is applicable
-                        for road_no in road_nos:
-                            road_extract.append(road_no + ' ' + road)
+                    # if len(road_nos) > 0:  # attach road No. with road name is applicable
+                    #     for road_no in road_nos:
+                    #         road_extract.append(road_no + ' ' + road)
                 road_extracts.append((road_extract, text[-1]))
 
-            '''Check possible place names'''
+            '''Check possible place names
+            Place name rules: Different from road name rules, we ignore the numbers, as usually numbers are not part
+            of place naming system. But three-word name for place are popular as well, included this possibility below
+            '''
             place_descs = [str(s) for s in twText if s.lower() in placeDesc]
             if len(place_descs) > 0:
                 place_extract = []
