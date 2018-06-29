@@ -7,7 +7,7 @@ Created on 6/25/2018
 """
 import pandas as pd
 
-allData = pd.read_csv('C:\\Users\\no281\\Documents\\harVeyTwitter\\FilteredHWMs.csv')
+allData = pd.read_csv('C:\\Users\\no281\\Documents\\harVeyTwitter\\groundTruthFromExternal\\FilteredHWMs.csv')
 
 
 def qualityControl(textList, filterList, qualityList):
