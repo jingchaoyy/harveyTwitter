@@ -31,7 +31,7 @@ def localGazetter(textList):
             '''
 
             road_extract, road_descs = [], []
-            p = re.compile('D+\d')  # regular expression, for extracting road name like I45
+            p = re.compile('I+\d')  # regular expression, for extracting road name like I45
             for twt in twText:
                 if p.match(twt):
                     road_extract.append(twt)
