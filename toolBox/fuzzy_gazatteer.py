@@ -11,13 +11,13 @@ def localGazetter(textList):
     :param textList: text list with twitter id
     :return: extracted location name lists (one for roads, one for places)
     """
-    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'blvd', 'hwy', 'highway', 'avenue',
-                'ave']
+    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'boulevard', 'blvd', 'highway',
+                'hwy', 'avenue', 'ave', 'ln']
     placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital']
     road_extracts, place_extracts = [], []
     for text in textList:  # (text[0]: events, text[1]: text, text[-1]: tw id)
         if text[1] is not None:
-            print(text[-1])
+            # print(text[-1])
 
             twText = re.sub(r'[^\w]', ' ', text[1])
             twText = twText.split()
