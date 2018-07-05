@@ -144,7 +144,7 @@ def roadNameFormat(roadName):
 def fuzzyLocMatch(locList1, locList2):
     """
     Func for tw self-evaluation, see how location extracted from tw are correlated to those in url
-    
+
     :param locList1: tw extracted local gazetteers
     :param locList2: url extracted local gazetteers
     :return: score with tid (how reliable the tw is based on its linked url)
