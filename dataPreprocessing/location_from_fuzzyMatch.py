@@ -39,9 +39,3 @@ roads_from_tru = allData['Address'].values.tolist()
 places_from_tru = allData['Address Name'].values.tolist()
 print('true gazetteers from trust source finished')
 
-'''fuzzyLocMatch'''
-roadScores_tw = fuzzy_gazatteer.fuzzyLocMatch(roads_from_tw, roads_from_tru)
-roadScores_url = fuzzy_gazatteer.fuzzyLocMatch(roads_from_url, roads_from_tru)
-placeScores_tw = fuzzy_gazatteer.fuzzyLocMatch(places_from_tw, places_from_tru)
-placeScores_url = fuzzy_gazatteer.fuzzyLocMatch(places_from_url, places_from_tru)
-

@@ -6,7 +6,7 @@ Goal: insert local gazetteer match scores to database
 """
 import psycopg2.extras
 from dataPreprocessing import location_from_fuzzyMatch
-
+from toolBox import fuzzy_gazatteer
 
 def collectTID(list):
     """
@@ -33,10 +33,11 @@ except:
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-roadScores_tw = location_from_fuzzyMatch.roadScores_tw
-roadScores_url = location_from_fuzzyMatch.roadScores_url
-placeScores_tw = location_from_fuzzyMatch.placeScores_tw
-placeScores_url = location_from_fuzzyMatch.placeScores_url
+'''fuzzyLocMatch'''
+roadScores_tw = fuzzy_gazatteer.fuzzyLocMatch(location_from_fuzzyMatch.roads_from_tw, location_from_fuzzyMatch.roads_from_tru)
+roadScores_url = fuzzy_gazatteer.fuzzyLocMatch(location_from_fuzzyMatch.roads_from_url, location_from_fuzzyMatch.roads_from_tru)
+placeScores_tw = fuzzy_gazatteer.fuzzyLocMatch(location_from_fuzzyMatch.places_from_tw, location_from_fuzzyMatch.places_from_tru)
+placeScores_url = fuzzy_gazatteer.fuzzyLocMatch(location_from_fuzzyMatch.places_from_url, location_from_fuzzyMatch.places_from_tru)
 allScores = [roadScores_tw, roadScores_url, placeScores_tw, placeScores_url]
 
 colNames = ['tw_road', 'url_road', 'tw_place', 'url_place']  # match with allScores
