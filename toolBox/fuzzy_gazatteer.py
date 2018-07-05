@@ -3,6 +3,7 @@ Created on 6/28/2018
 @author: Jingchao Yang
 """
 import re
+import jellyfish
 
 
 def localGazetter(textList):
@@ -110,3 +111,57 @@ def localGazetter(textList):
                     place_extracts.append((place_extract, text[-1]))
 
     return road_extracts, place_extracts
+
+
+def roadNameFormat(roadName):
+    """
+    Format road name to enhance string match when using jellyfish
+
+    :param roadName: string, original road name
+    :return: formatted road name
+    """
+    searchList = ['north', 'south', 'west', 'east', 'road', 'street', 'drive', 'square', 'boulevard', 'highway',
+                  'avenue']  # list for search and to be replaced
+    formatList = ['n', 's', 'w', 'e', 'rd', 'st', 'dr', 'sq', 'blvd', 'hwy', 'ave']
+
+    # format road names
+    loc11Split = str(roadName).split(' ')
+    loc11Format = []
+    for j in loc11Split:
+        if j.lower() in searchList:
+            formated = formatList[searchList.index(j.lower())]
+            loc11Format.append(formated)
+        else:
+            j = j.lower()
+            j = re.sub(r'[^\w]', ' ', j)
+            j = j.strip()
+            loc11Format.append(j)
+    roadName = ' '.join(loc11Format)
+    return roadName
+
+
+def fuzzyLocMatch(locList1, locList2):
+    """
+    Fuzzy location match using string comparision with jellyfish, can be applied to tweets extracted local gazetteers and ground truth
+    or url extracted local gazetteers and ground truth
+
+    :param locList1: tw extracted local gazetteers
+    :param locList2: ground truth
+    :return: score with tid (how reliable the tw is based only on either address or place name fuzzy match)
+    """
+    scores = []
+    for loc1 in locList1:
+        print(loc1[-1])
+        score = 0
+        for loc11 in loc1[0]:
+            loc11 = roadNameFormat(loc11)
+
+            for loc2 in locList2:
+                loc2 = roadNameFormat(loc2)
+
+                s = jellyfish.jaro_distance(str(loc11), str(loc2))
+                # print(str(loc11), '###', str(loc2), s)
+                score = max(score, s)
+
+        scores.append((score, loc1[-1]))
+    return scores
