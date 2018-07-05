@@ -15,12 +15,11 @@ tb2_out_Name = "test"
 tb1_clo_event = "events"
 tb2_clo_text = "ttext"
 match_clo = "tid"
-sqlVar1 = 'harvey relief'
-sqlVar2 = 'shelter'
+sqlVar = "shelter"
 
 '''select harvey relief events and shelter events from table original_events with twitter text from table original'''
 matchedEvents = queryFromDB.attQueryWJoin(dbConnect, tb1_out_Name, tb2_out_Name, tb1_clo_event, match_clo,
-                                          tb2_clo_text, match_clo, sqlVar1, sqlVar2)
+                                          tb2_clo_text, match_clo, sqlVar)
 roads_from_tw, places_from_tw = fuzzy_gazatteer.localGazetter(matchedEvents)
 print('fuzzy gazetteers from tweets finished', len(places_from_tw))
 
@@ -29,7 +28,7 @@ tb3_clo_text = "url_text"
 
 '''select harvey relief events and shelter events from table original_events with url text from table test_urltext'''
 matchedEvents_url = queryFromDB.attQueryWJoin(dbConnect, tb1_out_Name, tb3_out_Name, tb1_clo_event, match_clo,
-                                              tb3_clo_text, match_clo, sqlVar1, sqlVar2)
+                                              tb3_clo_text, match_clo, sqlVar)
 roads_from_url, places_from_url = fuzzy_gazatteer.localGazetter(matchedEvents_url)
 print('fuzzy gazetteers from tweets finished', len(roads_from_url))
 

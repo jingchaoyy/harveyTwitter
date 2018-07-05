@@ -162,10 +162,10 @@ def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
     try:
         conn = psycopg2.connect(dbc)
         cur = conn.cursor()
-        print("SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2_1 +
+        print("SELECT " + tbn2 + "." + col2_1 + ", " + tbn1 + "." + col1 + ", " + tbn2 + ".eng_text" +
               " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1)
         cur.execute(
-            "SELECT " + tbn2 + "." + col2_1 + ", " + tbn1 + "." + col1 +
+            "SELECT " + tbn2 + "." + col2_1 + ", " + tbn1 + "." + col1 + ", " + tbn2 + ".eng_text" +
             " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1)
         print("The number of parts from table join " + tbn1 + " and " + tbn2, cur.rowcount)
         row = cur.fetchone()
@@ -220,7 +220,8 @@ def likeQuery(dbc, tbn, col, likeList):
         if conn is not None:
             conn.close()
 
-def attQueryWJoin(dbc, tbn1, tbn2, col1, col1_1, col2, col2_1, var1, var2):
+
+def attQueryWJoin(dbc, tbn1, tbn2, col1, col1_1, col2, col2_1, var):
     """
     :param dbc: db connector
     :param tbn1: name for join table 1
@@ -239,12 +240,12 @@ def attQueryWJoin(dbc, tbn1, tbn2, col1, col1_1, col2, col2_1, var1, var2):
         cur = conn.cursor()
         print("SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2 + ", " + tbn1 + "." + col1_1 +
               " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1 +
-              " WHERE " + tbn1 + "." + col1 + " = '" + var1 + "' OR " + tbn1 + "." + col1 + " = '" + var2 + "'")
+              " WHERE " + tbn1 + "." + col1 + " = '" + var + "'")
 
         cur.execute(
             "SELECT " + tbn1 + "." + col1 + ", " + tbn2 + "." + col2 + ", " + tbn1 + "." + col1_1 +
             " FROM " + tbn1 + " INNER JOIN " + tbn2 + " ON " + tbn1 + "." + col1_1 + " = " + tbn2 + "." + col2_1 +
-            " WHERE " + tbn1 + "." + col1 + " = '" + var1 + "' OR " + tbn1 + "." + col1 + " = '" + var2 + "'")
+            " WHERE " + tbn1 + "." + col1 + " = '" + var + "'")
         print("The number of parts from table join " + tbn1 + " and " + tbn2, cur.rowcount)
         row = cur.fetchone()
 
