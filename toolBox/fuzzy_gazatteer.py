@@ -163,5 +163,5 @@ def fuzzyLocMatch(locList1, locList2):
                 # print(str(loc11), '###', str(loc2), s)
                 score = max(score, s)
 
-        scores.append((score, loc1[-1]))
+        scores.append((round(score, 2), loc1[-1]))
     return scores
