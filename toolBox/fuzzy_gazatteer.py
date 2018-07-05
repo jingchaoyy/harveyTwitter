@@ -98,7 +98,8 @@ def localGazetter(textList):
                             three_word_ahead = str(twText[ind - 3])
                             if three_word_ahead[0].isupper():  # three-word place name are also common
                                 place = (
-                                        three_word_ahead + ' ' + two_word_ahead + ' ' + one_word_ahead + ' ' + place_desc)
+                                        three_word_ahead + ' ' + two_word_ahead + ' ' + one_word_ahead
+                                        + ' ' + place_desc)
                                 place_extract.append(place)
                             else:
                                 place = (two_word_ahead + ' ' + one_word_ahead + ' ' + place_desc)
@@ -142,8 +143,29 @@ def roadNameFormat(roadName):
 
 def fuzzyLocMatch(locList1, locList2):
     """
-    Fuzzy location match using string comparision with jellyfish, can be applied to tweets extracted local gazetteers and ground truth
-    or url extracted local gazetteers and ground truth
+    Func for tw self-evaluation, see how location extracted from tw are correlated to those in url
+    
+    :param locList1: tw extracted local gazetteers
+    :param locList2: url extracted local gazetteers
+    :return: score with tid (how reliable the tw is based on its linked url)
+    """
+    scores = []
+    for loc1 in locList1:
+        score = 0
+        for loc2 in locList2:
+            if loc1[-1] == loc2[-1]:
+                loc1R = roadNameFormat(loc1[0])
+                loc2R = roadNameFormat(loc2[0])
+                score = jellyfish.jaro_distance(str(loc1R), str(loc2R))
+        if score > 0:
+            scores.append((round(score, 2), loc1[-1]))
+    return scores
+
+
+def fuzzyLocMatch_wGT(locList1, locList2):
+    """
+    Fuzzy location match using string comparision with jellyfish, can be applied to tweets extracted local gazetteers
+    and ground truth or url extracted local gazetteers and ground truth
 
     :param locList1: tw extracted local gazetteers
     :param locList2: ground truth
