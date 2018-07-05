@@ -15,7 +15,7 @@ tb2_clo_tid = "tid"
 allURLs = queryFromDB.joinQuery(dbConnect, tb1_out_Name, tb2_out_Name, tb1_clo_url, tb1_clo_tid, tb2_clo_tid)
 print('url collecting finished', len(allURLs))
 
-filters = ['twitter.com', 'youtube.com', 'instagram.com']  # remove links that are from social media
+filters = ['twitter.com', 'youtube.com', 'instagram.com', 'radio']  # remove links that are from social media
 filteredURLs = url_tools.urlFilter(allURLs, filters)
 print('url filtering finished', len(filteredURLs))
 urlToLoc = url_tools.findLocFromURL(filteredURLs)
