@@ -5,8 +5,10 @@ Created on 7/5/2018
 Goal: insert local gazetteer match scores to database
 """
 import psycopg2.extras
-from dataPreprocessing import location_from_fuzzyMatch
+from dataPreprocessing import gazetteer_from_fuzzyMatch
 from toolBox import fuzzy_gazatteer
+from psqlOperations import queryFromDB
+
 
 def collectTID(list):
     """
@@ -23,30 +25,34 @@ def collectTID(list):
     return tidList
 
 
+''' db connection '''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in_Name = 'test_matchscores'
-
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
 except:
     print("I am unable to connect to the database")
-
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-'''fuzzyLocMatch'''
-roadScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(location_from_fuzzyMatch.roads_from_tw, location_from_fuzzyMatch.roads_from_tru)
-roadScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(location_from_fuzzyMatch.roads_from_url, location_from_fuzzyMatch.roads_from_tru)
-placeScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(location_from_fuzzyMatch.places_from_tw, location_from_fuzzyMatch.places_from_tru)
-placeScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(location_from_fuzzyMatch.places_from_url, location_from_fuzzyMatch.places_from_tru)
-allScores = [roadScores_tw, roadScores_url, placeScores_tw, placeScores_url]
+''' fuzzy gazetteers '''
+roads_from_tw = gazetteer_from_fuzzyMatch.roads_from_tw
+roads_from_url = gazetteer_from_fuzzyMatch.roads_from_url
+places_from_tw = gazetteer_from_fuzzyMatch.places_from_tw
+places_from_url = gazetteer_from_fuzzyMatch.places_from_url
+allGazetteers = [roads_from_tw, places_from_tw, roads_from_url, places_from_url]
 
-colNames = ['tw_road', 'url_road', 'tw_place', 'url_place']  # match with allScores
+''' scores '''
+roads_from_tru = gazetteer_from_fuzzyMatch.roads_from_tru
+places_from_tru = gazetteer_from_fuzzyMatch.places_from_tru
 
+roadScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(roads_from_tw, roads_from_tru)
+roadScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(roads_from_url, roads_from_tru)
+placeScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(places_from_tw, places_from_tru)
+placeScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(places_from_url, places_from_tru)
+allScores = [roadScores_tw, placeScores_tw, roadScores_url, placeScores_url]
+
+''' insert all tid into the table first, can be used as key for later table update '''
 all_tid = collectTID(allScores)
-
-sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
-
-# insert all tid to the table first, can be used as key for later table update
 for tid in range(len(all_tid)):
     try:
         cur.execute("insert into " + tb_in_Name + " (eid, tid) values (" + str(tid) + "," + str(all_tid[tid]) + ")")
@@ -54,16 +60,48 @@ for tid in range(len(all_tid)):
     except:
         print("I can't insert tid into " + tb_in_Name)
 
-# update table with scores based on tid
+''' update table with gazetteers based on tid '''
+gz_colNames = ['tw_road', 'tw_place', 'url_road', 'url_place']
+for gazetteers in allGazetteers:
+    for gz in gazetteers:
+        print("update " + tb_in_Name + " set " + gz_colNames[
+            allGazetteers.index(gazetteers)] + " = '" + ', '.join(gz[0]) + "' where tid = " + str(gz[-1]))
+        try:
+            cur.execute("update " + tb_in_Name + " set " + gz_colNames[
+                allGazetteers.index(gazetteers)] + " = '" + ', '.join(gz[0]) + "' where tid = " + str(gz[-1]))
+            conn.commit()
+        except:
+            print("I can't insert gz into " + tb_in_Name)
+
+''' update table with scores based on tid '''
+score_colNames = ['tw_road_score', 'tw_place_score', 'url_road_score', 'url_place_score']  # match with allScores
+
 for scoreset in allScores:
     for score in scoreset:
-        print("update " + tb_in_Name + " set " + colNames[
-            allScores.index(scoreset)] + "=" + str(score[0]) + "where tid = " + str(score[-1]))
+        print("update " + tb_in_Name + " set " + score_colNames[
+            allScores.index(scoreset)] + " = " + str(score[0]) + " where tid = " + str(score[-1]))
         try:
-            cur.execute("update " + tb_in_Name + " set " + colNames[
-                allScores.index(scoreset)] + "=" + str(score[0]) + "where tid = " + str(score[-1]))
+            cur.execute("update " + tb_in_Name + " set " + score_colNames[
+                allScores.index(scoreset)] + " = " + str(score[0]) + " where tid = " + str(score[-1]))
             conn.commit()
         except:
             print("I can't insert score into " + tb_in_Name)
+
+''' update table with post time based on tid '''
+tw_tb = "test"
+tb_col = "tcreate"
+post_time = queryFromDB.get_colData(dbConnect, tw_tb, tb_col)
+
+time_col = 'tcreate'
+
+for time in post_time:
+    print("update " + tb_in_Name + " set " + time_col + " = '" + str(time[1])
+          + "' where tid = " + str(time[0]))
+    try:
+        cur.execute("update " + tb_in_Name + " set " + time_col + " = '" + str(time[1])
+                    + "' where tid = " + str(time[0]))
+        conn.commit()
+    except:
+        print("I can't insert time into " + tb_in_Name)
 
 conn.close()
