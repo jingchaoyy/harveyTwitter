@@ -263,3 +263,40 @@ def attQueryWJoin(dbc, tbn1, tbn2, col1, col1_1, col2, col2_1, var):
     finally:
         if conn is not None:
             conn.close()
+
+
+def mergeSelect(dbc, tbn, col1, col2, col3, col4):
+    """
+    Select multiple ( in this case, 4) columns as one whole output
+
+    :param dbc: db connector
+    :param tbn: table name
+    :param col1: column 1
+    :param col2: column 2
+    :param col3: column 3
+    :param col4: column 4
+    :return: merged output, instead of 4 separate ones
+    """
+    conn = None
+    try:
+        conn = psycopg2.connect(dbc)
+        cur = conn.cursor()
+        cur.execute("select concat(" + col1 + ", ', ', " + col2 + ", ', ', " + col3 + ", ', ', " + col4
+                    + ") as gz, tcreate, tid from " + tbn)
+        print("The number of parts from table " + tbn, cur.rowcount)
+        row = cur.fetchone()
+
+        rList = []
+        while row is not None:
+            # print(row)
+            rList.append(row)
+            row = cur.fetchone()
+
+        return rList
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
