@@ -27,7 +27,7 @@ def collectTID(list):
 
 ''' db connection '''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb_in_Name = 'test_matchscores'
+tb_in_Name = 'test_gazetteer'
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
 except:
