@@ -59,3 +59,29 @@ def textExtractor(urlList):
                 except:
                     print('url break, continue')
     return textList
+
+
+def textExtractor_single(url):
+    """
+    Extract texts from tweets urls, back with tid with extracted text list
+    :param urlList: filtered url list
+    :return: a list contain twitter ID with all text extracted from url links
+    """
+    # urlList: list of urls with tid
+    print('start text extraction from url')
+    g = Goose()
+    print(url[0])
+    text = ''
+    try:  # 10 min timeout, in case url not working properly or taking too long
+        article = g.extract(url=url[1])
+        text = article.cleaned_text
+        # with open(
+        #         r"C:\\Users\\no281\\Documents\\harVeyTwitter\\articalExtracted\\test\\" + str(
+        #             url[0]) + ".txt", 'w') as outfile:
+        #     outfile.write(text)
+        # outfile.close()
+    except:
+        print('url break, continue')
+
+
+    return (url[0], text)
