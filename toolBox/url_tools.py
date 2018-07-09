@@ -17,7 +17,7 @@ def urlFilter(urlList, filterList):
     print('start filter url')
     filteredURL = []
     for url in urlList:
-        if url[1] is not None and not any(e in url[1] for e in filterList):
+        if url[1] is not None and not any(e in url[1] for e in filterList) and 'adio' not in url[2]:
             filteredURL.append(url)
     return filteredURL
 
