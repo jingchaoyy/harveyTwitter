@@ -33,11 +33,11 @@ cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 # eList = data_text
 
-sql = "insert into " + tb_in_Name + " values (%s, %s)"
+sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
 
 for i in range(len(filteredURLs)):
     data_text = events_from_tweets.textExtractor_single(filteredURLs[i])
-    data = (data_text[0], data_text[1])
+    data = (i, data_text[1], data_text[0])
     try:
         cur.execute(sql, data)
         conn.commit()
