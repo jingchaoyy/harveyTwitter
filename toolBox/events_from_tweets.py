@@ -63,9 +63,10 @@ def textExtractor(urlList):
 
 def textExtractor_single(url):
     """
-    Extract texts from tweets urls, back with tid with extracted text list
-    :param urlList: filtered url list
-    :return: a list contain twitter ID with all text extracted from url links
+    Extract texts from single tweets url, back with tid with extracted text list
+    
+    :param url: single url
+    :return: a tuple contains twitter ID its text extracted from url link
     """
     # urlList: list of urls with tid
     print('start text extraction from url')
