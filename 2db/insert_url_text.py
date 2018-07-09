@@ -15,13 +15,14 @@ tb1_clo_tid = "tid"
 tb2_clo_tid = "tid"
 allURLs = queryFromDB.joinQuery(dbConnect, tb1_out_Name, tb2_out_Name, tb1_clo_url, tb1_clo_tid, tb2_clo_tid)
 print('url collecting finished', len(allURLs))
+print(allURLs[0])
 
 filters = ['twitter.com', 'youtube.com', 'instagram.com', 'radio']  # remove links that are from social media
 filteredURLs = url_tools.urlFilter(allURLs, filters)
 print('url filtering finished', len(filteredURLs))
 
-data_text = events_from_tweets.textExtractor(filteredURLs)
-print('extract text from url finished', len(data_text))
+# data_text = events_from_tweets.textExtractor(filteredURLs)
+# print('extract text from url finished', len(data_text))
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
@@ -30,12 +31,13 @@ except:
 
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
-eList = data_text
+# eList = data_text
 
-sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
+sql = "insert into " + tb_in_Name + " values (%s, %s)"
 
-for i in range(len(eList)):
-    data = (i, eList[i][1], eList[i][0])
+for i in range(len(filteredURLs)):
+    data_text = events_from_tweets.textExtractor_single(filteredURLs[i])
+    data = (data_text[0], data_text[1])
     try:
         cur.execute(sql, data)
         conn.commit()
