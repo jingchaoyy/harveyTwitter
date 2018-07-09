@@ -265,24 +265,21 @@ def attQueryWJoin(dbc, tbn1, tbn2, col1, col1_1, col2, col2_1, var):
             conn.close()
 
 
-def mergeSelect(dbc, tbn, col1, col2, col3, col4):
+def mergeSelect(dbc, tbn, col1, col2):
     """
-    Select multiple ( in this case, 4) columns as one whole output
+    Select multiple ( in this case, 2) columns as one whole output
 
     :param dbc: db connector
     :param tbn: table name
     :param col1: column 1
     :param col2: column 2
-    :param col3: column 3
-    :param col4: column 4
     :return: merged output, instead of 4 separate ones
     """
     conn = None
     try:
         conn = psycopg2.connect(dbc)
         cur = conn.cursor()
-        cur.execute("select concat(" + col1 + ", ', ', " + col2 + ", ', ', " + col3 + ", ', ', " + col4
-                    + ") as gz, tcreate, tid from " + tbn)
+        cur.execute("select concat(" + col1 + ", ', ', " + col2 + ") as gz, tid from " + tbn)
         print("The number of parts from table " + tbn, cur.rowcount)
         row = cur.fetchone()
 
