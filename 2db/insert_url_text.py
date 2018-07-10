@@ -5,6 +5,7 @@ Created on 6/25/2018
 import psycopg2.extras
 from toolBox import url_tools, events_from_tweets
 from psqlOperations import queryFromDB
+from goose3 import Goose
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in_Name = 'original_urltext'
@@ -35,9 +36,21 @@ cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
 
+g = Goose()
 for i in range(len(filteredURLs)):
-    data_text = events_from_tweets.textExtractor_single(filteredURLs[i])
-    data = (i, data_text[1], data_text[0])
+    # data_text = events_from_tweets.textExtractor_single(filteredURLs[i])
+
+    print('start text extraction from url')
+    print(filteredURLs[i][0])
+
+    try:
+        text = ''
+        article = g.extract(url=filteredURLs[i][1])
+        text = article.cleaned_text
+    except:
+        print('url break, continue')
+
+    data = (i, text, filteredURLs[i][0])
     try:
         cur.execute(sql, data)
         conn.commit()
