@@ -4,6 +4,7 @@ Created on 7/5/2018
 """
 from dataPreprocessing import gazetteer_from_fuzzyMatch
 from psqlOperations import queryFromDB
+from toolBox import location_tools
 
 
 def remove(list):
@@ -83,6 +84,26 @@ def extractEvent(gzList1, gzList2):
             creList.append(url_cre[url_event.index(urle)])
             tidList.append(url_tid[url_event.index(urle)])
     return eventList, tidList, creList
+
+
+def eventFinalize(eventList):
+    """
+    Check
+    :param eventList:
+    :return:
+    """
+    roadEvent, placeEvent = [], []
+    for event in eventList:
+        if event[0].startswith('*R '):
+            roadEvent.append(event)
+        elif event[0].startswith('#P '):
+            placeEvent.append(event)
+
+    for place in placeEvent:
+        roadName = location_tools.placeToRoad(place[0][3:])
+        if roadName in roadEvent:
+            # to do
+            pass
 
 
 roads_from_tw = gazetteer_from_fuzzyMatch.roads_from_tw
