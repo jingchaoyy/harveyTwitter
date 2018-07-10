@@ -14,8 +14,9 @@ def localGazetter(textList):
     """
     roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'boulevard', 'blvd', 'highway',
                 'hwy', 'avenue', 'ave', 'ln']
+    roadDesc2 = ['North', 'South', 'East', 'West']
     placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital']
-    road_extracts, place_extracts = [], []
+    road_extracts, road_extracts2, place_extracts = [], [], []
     for text in textList:  # (text[0]: events, text[1]: text, text[-1]: tw id)
         if text[1] is not None:
             # print(text[-1])
@@ -31,7 +32,8 @@ def localGazetter(textList):
             These common rules are widely used, and will be examed below. More rules may added when project goes
             '''
 
-            road_extract, road_descs, road_inds = [], [], []
+            road_extract, road_descs, road_inds = [], [], []  # for collecting most regular formatted road name
+            road_extract2, road_descs2, road_inds2 = [], [], []  # for collecting other formatted road name
             place_descs, place_inds = [], []
             p = re.compile('I+\d')  # regular expression, for extracting road name like I45
             for twt in range(len(twText)):
@@ -40,6 +42,9 @@ def localGazetter(textList):
                 if twText[twt].lower() in roadDesc:
                     road_descs.append(str(twText[twt]))
                     road_inds.append(twt)
+                if twText[twt] in roadDesc2:
+                    road_descs2.append(str(twText[twt]))
+                    road_inds2.append(twt)
                 if twText[twt].lower() in placeDesc:
                     place_descs.append(str(twText[twt]))
                     place_inds.append(twt)
@@ -48,7 +53,6 @@ def localGazetter(textList):
             # road_descs = [str(s) for s in twText if s.lower() in roadDesc]
             if len(road_descs) > 0:
                 for road_desc in range(len(road_descs)):
-                    print(road_desc)
                     road = road_descs[road_desc]
                     ind = road_inds[road_desc]
                     one_word_ahead = str(twText[ind - 1])
@@ -83,9 +87,44 @@ def localGazetter(textList):
                     # if len(road_nos) > 0:  # attach road No. with road name is applicable
                     #     for road_no in road_nos:
                     #         road_extract.append(road_no + ' ' + road)
-
                 if len(road_extract) > 0:
                     road_extracts.append((road_extract, text[-1]))
+
+            ''' Collecting road names like '501 East Hopkins' '''
+            if len(road_descs2) > 0:
+                for road_desc2 in range(len(road_descs2)):
+                    road2 = road_descs2[road_desc2]
+                    ind2 = road_inds2[road_desc2]
+                    one_word_ahead2 = str(twText[ind2 - 1])
+                    one_word_behind2 = str(twText[ind2 + 1])
+                    if one_word_ahead2[0].isupper():  # if start with capital latter, more likely to be street name
+                        two_word_ahead2 = str(twText[ind2 - 2])
+                        if two_word_ahead2[0].isupper() or two_word_ahead2.isdigit():
+                            if one_word_behind2[0].isupper():
+                                road2 = (two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+                                road_extract2.append(road2)
+                            else:
+                                road2 = (two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2)
+                                road_extract2.append(road2)
+                        else:
+                            if one_word_behind2[0].isupper():
+                                road2 = (one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+                                road_extract2.append(road2)
+                            else:
+                                road2 = (one_word_ahead2 + ' ' + road2)
+                                road_extract2.append(road2)
+                    elif one_word_ahead2.isdigit():
+                        if one_word_behind2[0].isupper():
+                            road2 = (one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+                            road_extract2.append(road2)
+                        else:
+                            road2 = (one_word_ahead2 + ' ' + road2)
+                            road_extract2.append(road2)
+
+                if len(road_extract2) > 0:
+                    road_extracts2.append((road_extract2, text[-1]))
+
+                road_extracts = road_extracts + road_extracts2
 
             '''Check possible place names
             Place name rules: Different from road name rules, we ignore the numbers, as usually numbers are not part
