@@ -77,7 +77,7 @@ def localGazetter(textList):
                         elif len(twText) > ind + 1:  # if there are any string behind the keyword
                             one_word_behind = str(twText[ind + 1])
                             if one_word_behind.isdigit():
-                                road = (road_desc + ' ' + one_word_behind)
+                                road = (road + ' ' + one_word_behind)
                                 road_extract.append(road)
 
                     # if len(road_nos) > 0:  # attach road No. with road name is applicable
