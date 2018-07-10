@@ -8,6 +8,8 @@ import re
 from time import sleep
 import googlemaps
 
+gmaps = googlemaps.Client(key='AIzaSyBNiwEzcU4-BPxp_cyoupC78ak_9PReeAY')
+
 
 # def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
 #     # coordinates: list of coordinates
@@ -70,7 +72,6 @@ def locToCoor(locList):  # geocoding locations, output coordinates
     :return: non duplicate location List with assigned coors
     """
     print('start assign goor to location')
-    gmaps = googlemaps.Client(key='AIzaSyBNiwEzcU4-BPxp_cyoupC78ak_9PReeAY')
     coorFromText = []
     for loc in locList:
         sleep(2)
@@ -140,3 +141,31 @@ def locationFilter(locList, filterList, set_Country):  # filter out location out
                     print(l)
                     filteredLoc.append((loc[0], l))
     return filteredLoc
+
+
+def placeToRoad(placeName):
+    """
+    Geocoding, assign road name to place name
+
+    :param placeName: place name (e.g. 'San Marcos Activity Center')
+    :return: associated road name
+    """
+    g = gmaps.geocode(placeName)
+
+    if len(g) > 0:
+        if 'long_name' in g[0]['address_components'].keys():
+            roadNo = g[0]['address_components'][0]['long_name']
+        else:
+            roadNo = None
+
+        if 'long_name' in g[0]['address_components'].keys():  # bounding box
+            roadName = g[0]['address_components'][1]['long_name']
+        else:
+            roadName = None
+    else:
+        roadNo, roadName = None, None
+
+    roadName = roadNo + ' ' + roadName
+    print(roadName)
+
+    return roadName
