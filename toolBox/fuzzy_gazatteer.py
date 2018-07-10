@@ -31,20 +31,26 @@ def localGazetter(textList):
             These common rules are widely used, and will be examed below. More rules may added when project goes
             '''
 
-            road_extract, road_descs = [], []
+            road_extract, road_descs, road_inds = [], [], []
+            place_descs, place_inds = [], []
             p = re.compile('I+\d')  # regular expression, for extracting road name like I45
-            for twt in twText:
-                if p.match(twt):
-                    road_extract.append(twt)
-                if twt.lower() in roadDesc:
-                    road_descs.append(str(twt))
+            for twt in range(len(twText)):
+                if p.match(twText[twt]):
+                    road_extract.append(twText[twt])
+                if twText[twt].lower() in roadDesc:
+                    road_descs.append(str(twText[twt]))
+                    road_inds.append(twt)
+                if twText[twt].lower() in placeDesc:
+                    place_descs.append(str(twText[twt]))
+                    place_inds.append(twt)
 
             # road_nos = [str(s) for s in twText if s.isdigit()]
             # road_descs = [str(s) for s in twText if s.lower() in roadDesc]
             if len(road_descs) > 0:
-                for road_desc in road_descs:
-                    road = road_desc
-                    ind = twText.index(road_desc)
+                for road_desc in range(len(road_descs)):
+                    print(road_desc)
+                    road = road_descs[road_desc]
+                    ind = road_inds[road_desc]
                     one_word_ahead = str(twText[ind - 1])
                     if one_word_ahead[0].isupper():  # if start with capital latter, more likely to be street name
                         two_word_ahead = str(twText[ind - 2])
@@ -52,21 +58,21 @@ def localGazetter(textList):
                             three_word_ahead = str(twText[ind - 3])
                             if three_word_ahead.isdigit():  # sometime a No. ahead, but not a three-word street name
                                 road = (three_word_ahead + ' ' + two_word_ahead + ' '
-                                        + one_word_ahead + ' ' + road_desc)
+                                        + one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                             else:  # maybe a two-word name without a road No.
-                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road_desc)
+                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                         else:
                             if two_word_ahead.isdigit():  # or maybe one-word name with a road No.
-                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road_desc)
+                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                             else:  # stick with one-word name if two-word name is not applicable
-                                road = (one_word_ahead + ' ' + road_desc)
+                                road = (one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                     else:  # name with only a No. (ahead or behind)
                         if one_word_ahead.isdigit():
-                            road = (one_word_ahead + ' ' + road_desc)
+                            road = (one_word_ahead + ' ' + road)
                             road_extract.append(road)
                         elif len(twText) > ind + 1:  # if there are any string behind the keyword
                             one_word_behind = str(twText[ind + 1])
@@ -85,12 +91,12 @@ def localGazetter(textList):
             Place name rules: Different from road name rules, we ignore the numbers, as usually numbers are not part
             of place naming system. But three-word name for place are popular as well, included this possibility below
             '''
-            place_descs = [str(s) for s in twText if s.lower() in placeDesc]
+            # place_descs = [str(s) for s in twText if s.lower() in placeDesc]
             if len(place_descs) > 0:
                 place_extract = []
-                for place_desc in place_descs:
-                    place = place_desc
-                    ind = twText.index(place_desc)
+                for place_desc in range(len(place_descs)):
+                    place = place_descs[place_desc]
+                    ind = place_inds[place_desc]
                     one_word_ahead = str(twText[ind - 1])
                     if one_word_ahead[0].isupper():  # if start with capital latter, more likely to be street name
                         two_word_ahead = str(twText[ind - 2])
@@ -99,13 +105,13 @@ def localGazetter(textList):
                             if three_word_ahead[0].isupper():  # three-word place name are also common
                                 place = (
                                         three_word_ahead + ' ' + two_word_ahead + ' ' + one_word_ahead
-                                        + ' ' + place_desc)
+                                        + ' ' + place)
                                 place_extract.append(place)
                             else:
-                                place = (two_word_ahead + ' ' + one_word_ahead + ' ' + place_desc)
+                                place = (two_word_ahead + ' ' + one_word_ahead + ' ' + place)
                                 place_extract.append(place)
                         else:  # stick with one-word name if two-word name is not applicable
-                            place = (one_word_ahead + ' ' + place_desc)
+                            place = (one_word_ahead + ' ' + place)
                             place_extract.append(place)
 
                 if len(place_extract) > 0:
