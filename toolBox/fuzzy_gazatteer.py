@@ -17,6 +17,8 @@ def localGazetter(textList):
     roadDesc2 = ['North', 'South', 'East', 'West']
     placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital']
     road_extracts, road_extracts2, place_extracts = [], [], []
+    roadMark = '*R '  # adding marks to ease distinguish between road and place in later process
+    placeMark = '#P '
     for text in textList:  # (text[0]: events, text[1]: text, text[-1]: tw id)
         if text[1] is not None:
             # print(text[-1])
@@ -61,27 +63,27 @@ def localGazetter(textList):
                         if two_word_ahead[0].isupper():  # two-word street name are also common
                             three_word_ahead = str(twText[ind - 3])
                             if three_word_ahead.isdigit():  # sometime a No. ahead, but not a three-word street name
-                                road = (three_word_ahead + ' ' + two_word_ahead + ' '
+                                road = (roadMark + three_word_ahead + ' ' + two_word_ahead + ' '
                                         + one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                             else:  # maybe a two-word name without a road No.
-                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road)
+                                road = (roadMark + two_word_ahead + ' ' + one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                         else:
                             if two_word_ahead.isdigit():  # or maybe one-word name with a road No.
-                                road = (two_word_ahead + ' ' + one_word_ahead + ' ' + road)
+                                road = (roadMark + two_word_ahead + ' ' + one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                             else:  # stick with one-word name if two-word name is not applicable
-                                road = (one_word_ahead + ' ' + road)
+                                road = (roadMark + one_word_ahead + ' ' + road)
                                 road_extract.append(road)
                     else:  # name with only a No. (ahead or behind)
                         if one_word_ahead.isdigit():
-                            road = (one_word_ahead + ' ' + road)
+                            road = (roadMark + one_word_ahead + ' ' + road)
                             road_extract.append(road)
                         elif len(twText) > ind + 1:  # if there are any string behind the keyword
                             one_word_behind = str(twText[ind + 1])
                             if one_word_behind.isdigit():
-                                road = (road + ' ' + one_word_behind)
+                                road = (roadMark + road + ' ' + one_word_behind)
                                 road_extract.append(road)
 
                     # if len(road_nos) > 0:  # attach road No. with road name is applicable
@@ -101,24 +103,25 @@ def localGazetter(textList):
                         two_word_ahead2 = str(twText[ind2 - 2])
                         if two_word_ahead2[0].isupper() or two_word_ahead2.isdigit():
                             if one_word_behind2[0].isupper():
-                                road2 = (two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+                                road2 = (roadMark + two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2 + ' '
+                                         + one_word_behind2)
                                 road_extract2.append(road2)
                             else:
-                                road2 = (two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2)
+                                road2 = (roadMark + two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2)
                                 road_extract2.append(road2)
                         else:
                             if one_word_behind2[0].isupper():
-                                road2 = (one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+                                road2 = (roadMark + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
                                 road_extract2.append(road2)
                             else:
-                                road2 = (one_word_ahead2 + ' ' + road2)
+                                road2 = (roadMark + one_word_ahead2 + ' ' + road2)
                                 road_extract2.append(road2)
                     elif one_word_ahead2.isdigit():
                         if one_word_behind2[0].isupper():
-                            road2 = (one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+                            road2 = (roadMark + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
                             road_extract2.append(road2)
                         else:
-                            road2 = (one_word_ahead2 + ' ' + road2)
+                            road2 = (roadMark + one_word_ahead2 + ' ' + road2)
                             road_extract2.append(road2)
 
                 if len(road_extract2) > 0:
@@ -142,15 +145,14 @@ def localGazetter(textList):
                         if two_word_ahead[0].isupper():
                             three_word_ahead = str(twText[ind - 3])
                             if three_word_ahead[0].isupper():  # three-word place name are also common
-                                place = (
-                                        three_word_ahead + ' ' + two_word_ahead + ' ' + one_word_ahead
-                                        + ' ' + place)
+                                place = (placeMark + three_word_ahead + ' ' + two_word_ahead + ' ' + one_word_ahead
+                                         + ' ' + place)
                                 place_extract.append(place)
                             else:
-                                place = (two_word_ahead + ' ' + one_word_ahead + ' ' + place)
+                                place = (placeMark + two_word_ahead + ' ' + one_word_ahead + ' ' + place)
                                 place_extract.append(place)
                         else:  # stick with one-word name if two-word name is not applicable
-                            place = (one_word_ahead + ' ' + place)
+                            place = (placeMark + one_word_ahead + ' ' + place)
                             place_extract.append(place)
 
                 if len(place_extract) > 0:
