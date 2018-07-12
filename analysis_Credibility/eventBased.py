@@ -4,7 +4,8 @@ Created on 7/5/2018
 """
 from dataPreprocessing import gazetteer_from_fuzzyMatch
 from psqlOperations import queryFromDB
-from toolBox import location_tools
+from toolBox import location_tools, fuzzy_gazatteer
+import jellyfish
 
 
 def remove(list):
@@ -88,12 +89,17 @@ def extractEvent(gzList1, gzList2):
 
 def eventFinalize(eventList):
     """
-    Check
-    :param eventList:
-    :return:
+    Geocode all place events and see if it matches any road events (using jellyfish after format road names from event
+    list and from geocoding), if it does, merge -> combine tids and remove duplicates, the number of different tids
+    will be the final credits for that event (since same location from same resource under same tid should be only count
+    once), and the place name will also be added/ merged
+    If no matches, add place events directly after format
+
+    :param eventList: all events
+    :return: merged events if applicable, and non mergeable events
     """
     roadEvent, placeEvent = [], []
-    for event in eventList:
+    for event in eventList:  # separate events to road events and place events based on different tagged symbols
         if event[0].startswith('*R '):
             roadEvent.append(event)
         elif event[0].startswith('#P '):
@@ -101,9 +107,35 @@ def eventFinalize(eventList):
 
     for place in placeEvent:
         roadName = location_tools.placeToRoad(place[0][3:])
-        if roadName in roadEvent:
-            # to do
-            pass
+        scoreList = []  # storing all compared scores
+        for road in roadEvent:
+            # giving string match score after formatted
+            score = jellyfish.jaro_distance(fuzzy_gazatteer.roadNameFormat(str(road[0][3:])),
+                                            fuzzy_gazatteer.roadNameFormat(str(roadName)))
+            scoreList.append(score)
+
+        maxScore = max(scoreList)
+        if maxScore > 0.75:  # if 75% matches
+            roadInd = scoreList.index(maxScore)
+            road = roadEvent[roadInd]
+            tids = road[2] + place[2]
+            tids = remove(tids)
+            if len(road) == 3:  # ==3 meaning hasn't been updated before, only 3 component, no place name
+                update = (road[0], len(tids), tids, [place[0]])
+                placeEvent.remove(place)  # delete after merged to avoid duplicate
+            if len(road) == 4:  # ==4 meaning been updated before
+                update = (road[0], len(tids), tids, road[3] + [place[0]])
+
+            roadEvent.remove(road)  # update road event in roadEvent list
+            roadEvent.append(update)
+
+    rfPlaces = []
+    for place in placeEvent:  # reformat the rest of places
+        rf = ('', place[1], place[2], place[0])
+        rfPlaces.append(rf)
+
+    finalEvent = roadEvent + rfPlaces
+    return finalEvent
 
 
 roads_from_tw = gazetteer_from_fuzzyMatch.roads_from_tw
@@ -122,6 +154,10 @@ col4 = "url_place"
 tw_gz = queryFromDB.mergeSelect(dbConnect, gz_tb, col1, col2)
 url_gz = queryFromDB.mergeSelect(dbConnect, gz_tb, col3, col4)
 events, tids, credits = extractEvent(tw_gz, url_gz)
-all = zip(events, credits, tids)
-for a in all:
-    print(a)
+allEvents = zip(events, credits, tids)
+# for a in allEvents:
+#     print(a)
+# print('############################################################')
+finalized = eventFinalize(allEvents)
+for f in finalized:
+    print(f)
