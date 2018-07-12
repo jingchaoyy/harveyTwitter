@@ -153,12 +153,12 @@ def placeToRoad(placeName):
     g = gmaps.geocode(placeName)
 
     if len(g) > 0:
-        if 'long_name' in g[0]['address_components'].keys():
+        if 'long_name' in g[0]['address_components'][0].keys():
             roadNo = g[0]['address_components'][0]['long_name']
         else:
             roadNo = None
 
-        if 'long_name' in g[0]['address_components'].keys():  # bounding box
+        if 'long_name' in g[0]['address_components'][0].keys():  # bounding box
             roadName = g[0]['address_components'][1]['long_name']
         else:
             roadName = None
