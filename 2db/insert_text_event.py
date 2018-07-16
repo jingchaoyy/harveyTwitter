@@ -44,7 +44,6 @@ except:
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 try:
-    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cur.execute("drop table " + tb_in_Name)
     conn.commit()
     print("drop table succeeded " + tb_in_Name)
@@ -54,7 +53,6 @@ except:
     # until a call to the rollback(). This except will prevent such abort when table is new and cannot be found and drop
 
 try:
-    cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     cur.execute("create table " + tb_in_Name + "("
                                                "eID int PRIMARY KEY NOT NULL,"
                                                "events Text,"
