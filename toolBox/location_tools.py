@@ -130,6 +130,7 @@ def placeToRoad(placeName):
     # sleep(2)
     g = gmaps.geocode(placeName)
     roadNo, roadName = '', ''
+    coor_Lat, coor_Lng = None, None
     if len(g) > 0:
         if 'long_name' in g[0]['address_components'][0].keys():
             roadNo = g[0]['address_components'][0]['long_name']
@@ -141,8 +142,6 @@ def placeToRoad(placeName):
             coor = g[0]['geometry']['location']  # APPROXIMATE location
             coor_Lat = coor['lat']
             coor_Lng = coor['lng']
-        else:
-            coor_Lat, coor_Lng = None, None
 
     roadName = roadNo + ' ' + roadName
     coor = (coor_Lat, coor_Lng)
