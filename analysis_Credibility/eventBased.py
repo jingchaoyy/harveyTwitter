@@ -139,7 +139,7 @@ def eventFinalize(eventList):
 
 '''databsed connection variables'''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-gz_tb = "test_gazetteer"
+gz_tb = "original_gazetteer"
 col1 = "tw_road"
 col2 = "tw_place"
 col3 = "url_road"
@@ -150,5 +150,6 @@ url_gz = queryFromDB.mergeSelect(dbConnect, gz_tb, col3, col4)
 events, tids, credits = extractEvent(tw_gz, url_gz)
 allEvents = zip(events, credits, tids)
 finalized = eventFinalize(allEvents)
-for f in finalized:
-    print(f)
+print('event finalize finished', len(finalized))
+# for f in finalized:
+#     print(f)
