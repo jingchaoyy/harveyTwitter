@@ -10,21 +10,25 @@ from psqlOperations import queryFromDB
 from toolBox import fuzzy_gazatteer
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb1_out_Name = "test_events"
-tb2_out_Name = "test"
+# table storing event associated tid under same theme
+tb1_out_Name = "original_events"
 tb1_clo_event = "events"
+# table storing text from tw
+tb2_out_Name = "original"
 tb2_clo_text = "ttext"
+# table storing text from url
+tb3_out_Name = "original_urltext"
+tb3_clo_text = "url_text"
+# join key
 match_clo = "tid"
-sqlVar = "shelter"
+# query column
+sqlVar = "events"
 
 '''select harvey relief events and shelter events from table original_events with twitter text from table original'''
 matchedEvents = queryFromDB.attQueryWJoin(dbConnect, tb1_out_Name, tb2_out_Name, tb1_clo_event, match_clo,
                                           tb2_clo_text, match_clo, sqlVar)
 roads_from_tw, places_from_tw = fuzzy_gazatteer.localGazetter(matchedEvents)
 print('fuzzy gazetteers from tweets finished', len(places_from_tw))
-
-tb3_out_Name = "test_urltext"
-tb3_clo_text = "url_text"
 
 '''select harvey relief events and shelter events from table original_events with url text from table test_urltext'''
 matchedEvents_url = queryFromDB.attQueryWJoin(dbConnect, tb1_out_Name, tb3_out_Name, tb1_clo_event, match_clo,
@@ -37,4 +41,3 @@ allData = pd.read_csv('C:\\Users\\no281\\Documents\\harVeyTwitter\\groundTruthFr
 roads_from_tru = allData['Address'].values.tolist()
 places_from_tru = allData['Address Name'].values.tolist()
 print('true gazetteers from trust source finished')
-
