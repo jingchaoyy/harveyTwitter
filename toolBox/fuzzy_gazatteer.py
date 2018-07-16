@@ -92,42 +92,42 @@ def localGazetter(textList):
                 if len(road_extract) > 0:
                     road_extracts.append((road_extract, text[-1]))
 
-            ''' Collecting road names like '501 East Hopkins' '''
-            if len(road_descs2) > 0:
-                for road_desc2 in range(len(road_descs2)):
-                    road2 = road_descs2[road_desc2]
-                    ind2 = road_inds2[road_desc2]
-                    one_word_ahead2 = str(twText[ind2 - 1])
-                    one_word_behind2 = str(twText[ind2 + 1])
-                    if one_word_ahead2[0].isupper():  # if start with capital latter, more likely to be street name
-                        two_word_ahead2 = str(twText[ind2 - 2])
-                        if two_word_ahead2[0].isupper() or two_word_ahead2.isdigit():
-                            if one_word_behind2[0].isupper():
-                                road2 = (roadMark + two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2 + ' '
-                                         + one_word_behind2)
-                                road_extract2.append(road2)
-                            else:
-                                road2 = (roadMark + two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2)
-                                road_extract2.append(road2)
-                        else:
-                            if one_word_behind2[0].isupper():
-                                road2 = (roadMark + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
-                                road_extract2.append(road2)
-                            else:
-                                road2 = (roadMark + one_word_ahead2 + ' ' + road2)
-                                road_extract2.append(road2)
-                    elif one_word_ahead2.isdigit():
-                        if one_word_behind2[0].isupper():
-                            road2 = (roadMark + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
-                            road_extract2.append(road2)
-                        else:
-                            road2 = (roadMark + one_word_ahead2 + ' ' + road2)
-                            road_extract2.append(road2)
-
-                if len(road_extract2) > 0:
-                    road_extracts2.append((road_extract2, text[-1]))
-
-                road_extracts = road_extracts + road_extracts2
+            # ''' Collecting road names like '501 East Hopkins' '''
+            # if len(road_descs2) > 0:
+            #     for road_desc2 in range(len(road_descs2)):
+            #         road2 = road_descs2[road_desc2]
+            #         ind2 = road_inds2[road_desc2]
+            #         one_word_ahead2 = str(twText[ind2 - 1])
+            #         one_word_behind2 = str(twText[ind2 + 1])
+            #         if one_word_ahead2[0].isupper():  # if start with capital latter, more likely to be street name
+            #             two_word_ahead2 = str(twText[ind2 - 2])
+            #             if two_word_ahead2[0].isupper() or two_word_ahead2.isdigit():
+            #                 if one_word_behind2[0].isupper():
+            #                     road2 = (roadMark + two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2 + ' '
+            #                              + one_word_behind2)
+            #                     road_extract2.append(road2)
+            #                 else:
+            #                     road2 = (roadMark + two_word_ahead2 + ' ' + one_word_ahead2 + ' ' + road2)
+            #                     road_extract2.append(road2)
+            #             else:
+            #                 if one_word_behind2[0].isupper():
+            #                     road2 = (roadMark + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+            #                     road_extract2.append(road2)
+            #                 else:
+            #                     road2 = (roadMark + one_word_ahead2 + ' ' + road2)
+            #                     road_extract2.append(road2)
+            #         elif one_word_ahead2.isdigit():
+            #             if one_word_behind2[0].isupper():
+            #                 road2 = (roadMark + one_word_ahead2 + ' ' + road2 + ' ' + one_word_behind2)
+            #                 road_extract2.append(road2)
+            #             else:
+            #                 road2 = (roadMark + one_word_ahead2 + ' ' + road2)
+            #                 road_extract2.append(road2)
+            #
+            #     if len(road_extract2) > 0:
+            #         road_extracts2.append((road_extract2, text[-1]))
+            #
+            #     road_extracts = road_extracts + road_extracts2
 
             '''Check possible place names
             Place name rules: Different from road name rules, we ignore the numbers, as usually numbers are not part
