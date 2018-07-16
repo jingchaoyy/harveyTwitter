@@ -100,17 +100,20 @@ def eventFinalize(eventList):
     roadEvent, placeEvent = [], []
     for event in eventList:  # separate events to road events and place events based on different tagged symbols
         if event[0].startswith('*R '):
-            roadEvent.append((event[0], [], event[1], event[2]))
+            coor = location_tools.roadToCoor(event[0][3:])  # assign coordinate
+            roadEvent.append((event[0], [], coor[0], coor[1], event[1], event[2]))
         elif event[0].startswith('#P '):
-            placeEvent.append(event)
+            geoLocate = location_tools.placeToRoad(event[0][3:])
+            roadName = geoLocate[0]
+            placeCoor = geoLocate[1]
+            placeEvent.append((roadName, event[0], placeCoor[0], placeCoor[1], event[1], event[2]))
 
     for place in placeEvent:
-        roadName = location_tools.placeToRoad(place[0][3:])
         scoreList = []  # storing all compared scores
         for road in roadEvent:
             # giving string match score after formatted
             score = jellyfish.jaro_distance(fuzzy_gazatteer.roadNameFormat(str(road[0][3:])),
-                                            fuzzy_gazatteer.roadNameFormat(str(roadName)))
+                                            fuzzy_gazatteer.roadNameFormat(str(place[0])))
             scoreList.append(score)
 
         maxScore = max(scoreList)
@@ -119,7 +122,7 @@ def eventFinalize(eventList):
             road = roadEvent[roadInd]
             tids = road[-1] + place[-1]
             tids = remove(tids)
-            update = (road[0], road[1] + [place[0]], len(tids), tids)
+            update = (road[0], road[1] + [place[1]], road[2], road[3], len(tids), tids)
             placeEvent.remove(place)  # delete after merged to avoid duplicate
 
             roadEvent.remove(road)  # update road event in roadEvent list
@@ -127,7 +130,7 @@ def eventFinalize(eventList):
 
     rfPlaces = []
     for place in placeEvent:  # reformat the rest of places
-        rf = ('', [place[0]], place[1], place[2])
+        rf = ('', [place[1]], place[2], place[3], place[4], place[5])
         rfPlaces.append(rf)
 
     finalEvent = roadEvent + rfPlaces
@@ -136,7 +139,7 @@ def eventFinalize(eventList):
 
 '''databsed connection variables'''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-gz_tb = "original_gazetteer"
+gz_tb = "test_gazetteer"
 col1 = "tw_road"
 col2 = "tw_place"
 col3 = "url_road"
@@ -147,5 +150,5 @@ url_gz = queryFromDB.mergeSelect(dbConnect, gz_tb, col3, col4)
 events, tids, credits = extractEvent(tw_gz, url_gz)
 allEvents = zip(events, credits, tids)
 finalized = eventFinalize(allEvents)
-# for f in finalized:
-#     print(f)
+for f in finalized:
+    print(f)
