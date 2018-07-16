@@ -2,7 +2,6 @@
 Created on 7/5/2018
 @author: Jingchao Yang
 """
-from dataPreprocessing import gazetteer_from_fuzzyMatch
 from psqlOperations import queryFromDB
 from toolBox import location_tools, fuzzy_gazatteer
 import jellyfish
@@ -101,7 +100,7 @@ def eventFinalize(eventList):
     roadEvent, placeEvent = [], []
     for event in eventList:  # separate events to road events and place events based on different tagged symbols
         if event[0].startswith('*R '):
-            roadEvent.append(event)
+            roadEvent.append((event[0], [], event[1], event[2]))
         elif event[0].startswith('#P '):
             placeEvent.append(event)
 
@@ -118,34 +117,26 @@ def eventFinalize(eventList):
         if maxScore > 0.75:  # if 75% matches
             roadInd = scoreList.index(maxScore)
             road = roadEvent[roadInd]
-            tids = road[2] + place[2]
+            tids = road[-1] + place[-1]
             tids = remove(tids)
-            if len(road) == 3:  # ==3 meaning hasn't been updated before, only 3 component, no place name
-                update = (road[0], len(tids), tids, [place[0]])
-                placeEvent.remove(place)  # delete after merged to avoid duplicate
-            if len(road) == 4:  # ==4 meaning been updated before
-                update = (road[0], len(tids), tids, road[3] + [place[0]])
+            update = (road[0], road[1] + [place[0]], len(tids), tids)
+            placeEvent.remove(place)  # delete after merged to avoid duplicate
 
             roadEvent.remove(road)  # update road event in roadEvent list
             roadEvent.append(update)
 
     rfPlaces = []
     for place in placeEvent:  # reformat the rest of places
-        rf = ('', place[1], place[2], place[0])
+        rf = ('', [place[0]], place[1], place[2])
         rfPlaces.append(rf)
 
     finalEvent = roadEvent + rfPlaces
     return finalEvent
 
 
-roads_from_tw = gazetteer_from_fuzzyMatch.roads_from_tw
-roads_from_url = gazetteer_from_fuzzyMatch.roads_from_url
-places_from_tw = gazetteer_from_fuzzyMatch.places_from_tw
-places_from_url = gazetteer_from_fuzzyMatch.places_from_url
-
 '''databsed connection variables'''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-gz_tb = "test_gazetteer"
+gz_tb = "original_gazetteer"
 col1 = "tw_road"
 col2 = "tw_place"
 col3 = "url_road"
@@ -155,9 +146,6 @@ tw_gz = queryFromDB.mergeSelect(dbConnect, gz_tb, col1, col2)
 url_gz = queryFromDB.mergeSelect(dbConnect, gz_tb, col3, col4)
 events, tids, credits = extractEvent(tw_gz, url_gz)
 allEvents = zip(events, credits, tids)
-# for a in allEvents:
-#     print(a)
-# print('############################################################')
 finalized = eventFinalize(allEvents)
-for f in finalized:
-    print(f)
+# for f in finalized:
+#     print(f)
