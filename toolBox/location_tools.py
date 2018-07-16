@@ -74,31 +74,8 @@ def locToCoor(locList):  # geocoding locations, output coordinates
     print('start assign goor to location')
     coorFromText = []
     for loc in locList:
-        sleep(2)
         print(loc)
-        g = gmaps.geocode(loc)
-
-        if len(g) > 0:
-            if 'location' in g[0]['geometry'].keys():
-                coor = g[0]['geometry']['location']  # APPROXIMATE location
-                coor_Lat = coor['lat']
-                coor_Lng = coor['lng']
-            else:
-                coor_Lat, coor_Lng = None, None
-
-            if 'bounds' in g[0]['geometry'].keys():  # bounding box
-                bbox = g[0]['geometry']['bounds']
-                bbox_NE_Lat = bbox['northeast']['lat']
-                bbox_NE_Lng = bbox['northeast']['lng']
-                bbox_SW_Lat = bbox['southwest']['lat']
-                bbox_SW_Lng = bbox['southwest']['lng']
-            else:
-                bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
-        else:
-            coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None, None, None
-        # g = geocoder.google(loc)
-        # print(loc, g.latlng)
-        coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
+        coors = roadToCoor(loc)
         print(coors)
         coorFromText.append((loc, coors))
 
@@ -150,22 +127,58 @@ def placeToRoad(placeName):
     :param placeName: place name (e.g. 'San Marcos Activity Center')
     :return: associated road name
     """
+    # sleep(2)
     g = gmaps.geocode(placeName)
-
+    roadNo, roadName = '', ''
     if len(g) > 0:
         if 'long_name' in g[0]['address_components'][0].keys():
             roadNo = g[0]['address_components'][0]['long_name']
-        else:
-            roadNo = None
 
         if 'long_name' in g[0]['address_components'][0].keys():  # bounding box
             roadName = g[0]['address_components'][1]['long_name']
+
+        if 'location' in g[0]['geometry'].keys():
+            coor = g[0]['geometry']['location']  # APPROXIMATE location
+            coor_Lat = coor['lat']
+            coor_Lng = coor['lng']
         else:
-            roadName = None
-    else:
-        roadNo, roadName = None, None
+            coor_Lat, coor_Lng = None, None
 
     roadName = roadNo + ' ' + roadName
-    print(roadName)
+    coor = (coor_Lat, coor_Lng)
 
-    return roadName
+    return roadName, coor
+
+
+def roadToCoor(rn):
+    """
+
+    :param rn: road name
+    :return: coor (lat, lng)
+    """
+    # sleep(2)
+    g = gmaps.geocode(rn)
+
+    if len(g) > 0:
+        if 'location' in g[0]['geometry'].keys():
+            coor = g[0]['geometry']['location']  # APPROXIMATE location
+            coor_Lat = coor['lat']
+            coor_Lng = coor['lng']
+        else:
+            coor_Lat, coor_Lng = None, None
+
+        if 'bounds' in g[0]['geometry'].keys():  # bounding box
+            bbox = g[0]['geometry']['bounds']
+            bbox_NE_Lat = bbox['northeast']['lat']
+            bbox_NE_Lng = bbox['northeast']['lng']
+            bbox_SW_Lat = bbox['southwest']['lat']
+            bbox_SW_Lng = bbox['southwest']['lng']
+        else:
+            bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
+    else:
+        coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None, None, None
+    # g = geocoder.google(loc)
+    # print(loc, g.latlng)
+    coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
+
+    return coors
