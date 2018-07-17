@@ -133,15 +133,24 @@ def placeToRoad(placeName):
     coor_Lat, coor_Lng = None, None
     if len(g) > 0:
         if 'long_name' in g[0]['address_components'][0].keys():
-            roadNo = g[0]['address_components'][0]['long_name']
+            try:
+                roadNo = g[0]['address_components'][0]['long_name']
+            except:
+                roadNo = ''
 
         if 'long_name' in g[0]['address_components'][0].keys():  # bounding box
-            roadName = g[0]['address_components'][1]['long_name']
+            try:
+                roadName = g[0]['address_components'][1]['long_name']
+            except:
+                roadName = ''
 
         if 'location' in g[0]['geometry'].keys():
-            coor = g[0]['geometry']['location']  # APPROXIMATE location
-            coor_Lat = coor['lat']
-            coor_Lng = coor['lng']
+            try:
+                coor = g[0]['geometry']['location']  # APPROXIMATE location
+                coor_Lat = coor['lat']
+                coor_Lng = coor['lng']
+            except:
+                coor_Lat, coor_Lng = None, None
 
     roadName = roadNo + ' ' + roadName
     coor = (coor_Lat, coor_Lng)
