@@ -130,19 +130,25 @@ def placeToRoad(placeName):
     # sleep(2)
     g = gmaps.geocode(placeName)
     roadNo, roadName = '', ''
-    coor_Lat, coor_Lng = None, None
+    zipCode, coor_Lat, coor_Lng = None, None, None
     if len(g) > 0:
-        if 'long_name' in g[0]['address_components'][0].keys():
+        if 'long_name' in g[0]['address_components'][0].keys():  # road no.
             try:
                 roadNo = g[0]['address_components'][0]['long_name']
             except:
                 roadNo = ''
 
-        if 'long_name' in g[0]['address_components'][0].keys():  # bounding box
+        if 'long_name' in g[0]['address_components'][0].keys():  # road name
             try:
                 roadName = g[0]['address_components'][1]['long_name']
             except:
                 roadName = ''
+
+        if 'long_name' in g[0]['address_components'][6].keys():  # zip code
+            try:
+                zipCode = g[0]['address_components'][6]['long_name']
+            except:
+                zipCode = None
 
         if 'location' in g[0]['geometry'].keys():
             try:
@@ -155,7 +161,7 @@ def placeToRoad(placeName):
     roadName = roadNo + ' ' + roadName
     coor = (coor_Lat, coor_Lng)
 
-    return roadName, coor
+    return roadName, zipCode, coor
 
 
 def roadToCoor(rn):
