@@ -75,7 +75,7 @@ def locToCoor(locList):  # geocoding locations, output coordinates
     coorFromText = []
     for loc in locList:
         print(loc)
-        coors = roadToCoor(loc)
+        coors = roadToCoor(loc)[1]
         print(coors)
         coorFromText.append((loc, coors))
 
@@ -125,30 +125,50 @@ def placeToRoad(placeName):
     Geocoding, assign road name to place name
 
     :param placeName: place name (e.g. 'San Marcos Activity Center')
-    :return: associated road name
+    :return: associated road name, postal code and coordinates
     """
     # sleep(2)
     g = gmaps.geocode(placeName)
     roadNo, roadName = '', ''
     zipCode, coor_Lat, coor_Lng = None, None, None
     if len(g) > 0:
-        if 'long_name' in g[0]['address_components'][0].keys():  # road no.
-            try:
-                roadNo = g[0]['address_components'][0]['long_name']
-            except:
-                roadNo = ''
+        for ac in g[0]['address_components']:
+            if ac['types'][0] == 'street_number':
+                try:
+                    roadNo = ac['long_name']
+                except:
+                    roadNo = ''
+            if ac['types'][0] == 'route':
+                try:
+                    roadName = ac['long_name']
+                except:
+                    roadName = ''
+            if ac['types'][0] == 'postal_code':
+                try:
+                    zipCode = ac['long_name']
+                except:
+                    zipCode = None
 
-        if 'long_name' in g[0]['address_components'][0].keys():  # road name
-            try:
-                roadName = g[0]['address_components'][1]['long_name']
-            except:
-                roadName = ''
-
-        if 'long_name' in g[0]['address_components'][6].keys():  # zip code
-            try:
-                zipCode = g[0]['address_components'][6]['long_name']
-            except:
-                zipCode = None
+        # if 'long_name' in g[0]['address_components'][0].keys():  # road no.
+        #     if g[0]['address_components'][0]['types'][0] == 'street_number':
+        #         try:
+        #             roadNo = g[0]['address_components'][0]['long_name']
+        #         except:
+        #             roadNo = ''
+        #
+        # if 'long_name' in g[0]['address_components'][1].keys():  # road name
+        #     if g[0]['address_components'][1]['types'][0] == 'route':
+        #         try:
+        #             roadName = g[0]['address_components'][1]['long_name']
+        #         except:
+        #             roadName = ''
+        #
+        # if 'long_name' in g[0]['address_components'][-1].keys():  # zip code
+        #     if g[0]['address_components'][-1]['types'][0] == 'postal_code':
+        #         try:
+        #             zipCode = g[0]['address_components'][-1]['long_name']
+        #         except:
+        #             zipCode = None
 
         if 'location' in g[0]['geometry'].keys():
             try:
@@ -166,33 +186,46 @@ def placeToRoad(placeName):
 
 def roadToCoor(rn):
     """
+    Provide associated zipcode and coordinates
 
     :param rn: road name
-    :return: coor (lat, lng)
+    :return: coor (lat, lng) and associated coordinates
     """
     # sleep(2)
     g = gmaps.geocode(rn)
 
+    zipCode = None
+    coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None, None, None
     if len(g) > 0:
+        if len(g) > 0:
+            for ac in g[0]['address_components']:
+                if ac['types'][0] == 'postal_code':
+                    try:
+                        zipCode = ac['long_name']
+                    except:
+                        zipCode = None
+
         if 'location' in g[0]['geometry'].keys():
-            coor = g[0]['geometry']['location']  # APPROXIMATE location
-            coor_Lat = coor['lat']
-            coor_Lng = coor['lng']
-        else:
-            coor_Lat, coor_Lng = None, None
+            try:
+                coor = g[0]['geometry']['location']  # APPROXIMATE location
+                coor_Lat = coor['lat']
+                coor_Lng = coor['lng']
+            except:
+                coor_Lat, coor_Lng = None, None
 
         if 'bounds' in g[0]['geometry'].keys():  # bounding box
-            bbox = g[0]['geometry']['bounds']
-            bbox_NE_Lat = bbox['northeast']['lat']
-            bbox_NE_Lng = bbox['northeast']['lng']
-            bbox_SW_Lat = bbox['southwest']['lat']
-            bbox_SW_Lng = bbox['southwest']['lng']
-        else:
-            bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
-    else:
-        coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None, None, None
+            try:
+                bbox = g[0]['geometry']['bounds']
+                bbox_NE_Lat = bbox['northeast']['lat']
+                bbox_NE_Lng = bbox['northeast']['lng']
+                bbox_SW_Lat = bbox['southwest']['lat']
+                bbox_SW_Lng = bbox['southwest']['lng']
+            except:
+                bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng = None, None, None, None
+
     # g = geocoder.google(loc)
     # print(loc, g.latlng)
     coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
+    print(rn, zipCode, coors)
 
-    return coors
+    return zipCode, coors
