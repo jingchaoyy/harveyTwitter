@@ -180,7 +180,6 @@ def placeToRoad(placeName):
 
     roadName = roadNo + ' ' + roadName
     coor = (coor_Lat, coor_Lng)
-
     return roadName, zipCode, coor
 
 
@@ -226,6 +225,4 @@ def roadToCoor(rn):
     # g = geocoder.google(loc)
     # print(loc, g.latlng)
     coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
-    print(rn, zipCode, coors)
-
     return zipCode, coors
