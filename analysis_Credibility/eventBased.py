@@ -115,43 +115,43 @@ def eventFinalize(eventList):
             placeEvent.append((roadName, event[0], placeCoor[0], placeCoor[1], placeZip, event[1], event[2]))
 
     for road in roadEvent:
-        scoreList = []  # storing all compared scores
+        roadFormat1 = fuzzy_gazatteer.roadNameFormat(str(road[0][3:]))
+        scoreList, scoredPlace = [], []  # storing all compared scores, and places used for compare
         for place in placeEvent:
-            roadFormat1 = fuzzy_gazatteer.roadNameFormat(str(road[0][3:]))
-            roadFormat2 = fuzzy_gazatteer.roadNameFormat(str(place[0]))
+            if place is not None:
+                roadFormat2 = fuzzy_gazatteer.roadNameFormat(str(place[0]))
 
-            # '''Using direct coordinate/ road name match'''
-            if (place[2], place[3]) == (road[2], road[3]) or roadFormat1 == roadFormat2:
-                tids = road[-1] + place[-1]
-                tids = remove(tids)
-                update = (road[0], road[1] + [place[1]], place[2], place[3], place[4], len(tids), tids)
-                placeEvent.remove(place)  # delete after merged to avoid duplicate
-
-                roadEvent.remove(road)  # update road event in roadEvent list
-                roadEvent.append(update)
-            # '''Using road name fuzzy string match with zip code'''
-            else:
-                # giving string match score after formatted
-                score = jellyfish.jaro_distance(roadFormat1, roadFormat2)
-                scoreList.append(score)
+                # '''Using direct coordinate/ road name match'''
+                if (place[2], place[3]) == (road[2], road[3]) or roadFormat1 == roadFormat2:
+                    tids = road[-1] + place[-1]
+                    tids = remove(tids)
+                    update = (road[0], road[1] + [place[1]], place[2], place[3], place[4], len(tids), tids)
+                    placeEvent[placeEvent.index(place)] = None  # set to None to avoid duplicate
+                    roadEvent[roadEvent.index(road)] = update  # update road event in roadEvent list
+                    road = update
+                # '''Using road name fuzzy string match with zip code'''
+                else:
+                    # giving string match score after formatted
+                    score = jellyfish.jaro_distance(roadFormat1, roadFormat2)
+                    scoreList.append(score)
+                    scoredPlace.append(place)
         if len(scoreList) > 0:
             maxScore = max(scoreList)
             if maxScore > 0.75:  # if 75% matches
                 placeInd = scoreList.index(maxScore)
-                place = roadEvent[placeInd]
+                place = scoredPlace[placeInd]
                 if road[4] == place[4]:  # if also zip code matches
                     tids = road[-1] + place[-1]
                     tids = remove(tids)
                     update = (road[0], road[1] + [place[1]], road[2], road[3], road[4], len(tids), tids)
-                    placeEvent.remove(place)  # delete after merged to avoid duplicate
-
-                    roadEvent.remove(road)  # update road event in roadEvent list
-                    roadEvent.append(update)
+                    placeEvent[placeEvent.index(place)] = None  # delete after merged to avoid duplicate
+                    roadEvent[roadEvent.index(road)] = update  # update road event in roadEvent list
 
     rfPlaces = []
     for place in placeEvent:  # reformat the rest of places
-        rf = ('', [place[1]], place[2], place[3], place[4], place[5], place[6])
-        rfPlaces.append(rf)
+        if place is not None:
+            rf = ('', [place[1]], place[2], place[3], place[4], place[5], place[6])
+            rfPlaces.append(rf)
 
     finalEvent = roadEvent + rfPlaces
     return finalEvent
@@ -171,5 +171,5 @@ events, tids, credits = extractEvent(tw_gz, url_gz)
 allEvents = zip(events, credits, tids)
 finalized = eventFinalize(allEvents)
 print('event finalize finished', len(finalized))
-# for f in finalized:
-#     print(f)
+for f in finalized:
+    print(f)
