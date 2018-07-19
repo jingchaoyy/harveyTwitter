@@ -148,6 +148,46 @@ def get_coorData(dbc, tbn, lat, lng):
             conn.close()
 
 
+def get_multiColData(dbc, tbn, colList):
+    """
+    Query multiple columns from a table
+
+    :param dbc: db connector
+    :param tbn: table name
+    :param colList: list of columns for query
+    :return: all columns in colList
+    """
+    conn = None
+    try:
+        conn = psycopg2.connect(dbc)
+        cur = conn.cursor()
+        queryPlus = ''
+        for col in colList:
+            if colList.index(col) < len(colList) - 1:
+                queryPlus = queryPlus + col + ", "
+            else:
+                queryPlus = queryPlus + col
+
+        cur.execute("select " + queryPlus + " from " + tbn)
+        print("Tweets with coordinates", cur.rowcount)
+        row = cur.fetchone()
+
+        rList = []
+        while row is not None:
+            # print(row)
+            rList.append(row)
+            row = cur.fetchone()
+
+        return rList
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
+
 def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
     """
     :param dbc: db connector
