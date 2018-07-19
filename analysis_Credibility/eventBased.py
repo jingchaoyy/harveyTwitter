@@ -4,22 +4,8 @@ Created on 7/5/2018
 """
 from psqlOperations import queryFromDB
 from toolBox import location_tools, fuzzy_gazatteer
+from toolBox import events_from_tweets
 import jellyfish
-
-
-def remove(list):
-    """
-    Remove duplicate location name. Same location under same resource with same tid should give only one credit,
-    instead of multiple
-
-    :param list: location list
-    :return: nun-duplicate location list
-    """
-    removed = []
-    for i in list:
-        if i not in removed:
-            removed.append(i)
-    return removed
 
 
 def extract(gzList):
@@ -35,7 +21,7 @@ def extract(gzList):
     eventList, tidList, creList = [], [], []
     for gzset in gzList:
         gzs = gzset[0].split(',')
-        gzs = remove(gzs)
+        gzs = events_from_tweets.remove(gzs)
         for gz in gzs:
             gz = gz.strip()
             if gz != '':
@@ -124,7 +110,7 @@ def eventFinalize(eventList):
                 # '''Using direct coordinate/ road name match'''
                 if (place[2], place[3]) == (road[2], road[3]) or roadFormat1 == roadFormat2:
                     tids = road[-1] + place[-1]
-                    tids = remove(tids)
+                    tids = events_from_tweets.remove(tids)
                     update = (road[0], road[1] + [place[1]], place[2], place[3], place[4], len(tids), tids)
                     placeEvent[placeEvent.index(place)] = None  # set to None to avoid duplicate
                     roadEvent[roadEvent.index(road)] = update  # update road event in roadEvent list
@@ -142,7 +128,7 @@ def eventFinalize(eventList):
                 place = scoredPlace[placeInd]
                 if road[4] == place[4]:  # if also zip code matches
                     tids = road[-1] + place[-1]
-                    tids = remove(tids)
+                    tids = events_from_tweets.remove(tids)
                     update = (road[0], road[1] + [place[1]], road[2], road[3], road[4], len(tids), tids)
                     placeEvent[placeEvent.index(place)] = None  # delete after merged to avoid duplicate
                     roadEvent[roadEvent.index(road)] = update  # update road event in roadEvent list
@@ -160,7 +146,7 @@ def eventFinalize(eventList):
         if (final[2], final[3]) in coors:
             ind = coors.index((final[2], final[3]))
             tids = mergeEvent[ind][-1] + final[-1]
-            tids = remove(tids)
+            tids = events_from_tweets.remove(tids)
             update = (mergeEvent[ind][0] + final[0], mergeEvent[ind][1] + final[1], mergeEvent[ind][2],
                       mergeEvent[ind][3], mergeEvent[ind][4], len(tids), tids)
             mergeEvent[ind] = update

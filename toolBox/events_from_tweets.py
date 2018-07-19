@@ -7,6 +7,21 @@ from interruptingcow import timeout
 import time
 
 
+def remove(list):
+    """
+    Remove duplicate location name. Same location under same resource with same tid should give only one credit,
+    instead of multiple
+
+    :param list: location list
+    :return: nun-duplicate location list
+    """
+    removed = []
+    for i in list:
+        if i not in removed:
+            removed.append(i)
+    return removed
+
+
 def eventBack(twList, eList):
     """
     Extract events from text input, back with events and tid
@@ -83,6 +98,5 @@ def textExtractor_single(url):
         # outfile.close()
     except:
         print('url break, continue')
-
 
     return (url[0], text)
