@@ -171,5 +171,5 @@ events, tids, credits = extractEvent(tw_gz, url_gz)
 allEvents = zip(events, credits, tids)
 finalized = eventFinalize(allEvents)
 print('event finalize finished', len(finalized))
-for f in finalized:
-    print(f)
+# for f in finalized:
+#     print(f)
