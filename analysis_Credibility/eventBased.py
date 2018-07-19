@@ -154,7 +154,21 @@ def eventFinalize(eventList):
             rfPlaces.append(rf)
 
     finalEvent = roadEvent + rfPlaces
-    return finalEvent
+    mergeEvent, coors = [], []  # merge when having same coordinates (above only tested if road event has same coor
+    # with place event, this one will test if road and road, place and place events have same coor)
+    for final in finalEvent:
+        if (final[2], final[3]) in coors:
+            ind = coors.index((final[2], final[3]))
+            tids = mergeEvent[ind][-1] + final[-1]
+            tids = remove(tids)
+            update = (mergeEvent[ind][0] + final[0], mergeEvent[ind][1] + final[1], mergeEvent[ind][2],
+                      mergeEvent[ind][3], mergeEvent[ind][4], len(tids), tids)
+            mergeEvent[ind] = update
+        else:
+            mergeEvent.append(final)
+            coors.append((final[2], final[3]))
+
+    return mergeEvent
 
 
 '''databsed connection variables'''
