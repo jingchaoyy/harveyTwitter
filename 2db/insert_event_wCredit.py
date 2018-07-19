@@ -44,7 +44,7 @@ except:
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s, %s, %s, %s, %s)"
 eList = eventBased.finalized
 for i in range(len(eList)):
-    data = (i, eList[i][0], ', '.join(eList[i][1]), eList[i][2], eList[i][3], eList[i][4], eList[i][5],
+    data = (i, ', '.join(eList[i][0]), ', '.join(eList[i][1]), eList[i][2], eList[i][3], eList[i][4], eList[i][5],
             ', '.join(str(e) for e in eList[i][6]))
     try:
         cur.execute(sql, data)

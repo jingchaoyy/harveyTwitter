@@ -92,7 +92,7 @@ def eventFinalize(eventList):
             roadZip = roadLocate[0]
             coor = roadLocate[1]  # assign coordinate
             # print((event[0], [], coor[0], coor[1], event[1], event[2]))
-            roadEvent.append((event[0], [], coor[0], coor[1], roadZip, event[1], event[2]))
+            roadEvent.append(([event[0]], [], coor[0], coor[1], roadZip, event[1], event[2]))
         if event[0].startswith('#P '):
             placeLocate = location_tools.placeToRoad(event[0][3:])
             roadName = placeLocate[0]
@@ -101,7 +101,7 @@ def eventFinalize(eventList):
             placeEvent.append((roadName, event[0], placeCoor[0], placeCoor[1], placeZip, event[1], event[2]))
 
     for road in roadEvent:
-        roadFormat1 = fuzzy_gazatteer.roadNameFormat(str(road[0][3:]))
+        roadFormat1 = fuzzy_gazatteer.roadNameFormat(str(road[0][0][3:]))
         scoreList, scoredPlace = [], []  # storing all compared scores, and places used for compare
         for place in placeEvent:
             if place is not None:
@@ -136,7 +136,7 @@ def eventFinalize(eventList):
     rfPlaces = []
     for place in placeEvent:  # reformat the rest of places
         if place is not None:
-            rf = ('', [place[1]], place[2], place[3], place[4], place[5], place[6])
+            rf = ([], [place[1]], place[2], place[3], place[4], place[5], place[6])
             rfPlaces.append(rf)
 
     finalEvent = roadEvent + rfPlaces
