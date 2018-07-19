@@ -260,6 +260,40 @@ def likeQuery(dbc, tbn, col, likeList):
         if conn is not None:
             conn.close()
 
+def likeQuery_all(dbc, tbn, col, likeList):
+    """
+    Query database using like statement to extract events from text
+    :param dbc: database connector
+    :param tbn: table name
+    :param col: column in selected table to aim
+    :param likeList: list contain all keywords should be looking for
+    :return: all matching records from db table with all columns
+    """
+    conn = None
+    try:
+        conn = psycopg2.connect(dbc)
+        cur = conn.cursor()
+
+        rList = []
+        for like in likeList:
+            print("select * from " + tbn + " where lower(" + col + ") like '%" + like + "%'")
+            cur.execute("select * from " + tbn + " where lower(" + col + ") like '%" + like + "%'")
+            row = cur.fetchone()
+
+            while row is not None:
+                # print(row[0])
+                rList.append(row)
+                row = cur.fetchone()
+
+        return rList
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
+
 
 def attQueryWJoin(dbc, tbn1, tbn2, col1, col1_1, col2, col2_1, var):
     """
