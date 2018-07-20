@@ -12,10 +12,49 @@ def localGazetter(textList):
     :param textList: text list with twitter id
     :return: extracted location name lists (one for roads, one for places)
     """
-    roadDesc = ['road', 'rd', 'street', 'st', 'drive', 'dr', 'square', 'sq', 'fm', 'boulevard', 'blvd', 'highway',
-                'hwy', 'avenue', 'ave', 'ln']
+
+    '''The following table lists examples of suffix forms that are primary street suffix names, common street suffixes 
+    or suffix abbreviations, and recommended official Postal Service standard suffix abbreviations.'''
+    roadDesc = ['alley', 'anex', 'arcade', 'avenue', 'bayou', 'beach', 'bend', 'bluff', 'bluffs', 'bottom', 'boulevard',
+                'branch', 'bridge', 'brook', 'brooks', 'burg', 'burgs', 'bypass', 'camp', 'canyon', 'cape', 'causeway',
+                'center', 'centers', 'circle', 'circles', 'cliff', 'cliffs', 'club', 'common', 'commons', 'corner',
+                'corners', 'course', 'court', 'courts', 'cove', 'coves', 'creek', 'crescent', 'crest', 'crossing',
+                'crossroad', 'crossroads', 'curve', 'dale', 'dam', 'divide', 'drive', 'drives', 'estate', 'estates',
+                'expressway', 'extension', 'extensions', 'fall', 'falls', 'ferry', 'field', 'fields', 'flat', 'flats',
+                'ford', 'fords', 'forest', 'forge', 'forges', 'fork', 'forks', 'fort', 'freeway', 'garden', 'gardens',
+                'gateway', 'glen', 'glens', 'green', 'greens', 'grove', 'groves', 'harbor', 'harbors', 'haven',
+                'heights', 'highway', 'hill', 'hills', 'hollow', 'inlet', 'island', 'islands', 'isle', 'junction',
+                'junctions', 'key', 'keys', 'knoll', 'knolls', 'lake', 'lakes', 'land', 'landing', 'lane', 'light',
+                'lights', 'loaf', 'lock', 'locks', 'lodge', 'loop', 'mall', 'manor', 'manors', 'meadow', 'meadows',
+                'mews', 'mill', 'mills', 'mission', 'motorway', 'mount', 'mountain', 'mountains', 'neck', 'orchard',
+                'oval', 'overpass', 'park', 'parks', 'parkway', 'parkways', 'pass', 'passage', 'path', 'pike', 'pine',
+                'pines', 'place', 'plain', 'plains', 'plaza', 'point', 'points', 'port', 'ports', 'prairie', 'radial',
+                'ramp', 'ranch', 'rapid', 'rapids', 'rest', 'ridge', 'ridges', 'river', 'road', 'roads', 'route', 'row',
+                'rue', 'run', 'shoal', 'shoals', 'shore', 'shores', 'skyway', 'spring', 'springs', 'spur', 'spurs',
+                'square', 'squares', 'station', 'stravenue', 'stream', 'street', 'streets', 'summit', 'terrace',
+                'throughway', 'trace', 'track', 'trafficway', 'trail', 'trailer', 'tunnel', 'turnpike', 'underpass',
+                'union', 'unions', 'valley', 'valleys', 'viaduct', 'view', 'views', 'village', 'villages', 'ville',
+                'vista', 'walk', 'walks', 'wall', 'way', 'ways', 'well', 'wells', 'aly', 'anx', 'arc', 'ave', 'byu',
+                'bch', 'bnd', 'blf', 'blfs', 'btm', 'blvd', 'br', 'brg', 'brk', 'brks', 'bg', 'bgs', 'byp', 'cp', 'cyn',
+                'cpe', 'cswy', 'ctr', 'ctrs', 'cir', 'cirs', 'clf', 'clfs', 'clb', 'cmn', 'cmns', 'cor', 'cors', 'crse',
+                'ct', 'cts', 'cv', 'cvs', 'crk', 'cres', 'crst', 'xing', 'xrd', 'xrds', 'curv', 'dl', 'dm', 'dv', 'dr',
+                'drs', 'est', 'ests', 'expy', 'ext', 'exts', 'fall', 'fls', 'fry', 'fld', 'flds', 'flt', 'flts', 'frd',
+                'frds', 'frst', 'frg', 'frgs', 'frk', 'frks', 'ft', 'fwy', 'gdn', 'gdns', 'gtwy', 'gln', 'glns', 'grn',
+                'grns', 'grv', 'grvs', 'hbr', 'hbrs', 'hvn', 'hts', 'hwy', 'hl', 'hls', 'holw', 'inlt', 'is', 'iss',
+                'isle', 'jct', 'jcts', 'ky', 'kys', 'knl', 'knls', 'lk', 'lks', 'land', 'lndg', 'ln', 'lgt', 'lgts',
+                'lf', 'lck', 'lcks', 'ldg', 'loop', 'mall', 'mnr', 'mnrs', 'mdw', 'mdws', 'mews', 'ml', 'mls', 'msn',
+                'mtwy', 'mt', 'mtn', 'mtns', 'nck', 'orch', 'oval', 'opas', 'park', 'park', 'pkwy', 'pkwy', 'pass',
+                'psge', 'path', 'pike', 'pne', 'pnes', 'pl', 'pln', 'plns', 'plz', 'pt', 'pts', 'prt', 'prts', 'pr',
+                'radl', 'ramp', 'rnch', 'rpd', 'rpds', 'rst', 'rdg', 'rdgs', 'riv', 'rd', 'rds', 'rte', 'row', 'rue',
+                'run', 'shl', 'shls', 'shr', 'shrs', 'skwy', 'spg', 'spgs', 'spur', 'spur', 'sq', 'sqs', 'sta', 'stra',
+                'strm', 'st', 'sts', 'smt', 'ter', 'trwy', 'trce', 'trak', 'trfy', 'trl', 'trlr', 'tunl', 'tpke',
+                'upas', 'un', 'uns', 'vly', 'vlys', 'via', 'vw', 'vws', 'vlg', 'vlgs', 'vl', 'vis', 'walk', 'walk',
+                'wall', 'way', 'ways', 'wl', 'wls']
     roadDesc2 = ['North', 'South', 'East', 'West']
-    placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital']
+    placeDesc = ['church', 'school', 'center', 'campus', 'university', 'library', 'station', 'hospital', 'creek',
+                 'metro', 'beach', 'stadium', 'park', 'forest', 'refuge', 'museum', 'seashore', 'lake', 'falls',
+                 'canyon', 'river', 'springs', 'island', 'cemetery', 'chapel', 'hall', 'complex', 'union', 'court',
+                 'apartment', 'restaurant', 'valley', 'monument', 'post office']
     road_extracts, road_extracts2, place_extracts = [], [], []
     roadMark = '*R '  # adding marks to ease distinguish between road and place in later process
     placeMark = '#P '
@@ -168,9 +207,43 @@ def roadNameFormat(roadName):
     :param roadName: string, original road name
     :return: formatted road name
     """
-    searchList = ['north', 'south', 'west', 'east', 'road', 'street', 'drive', 'square', 'boulevard', 'highway',
-                  'avenue']  # list for search and to be replaced
-    formatList = ['n', 's', 'w', 'e', 'rd', 'st', 'dr', 'sq', 'blvd', 'hwy', 'ave']
+    searchList = ['north', 'south', 'west', 'east', 'alley', 'anex', 'arcade', 'avenue', 'bayou', 'beach', 'bend',
+                  'bluff', 'bluffs', 'bottom', 'boulevard', 'branch', 'bridge', 'brook', 'brooks', 'burg', 'burgs',
+                  'bypass', 'camp', 'canyon', 'cape', 'causeway', 'center', 'centers', 'circle', 'circles', 'cliff',
+                  'cliffs', 'club', 'common', 'commons', 'corner', 'corners', 'course', 'court', 'courts', 'cove',
+                  'coves', 'creek', 'crescent', 'crest', 'crossing', 'crossroad', 'crossroads', 'curve', 'dale', 'dam',
+                  'divide', 'drive', 'drives', 'estate', 'estates', 'expressway', 'extension', 'extensions', 'fall',
+                  'falls', 'ferry', 'field', 'fields', 'flat', 'flats', 'ford', 'fords', 'forest', 'forge', 'forges',
+                  'fork', 'forks', 'fort', 'freeway', 'garden', 'gardens', 'gateway', 'glen', 'glens', 'green',
+                  'greens', 'grove', 'groves', 'harbor', 'harbors', 'haven', 'heights', 'highway', 'hill', 'hills',
+                  'hollow', 'inlet', 'island', 'islands', 'isle', 'junction', 'junctions', 'key', 'keys', 'knoll',
+                  'knolls', 'lake', 'lakes', 'land', 'landing', 'lane', 'light', 'lights', 'loaf', 'lock', 'locks',
+                  'lodge', 'loop', 'mall', 'manor', 'manors', 'meadow', 'meadows', 'mews', 'mill', 'mills', 'mission',
+                  'motorway', 'mount', 'mountain', 'mountains', 'neck', 'orchard', 'oval', 'overpass', 'park', 'parks',
+                  'parkway', 'parkways', 'pass', 'passage', 'path', 'pike', 'pine', 'pines', 'place', 'plain', 'plains',
+                  'plaza', 'point', 'points', 'port', 'ports', 'prairie', 'radial', 'ramp', 'ranch', 'rapid', 'rapids',
+                  'rest', 'ridge', 'ridges', 'river', 'road', 'roads', 'route', 'row', 'rue', 'run', 'shoal', 'shoals',
+                  'shore', 'shores', 'skyway', 'spring', 'springs', 'spur', 'spurs', 'square', 'squares', 'station',
+                  'stravenue', 'stream', 'street', 'streets', 'summit', 'terrace', 'throughway', 'trace', 'track',
+                  'trafficway', 'trail', 'trailer', 'tunnel', 'turnpike', 'underpass', 'union', 'unions', 'valley',
+                  'valleys', 'viaduct', 'view', 'views', 'village', 'villages', 'ville', 'vista', 'walk', 'walks',
+                  'wall', 'way', 'ways', 'well', 'wells']  # list for search and to be replaced
+    formatList = ['n', 's', 'w', 'e', 'aly', 'anx', 'arc', 'ave', 'byu', 'bch', 'bnd', 'blf', 'blfs', 'btm', 'blvd',
+                  'br', 'brg', 'brk', 'brks', 'bg', 'bgs', 'byp', 'cp', 'cyn', 'cpe', 'cswy', 'ctr', 'ctrs', 'cir',
+                  'cirs', 'clf', 'clfs', 'clb', 'cmn', 'cmns', 'cor', 'cors', 'crse', 'ct', 'cts', 'cv', 'cvs', 'crk',
+                  'cres', 'crst', 'xing', 'xrd', 'xrds', 'curv', 'dl', 'dm', 'dv', 'dr', 'drs', 'est', 'ests', 'expy',
+                  'ext', 'exts', 'fall', 'fls', 'fry', 'fld', 'flds', 'flt', 'flts', 'frd', 'frds', 'frst', 'frg',
+                  'frgs', 'frk', 'frks', 'ft', 'fwy', 'gdn', 'gdns', 'gtwy', 'gln', 'glns', 'grn', 'grns', 'grv',
+                  'grvs', 'hbr', 'hbrs', 'hvn', 'hts', 'hwy', 'hl', 'hls', 'holw', 'inlt', 'is', 'iss', 'isle', 'jct',
+                  'jcts', 'ky', 'kys', 'knl', 'knls', 'lk', 'lks', 'land', 'lndg', 'ln', 'lgt', 'lgts', 'lf', 'lck',
+                  'lcks', 'ldg', 'loop', 'mall', 'mnr', 'mnrs', 'mdw', 'mdws', 'mews', 'ml', 'mls', 'msn', 'mtwy', 'mt',
+                  'mtn', 'mtns', 'nck', 'orch', 'oval', 'opas', 'park', 'park', 'pkwy', 'pkwy', 'pass', 'psge', 'path',
+                  'pike', 'pne', 'pnes', 'pl', 'pln', 'plns', 'plz', 'pt', 'pts', 'prt', 'prts', 'pr', 'radl', 'ramp',
+                  'rnch', 'rpd', 'rpds', 'rst', 'rdg', 'rdgs', 'riv', 'rd', 'rds', 'rte', 'row', 'rue', 'run', 'shl',
+                  'shls', 'shr', 'shrs', 'skwy', 'spg', 'spgs', 'spur', 'spur', 'sq', 'sqs', 'sta', 'stra', 'strm',
+                  'st', 'sts', 'smt', 'ter', 'trwy', 'trce', 'trak', 'trfy', 'trl', 'trlr', 'tunl', 'tpke', 'upas',
+                  'un', 'uns', 'vly', 'vlys', 'via', 'vw', 'vws', 'vlg', 'vlgs', 'vl', 'vis', 'walk', 'walk', 'wall',
+                  'way', 'ways', 'wl', 'wls']
 
     # format road names
     loc11Split = str(roadName).split(' ')
