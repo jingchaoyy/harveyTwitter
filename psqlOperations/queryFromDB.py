@@ -36,7 +36,7 @@ def query(dbc, tbn, col, var):
         cur = conn.cursor()
 
         rList = []
-        print("select * from " + tbn + " where " + col + " = '" + var + "'")
+        # print("select * from " + tbn + " where " + col + " = '" + var + "'")
         cur.execute("select * from " + tbn + " where " + col + " = '" + var + "'")
         row = cur.fetchone()
 
