@@ -16,9 +16,16 @@ def assignCredit(events):
     :return:
     """
     tb2_out_Name = "original_gazetteer"
+    tb3_out_Name = "original"
     col = "tid"
-    locCredits = []
+    eventCredits = []
     resourceType = ['tw', 'url']
+
+    ''' getting max re tweet number from whole database, for later normalization '''
+    sql = 'select max(t_recount) from ' + tb3_out_Name
+    maxRT = queryFromDB.freeQuery(dbConnect, sql)[0][0]
+    print('Max re tweet number:', maxRT)
+
     for event in events:
         eid = event[0]
         tids = event[-1]
@@ -28,8 +35,16 @@ def assignCredit(events):
             roadEvents = events_from_tweets.remove(event[1].split(', '))
         if event[2] is not None:
             placeEvents = events_from_tweets.remove(event[2].split(', '))
-        locCredit = []
+        locCredit, rtCredit = [], []
         for tid in tids:
+
+            ''' get retweet number for the corresponding tid '''
+            ori = queryFromDB.query(dbConnect, tb3_out_Name, col, tid)
+            ori = ori[0]
+            rT = ori[10]  # column: t_recount, for retweet count
+            rtCredit.append(rT)
+
+            ''' get extracted gazetteers for the corresponding tid '''
             tw_roads, tw_places, url_roads, url_places = [], [], [], []
             gazetteer = queryFromDB.query(dbConnect, tb2_out_Name, col, tid)
             gazetteer = gazetteer[0]
@@ -46,6 +61,8 @@ def assignCredit(events):
                 url_places = events_from_tweets.remove(gazetteer[4].split(', '))
                 print(url_places)
 
+            ''' see if any roads from tw matches, if not, check places. Then for the urls
+            For each tid, max location match score is 1 + 1 = 2 '''
             if any(twr in roadEvents for twr in tw_roads):
                 locCredit.append(1)
                 print('aaaa')
@@ -60,8 +77,8 @@ def assignCredit(events):
                 locCredit.append(1)
                 print('dddd')
 
-        print((eid, sum(locCredit) / len(resourceType)))
-        locCredits.append((eid, sum(locCredit) / len(resourceType)))
+        print((eid, sum(locCredit) / len(resourceType), sum(rtCredit)))
+        eventCredits.append((eid, sum(locCredit) / len(resourceType), sum(rtCredit) / maxRT))
 
 
 tb1_out_Name = "original_credibility_improved"
