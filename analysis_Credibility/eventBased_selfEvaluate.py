@@ -11,15 +11,21 @@ dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='12
 
 def assignCredit(events):
     """
+    Each event supports by multiple tweets, when a supporting tweet have this event in its tw extracted gazetteer,
+    credibility count 1, and count another 1 if this event also in its url text extracted gazetteer. Average this
+    location-based event credibility by the source count (in our case, tw and url, together is 2). A supporting tweet
+    may also get retweeted, get the retweet count and normalize by dividing max possible retweet count(in the whole db).
+    Sum up all location-based event credibility and retweet-based event credibility after looping though all supporting
+    tids, and assign these two credit to the event with its eid in original_credibility_improved table
 
-    :param events:
-    :return:
+    :param events: event list with ['eid', 'road_events', 'place_events', 'tids']
+    :return: credibility based on correponding tids
     """
     tb2_out_Name = "original_gazetteer"
     tb3_out_Name = "original"
     col = "tid"
     eventCredits = []
-    resourceType = ['tw', 'url']
+    resourceType = ['tw', 'url']  # sources list
 
     ''' getting max re tweet number from whole database, for later normalization '''
     sql = 'select max(t_recount) from ' + tb3_out_Name
