@@ -20,6 +20,38 @@ def remove_emoji(string):
                                "]+", flags=re.UNICODE)
     return emoji_pattern.sub(r'', string)
 
+def query(dbc, tbn, col, var):
+    """
+    Query database using like statement to extract events from text
+    :param dbc: database connector
+    :param tbn: table name
+    :param col: column in selected table to aim
+    :param var: keyword in the col to be found
+    :return: all matching records from db table with all columns
+    """
+    conn = None
+    try:
+        conn = psycopg2.connect(dbc)
+        cur = conn.cursor()
+
+        rList = []
+        print("select * from " + tbn + " where " + col + " = '" + var + "'")
+        cur.execute("select * from " + tbn + " where " + col + " = '" + var + "'")
+        row = cur.fetchone()
+
+        while row is not None:
+            # print(row[0])
+            rList.append(row)
+            row = cur.fetchone()
+
+        return rList
+
+        cur.close()
+    except (Exception, psycopg2.DatabaseError) as error:
+        print(error)
+    finally:
+        if conn is not None:
+            conn.close()
 
 def get_allData(dbc, tbn):
     """ query all data from a table """
