@@ -2,7 +2,7 @@
 Created on 7/19/2018
 @author: Jingchao Yang
 """
-from analysis_Credibility import eventBased_selfEvaluate
+from analysis_Credibility import selfEvaluate
 import psycopg2.extras
 
 tb_in_Name = 'original_selfEva'
@@ -35,7 +35,7 @@ except:
     print("create table failed " + tb_in_Name)
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
-eList = eventBased_selfEvaluate.evaluate_score
+eList = selfEvaluate.evaluate_score
 for i in range(len(eList)):
     data = (i, eList[i][0], eList[i][1])
     try:
