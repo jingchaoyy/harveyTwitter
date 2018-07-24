@@ -33,7 +33,7 @@ try:
                                                "Lat double precision,"
                                                "Lng double precision,"
                                                "zip_code Text,"
-                                               "credibility int,"
+                                               "sup_tws int,"
                                                "tIDs Text"
                                                ");")
     conn.commit()
