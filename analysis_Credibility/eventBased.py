@@ -20,7 +20,7 @@ def extract(gzList):
     """
     eventList, tidList, creList = [], [], []
     for gzset in gzList:
-        gzs = gzset[0].split(',')
+        gzs = gzset[0].split(', ')
         gzs = events_from_tweets.remove(gzs)
         for gz in gzs:
             gz = gz.strip()
@@ -91,14 +91,17 @@ def eventFinalize(eventList):
             roadLocate = location_tools.roadToCoor(event[0][3:])
             roadZip = roadLocate[0]
             coor = roadLocate[1]  # assign coordinate
-            # print((event[0], [], coor[0], coor[1], event[1], event[2]))
-            roadEvent.append(([event[0]], [], coor[0], coor[1], roadZip, event[1], event[2]))
+            tids = event[2]
+            tids = events_from_tweets.remove(tids)
+            roadEvent.append(([event[0]], [], coor[0], coor[1], roadZip, len(tids), tids))
         if event[0].startswith('#P '):
             placeLocate = location_tools.placeToRoad(event[0][3:])
             roadName = placeLocate[0]
             placeZip = placeLocate[1]
             placeCoor = placeLocate[2]
-            placeEvent.append((roadName, event[0], placeCoor[0], placeCoor[1], placeZip, event[1], event[2]))
+            tids = event[2]
+            tids = events_from_tweets.remove(tids)
+            placeEvent.append((roadName, event[0], placeCoor[0], placeCoor[1], placeZip, len(tids), tids))
 
     for road in roadEvent:
         roadFormat1 = fuzzy_gazatteer.roadNameFormat(str(road[0][0][3:]))
