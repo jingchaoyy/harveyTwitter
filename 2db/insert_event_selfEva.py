@@ -1,12 +1,8 @@
 """
 Created on 7/24/2018
 @author: Jingchao Yang
-"""
-"""
-Created on 7/16/2018
-@author: Jingchao Yang
 
-insert all events with location, and associated credibility
+Update original_credibility_improved table with credibility score from eventBased_selfEvaluate.py
 """
 from analysis_Credibility import eventBased_selfEvaluate
 import psycopg2.extras
