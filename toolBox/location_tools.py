@@ -198,11 +198,11 @@ def roadToCoor(rn):
     if len(g) > 0:
         if len(g) > 0:
             for ac in g[0]['address_components']:
-                if ac['types'][0] == 'postal_code':
-                    try:
+                try:
+                    if ac['types'][0] == 'postal_code':
                         zipCode = ac['long_name']
-                    except:
-                        zipCode = None
+                except:
+                    zipCode = None
 
         if 'location' in g[0]['geometry'].keys():
             try:
