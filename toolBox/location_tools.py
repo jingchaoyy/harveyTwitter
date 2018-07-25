@@ -8,7 +8,7 @@ import re
 from time import sleep
 import googlemaps
 
-gmaps = googlemaps.Client(key='AIzaSyBNiwEzcU4-BPxp_cyoupC78ak_9PReeAY')
+gmaps = googlemaps.Client(key='AIzaSyByJv_mMoTZ9DvB4XeH3Zs4zYg4cKEg2qU')
 
 
 # def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
