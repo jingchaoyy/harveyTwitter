@@ -6,6 +6,9 @@ Collect tids under certain event and locate their
 """
 
 from psqlOperations import queryFromDB
+import matplotlib.pyplot as plt
+import pandas as pd
+import datetime
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 
@@ -39,11 +42,19 @@ def getTIDs(eid):
     sql = "select tids from " + tb_out_Name + " where eid = '" + str(eid) + "'"
     tids = queryFromDB.freeQuery(dbConnect, sql)[0][0]
     tids = tids.split(', ')
-    print('Max re tweet number:', tids)
-
+    print('Supporting tweet IDs:', tids)
     return tids
 
 supTIDs = getTIDs(7)
 timeList = getEvlScore(supTIDs)
-for i in timeList:
-    print(i)
+df = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
+years = df.year
+months = df.month
+days = df.day
+hours = df.hour
+
+df = pd.DataFrame(df)
+df.reset_index(['date', 'time'])
+print(df)
+
+# print(df.groupby(df.index.date).count())
