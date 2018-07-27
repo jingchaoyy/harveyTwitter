@@ -308,8 +308,8 @@ def likeQuery(dbc, tbn, col, likeList):
 
         rList = []
         for like in likeList:
-            print("select tid," + col + " from " + tbn + " where lower(" + col + ") like '%" + like + "%'")
-            cur.execute("select tid," + col + " from " + tbn + " where lower(" + col + ") like '%" + like + "%'")
+            print("select tid," + col + " from " + tbn + " where lower(" + col + ") ilike '%" + like + "%'")
+            cur.execute("select tid," + col + " from " + tbn + " where lower(" + col + ") ilike '%" + like + "%'")
             row = cur.fetchone()
 
             while row is not None:
@@ -343,8 +343,8 @@ def likeQuery_all(dbc, tbn, col, likeList):
 
         rList = []
         for like in likeList:
-            print("select * from " + tbn + " where lower(" + col + ") like '%" + like + "%'")
-            cur.execute("select * from " + tbn + " where lower(" + col + ") like '%" + like + "%'")
+            print("select * from " + tbn + " where lower(" + col + ") ilike '%" + like + "%'")
+            cur.execute("select * from " + tbn + " where lower(" + col + ") ilike '%" + like + "%'")
             row = cur.fetchone()
 
             while row is not None:
