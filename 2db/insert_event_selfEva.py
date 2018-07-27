@@ -17,7 +17,7 @@ except:
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 try:
-    cur.execute("alter table " + tb_in_Name + " drop loc_Credit, drop rt_Credit;")
+    cur.execute("alter table " + tb_in_Name + " drop loc_Credits, drop loc_Credit, drop rt_Credits, drop rt_Credit;")
     conn.commit()
     print("alter table column succeeded " + tb_in_Name)
 except:
@@ -26,17 +26,20 @@ except:
     # until a call to the rollback(). This except will prevent such abort when table is new and cannot be found and drop
 
 try:
-    cur.execute("alter table " + tb_in_Name + " add loc_Credit double precision, add rt_Credit double precision;")
+    cur.execute(
+        "alter table " + tb_in_Name + " add loc_Credits text, add loc_Credit double precision,"
+                                      " add rt_Credits text, add rt_Credit double precision;")
     conn.commit()
     print("alter table succeeded " + tb_in_Name)
 except:
-    print("create table failed " + tb_in_Name)
+    print("alter table failed " + tb_in_Name)
 
 eList = eventBased_selfEvaluate.creditList
 for i in range(len(eList)):
     try:
-        cur.execute("update " + tb_in_Name + " set loc_Credit = " + str(eList[i][1]) + ", rt_Credit = " +
-                    str(eList[i][2]) + " where eid = " + str(eList[i][0]))
+        cur.execute("update " + tb_in_Name + " set loc_Credits = " + ', '.join(eList[i][1]) +
+                    ", loc_Credit = " + str(eList[i][2]) + ", loc_Credits = " + ', '.join(eList[i][3]) +
+                    ", rt_Credit = " + str(eList[i][4]) + " where eid = " + str(eList[i][0]))
         conn.commit()
     except:
         print("I can't insert into " + tb_in_Name)
