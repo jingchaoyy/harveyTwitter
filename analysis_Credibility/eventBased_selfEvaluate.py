@@ -48,7 +48,7 @@ def assignCredit(events):
             ori = queryFromDB.query(dbConnect, tb3_out_Name, col, tid)
             ori = ori[0]
             rT = ori[10]  # column: t_recount, for retweet count
-            rtCredit.append(rT)
+            rtCredit.append(rT / maxRT)
 
             ''' get extracted gazetteers for the corresponding tid '''
             tw_roads, tw_places, url_roads, url_places = [], [], [], []
@@ -69,22 +69,25 @@ def assignCredit(events):
 
             ''' see if any roads from tw matches, if not, check places. Then for the urls
             For each tid, max location match score is 1 + 1 = 2 '''
+            tid_locCredit = 0
             if any(twr in roadEvents for twr in tw_roads):
-                locCredit.append(1)
+                tid_locCredit = tid_locCredit + 1
                 # print('aaaa')
             elif any(twp in placeEvents for twp in tw_places):
-                locCredit.append(1)
+                tid_locCredit = tid_locCredit + 1
                 # print('bbbb')
 
             if any(urlr in roadEvents for urlr in url_roads):
-                locCredit.append(1)
+                tid_locCredit = tid_locCredit + 1
                 # print('cccc')
             elif any(urlp in placeEvents for urlp in url_places):
-                locCredit.append(1)
+                tid_locCredit = tid_locCredit + 1
                 # print('dddd')
 
-        print((eid, sum(locCredit) / len(resourceType), sum(rtCredit) / maxRT))
-        eventCredits.append((eid, sum(locCredit) / len(resourceType), sum(rtCredit) / maxRT))
+            locCredit.append(tid_locCredit / len(resourceType))
+
+        print((eid, sum(locCredit), sum(rtCredit)))
+        eventCredits.append((eid, locCredit, sum(locCredit), rtCredit, sum(rtCredit)))
     return eventCredits
 
 
