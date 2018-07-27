@@ -45,16 +45,26 @@ def getTIDs(eid):
     print('Supporting tweet IDs:', tids)
     return tids
 
-supTIDs = getTIDs(7)
+
+supTIDs = getTIDs(5536)
 timeList = getEvlScore(supTIDs)
-df = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
-years = df.year
-months = df.month
-days = df.day
-hours = df.hour
+dt = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
+dates = dt.date
+hours = dt.hour
 
-df = pd.DataFrame(df)
-df.reset_index(['date', 'time'])
+dateList, count = [], []
+for date in dates:
+    if date not in dateList:
+        dateList.append(date)
+        count.append(1)
+    else:
+        ind = dateList.index(date)
+        count[ind] = count[ind] + 1
+
+data = {'date': dateList, 'count': count}
+df = pd.DataFrame(data)
+df = df.sort_values('date', ascending=True)
 print(df)
-
-# print(df.groupby(df.index.date).count())
+plt.plot(df['date'], df['count'])
+plt.xticks(rotation='vertical')
+plt.show()
