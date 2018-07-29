@@ -38,7 +38,7 @@ eList = eventBased_selfEvaluate.creditList
 for i in range(len(eList)):
     try:
         cur.execute("update " + tb_in_Name + " set loc_Credits = array" + str(eList[i][1]) +
-                    ", loc_Credit = " + str(eList[i][2]) + ", loc_Credits = array" + str(eList[i][3]) +
+                    ", loc_Credit = " + str(eList[i][2]) + ", rt_Credit = array" + str(eList[i][3]) +
                     ", rt_Credit = " + str(eList[i][4]) + " where eid = " + str(eList[i][0]))
         conn.commit()
     except:
