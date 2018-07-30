@@ -133,21 +133,22 @@ def placeToRoad(placeName):
     zipCode, coor_Lat, coor_Lng = None, None, None
     if len(g) > 0:
         for ac in g[0]['address_components']:
-            if ac['types'][0] == 'street_number':
-                try:
-                    roadNo = ac['long_name']
-                except:
-                    roadNo = ''
-            if ac['types'][0] == 'route':
-                try:
-                    roadName = ac['long_name']
-                except:
-                    roadName = ''
-            if ac['types'][0] == 'postal_code':
-                try:
-                    zipCode = ac['long_name']
-                except:
-                    zipCode = None
+            if ac['types'] and len(ac['types']) > 0:
+                if ac['types'][0] == 'street_number':
+                    try:
+                        roadNo = ac['long_name']
+                    except:
+                        roadNo = ''
+                if ac['types'][0] == 'route':
+                    try:
+                        roadName = ac['long_name']
+                    except:
+                        roadName = ''
+                if ac['types'][0] == 'postal_code':
+                    try:
+                        zipCode = ac['long_name']
+                    except:
+                        zipCode = None
 
         # if 'long_name' in g[0]['address_components'][0].keys():  # road no.
         #     if g[0]['address_components'][0]['types'][0] == 'street_number':
