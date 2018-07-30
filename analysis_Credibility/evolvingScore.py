@@ -46,25 +46,30 @@ def getTIDs(eid):
     return tids
 
 
-supTIDs = getTIDs(5536)
+def dateCount(dList):
+    dateList, count = [], []
+    for date in dList:
+        if date not in dateList:
+            dateList.append(date)
+            count.append(1)
+        else:
+            ind = dateList.index(date)
+            count[ind] = count[ind] + 1
+
+    data = {'date': dateList, 'count': count}
+    df = pd.DataFrame(data)
+    df = df.sort_values('date', ascending=True)
+    print(df)
+    plt.plot(df['date'], df['count'])
+    plt.xticks(rotation='vertical')
+    plt.show()
+
+
+supTIDs = getTIDs(13)
 timeList = getEvlScore(supTIDs)
 dt = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
 dates = dt.date
 hours = dt.hour
 
-dateList, count = [], []
-for date in dates:
-    if date not in dateList:
-        dateList.append(date)
-        count.append(1)
-    else:
-        ind = dateList.index(date)
-        count[ind] = count[ind] + 1
-
-data = {'date': dateList, 'count': count}
-df = pd.DataFrame(data)
-df = df.sort_values('date', ascending=True)
-print(df)
-plt.plot(df['date'], df['count'])
-plt.xticks(rotation='vertical')
-plt.show()
+''' Plot '''
+# dateCount(dates)  # plot by date count
