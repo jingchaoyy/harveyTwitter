@@ -142,7 +142,7 @@ credit_df, credit_df_evl, credit_df_loc, credit_df_evl_loc, credit_df_rt, credit
 ''' Paper Section 5.1.1 '''
 fig, (ax0, ax2) = plt.subplots(2, sharey=True)
 color = 'tab:green'
-ax0.set_ylabel('Event-match Evolving', color=color)
+ax0.set_ylabel('Merged Evolving', color=color)
 ax0.plot(credit_df_evl['date'], credit_df_evl['sum_credit'], color=color)
 ax0.tick_params(axis='y', labelcolor=color)
 
@@ -163,7 +163,7 @@ ax3.tick_params(axis='y', labelcolor=color)
 ''' Paper Section 5.1.2 '''
 # fig, (ax0, ax2) = plt.subplots(2, sharey=True)
 # color = 'tab:green'
-# ax0.set_ylabel('Event-match Evolving', color=color)
+# ax0.set_ylabel('Merged Evolving', color=color)
 # ax0.plot(credit_df_evl['date'], credit_df_evl['sum_credit'], color=color)
 # ax0.tick_params(axis='y', labelcolor=color)
 #
