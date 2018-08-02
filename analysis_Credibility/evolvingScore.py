@@ -38,7 +38,7 @@ def getData(col, eid):
     :param eid: event id
     :return: list of associated data
     """
-    tb_out_Name = "original_credibility_damage"
+    tb_out_Name = "original_credibility_improved"
     sql = "select " + col + " from " + tb_out_Name + " where eid = '" + str(eid) + "'"
     data = queryFromDB.freeQuery(dbConnect, sql)[0][0]
     if isinstance(data, str):
@@ -123,7 +123,7 @@ def dateCredit(dList, locCreitList, rtCreditList):
     return df, df_evl, df_loc, df_evl_loc, df_rt, df_evl_rt
 
 
-eid = 7232  # original_credibility_damage(6904 high_high); original_credibility_improved (5562 low_high, 5536 high_high)
+eid = 5536  # original_credibility_damage(6904 high_high); original_credibility_improved (5562 low_high, 5536 high_high)
 supTIDs = getData("tids", eid)
 timeList = getEvlScore(supTIDs)
 dt = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
@@ -133,33 +133,54 @@ hours = dt.hour
 ''' organize by date count'''
 count_df = dateCount(dates)
 
-ax1 = plt.subplot(311)
-plt.plot(count_df['date'], count_df['count'])
-plt.xticks(rotation='vertical')
-plt.title('Twitter Count Plot')
-plt.ylabel('Total Tweets Number')
-# plt.xlabel('Dates')
-
 ''' organize by credibility '''
 supLocCredits = getData("loc_credits", eid)
 supRTCredits = getData("rt_credits", eid)
 credit_df, credit_df_evl, credit_df_loc, credit_df_evl_loc, credit_df_rt, credit_df_evl_rt \
     = dateCredit(dates, supLocCredits, supRTCredits)
 
-ax2 = plt.subplot(312, sharex=ax1)
-plt.plot(credit_df['date'], credit_df['credit'])
-plt.xticks(rotation='vertical')
-plt.title('Credibility Score Plot')
-plt.ylabel('Credibility Score')
-# plt.xlabel('Dates')
+''' Paper Section 5.1.1 '''
+fig, (ax0, ax2) = plt.subplots(2, sharey=True)
+color = 'tab:green'
+ax0.set_ylabel('Event-match Evolving', color=color)
+ax0.plot(credit_df_evl['date'], credit_df_evl['sum_credit'], color=color)
+ax0.tick_params(axis='y', labelcolor=color)
 
-ax3 = plt.subplot(313, sharex=ax1)
-plt.plot(credit_df_evl['date'], credit_df_evl['sum_credit'])
-plt.xticks(rotation='vertical')
-plt.title('Credibility Evolving Plot')
-plt.ylabel('Credibility Accumulation')
-plt.xlabel('Dates')
+color = 'tab:red'
+ax2.set_xlabel('Dates')
+ax2.set_ylabel('Event-match Evolving', color=color)
+ax2.plot(credit_df_evl_loc['date'], credit_df_evl_loc['sum_credit'], color=color)
+ax2.tick_params(axis='y', labelcolor=color)
 
-plt.setp(ax1.get_xticklabels(), visible=False)
-plt.setp(ax2.get_xticklabels(), visible=False)
+ax3 = ax2.twinx()  # instantiate a second axes that shares the same x-axis
+
+color = 'tab:blue'
+ax3.set_ylabel('Re-tweet Evolving', color=color)  # we already handled the x-label with ax1
+ax3.plot(credit_df_evl_rt['date'], credit_df_evl_rt['sum_credit'], color=color)
+ax3.tick_params(axis='y', labelcolor=color)
+
+
+''' Paper Section 5.1.2 '''
+# fig, (ax0, ax2) = plt.subplots(2, sharey=True)
+# color = 'tab:green'
+# ax0.set_ylabel('Event-match Evolving', color=color)
+# ax0.plot(credit_df_evl['date'], credit_df_evl['sum_credit'], color=color)
+# ax0.tick_params(axis='y', labelcolor=color)
+#
+# color = 'tab:red'
+# ax2.set_xlabel('Dates')
+# ax2.set_ylabel('Credit Count', color=color)
+# ax2.plot(credit_df['date'], credit_df['credit'], color=color)
+# ax2.tick_params(axis='y', labelcolor=color)
+#
+# ax3 = ax2.twinx()  # instantiate a second axes that shares the same x-axis
+#
+# color = 'tab:blue'
+# ax3.set_ylabel('Tweeter Count', color=color)  # we already handled the x-label with ax1
+# ax3.plot(count_df['date'], count_df['count'], color=color)
+# ax3.tick_params(axis='y', labelcolor=color)
+
+''' Plot '''
+fig.tight_layout()  # otherwise the right y-label is slightly clipped
+plt.setp(ax0.get_xticklabels(), visible=False)
 plt.show()
