@@ -38,7 +38,7 @@ def getData(col, eid):
     :param eid: event id
     :return: list of associated data
     """
-    tb_out_Name = "original_credibility_improved"
+    tb_out_Name = "original_credibility_damage"
     sql = "select " + col + " from " + tb_out_Name + " where eid = '" + str(eid) + "'"
     data = queryFromDB.freeQuery(dbConnect, sql)[0][0]
     if isinstance(data, str):
@@ -80,16 +80,23 @@ def dateCredit(dList, locCreitList, rtCreditList):
     :return: two pandas dfs, one simply with dates and credits collected for associated days. Another is with evolving
     credits calculated
     """
-    dateList, creditList = [], []
+    dateList, creditList, cl_loc, cl_rt = [], [], [], []
     for date in range(len(dList)):
         credit = locCreitList[date] + rtCreditList[date]
+        c_loc = locCreitList[date]
+        c_rt = rtCreditList[date]
         if dList[date] not in dateList:
             dateList.append(dList[date])
             creditList.append(credit)
+            cl_loc.append(c_loc)
+            cl_rt.append(c_rt)
         else:
             ind = dateList.index(dList[date])
             creditList[ind] = creditList[ind] + credit
+            cl_loc[ind] = cl_loc[ind] + c_loc
+            cl_rt[ind] = cl_rt[ind] + c_rt
 
+    ''' Merged credibility score'''
     data = {'date': dateList, 'credit': creditList}
     df = pd.DataFrame(data)
     df = df.sort_values('date', ascending=True)
@@ -99,10 +106,24 @@ def dateCredit(dList, locCreitList, rtCreditList):
     df_evl = df_evl.assign(sum_credit=df_evl.credit.cumsum())
     print(df_evl)
 
-    return df, df_evl
+    ''' Event match credibility score'''
+    data_loc = {'date': dateList, 'credit': cl_loc}
+    df_loc = pd.DataFrame(data_loc)
+    df_loc = df_loc.sort_values('date', ascending=True)
+    df_evl_loc = df_loc
+    df_evl_loc = df_evl_loc.assign(sum_credit=df_evl_loc.credit.cumsum())
+
+    ''' Retweet credibility score'''
+    data_rt = {'date': dateList, 'credit': cl_rt}
+    df_rt = pd.DataFrame(data_rt)
+    df_rt = df_rt.sort_values('date', ascending=True)
+    df_evl_rt = df_rt
+    df_evl_rt = df_evl_rt.assign(sum_credit=df_evl_rt.credit.cumsum())
+
+    return df, df_evl, df_loc, df_evl_loc, df_rt, df_evl_rt
 
 
-eid = 5536
+eid = 7232  # original_credibility_damage(6904 high_high); original_credibility_improved (5562 low_high, 5536 high_high)
 supTIDs = getData("tids", eid)
 timeList = getEvlScore(supTIDs)
 dt = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
@@ -112,11 +133,6 @@ hours = dt.hour
 ''' organize by date count'''
 count_df = dateCount(dates)
 
-''' organize by credibility '''
-supLocCredits = getData("loc_credits", eid)
-supRTCredits = getData("rt_credits", eid)
-credit_df, credit_df_evl = dateCredit(dates, supLocCredits, supRTCredits)
-
 ax1 = plt.subplot(311)
 plt.plot(count_df['date'], count_df['count'])
 plt.xticks(rotation='vertical')
@@ -124,10 +140,16 @@ plt.title('Twitter Count Plot')
 plt.ylabel('Total Tweets Number')
 # plt.xlabel('Dates')
 
+''' organize by credibility '''
+supLocCredits = getData("loc_credits", eid)
+supRTCredits = getData("rt_credits", eid)
+credit_df, credit_df_evl, credit_df_loc, credit_df_evl_loc, credit_df_rt, credit_df_evl_rt \
+    = dateCredit(dates, supLocCredits, supRTCredits)
+
 ax2 = plt.subplot(312, sharex=ax1)
 plt.plot(credit_df['date'], credit_df['credit'])
 plt.xticks(rotation='vertical')
-plt.title('Credibility Evolving Plot')
+plt.title('Credibility Score Plot')
 plt.ylabel('Credibility Score')
 # plt.xlabel('Dates')
 
