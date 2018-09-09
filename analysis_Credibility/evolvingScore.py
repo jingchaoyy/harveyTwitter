@@ -147,6 +147,7 @@ color = 'tab:red'
 ax0.set_ylabel('Credit Count', color=color)
 ax0.plot(credit_df['date'], credit_df['credit'], color=color)
 ax0.tick_params(axis='y', labelcolor=color)
+ax0.title.set_text('Event' + str(eid))
 
 ax1 = ax0.twinx()  # instantiate a second axes that shares the same x-axis
 
