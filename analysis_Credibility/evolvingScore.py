@@ -10,24 +10,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-
-
-def getEvlScore(tidList):
-    """
-    Input a list of supporting tids for certain event from credibility table, and locate their post time in original
-    tweet table
-
-    :param tidList: supporting tids
-    :return: list of post time
-    """
-    tb_out_Name = "original"
-
-    timeLine = []
-    for tid in tidList:
-        sql = "select tcreate from " + tb_out_Name + " where tid = '" + str(tid) + "'"
-        pt = queryFromDB.freeQuery(dbConnect, sql)[0][0]
-        timeLine.append(pt)
-    return timeLine
+tb_out_Name_original = "original"
+tb_out_Name_tw = "tweets"
+tb_out_Name_gazetteer = "original_credibility_improved"
+eid = 176  # event id under tb_out_Name_gazetteer
 
 
 def getData(col, eid):
@@ -38,13 +24,53 @@ def getData(col, eid):
     :param eid: event id
     :return: list of associated data
     """
-    tb_out_Name = "original_credibility_power"
-    sql = "select " + col + " from " + tb_out_Name + " where eid = '" + str(eid) + "'"
+
+    sql = "select " + col + " from " + tb_out_Name_gazetteer + " where eid = '" + str(eid) + "'"
     data = queryFromDB.freeQuery(dbConnect, sql)[0][0]
     if isinstance(data, str):
         data = data.split(', ')
     # print(col, data)
     return data
+
+
+def getRoc(tidList, colName, tbName):
+    """
+    Input a list of supporting tids for certain event from credibility table, and locate their post time in original
+    tweet table
+
+    :param tidList: supporting tids
+    :param colName: list of column
+    :return: list of post time
+    """
+
+    print(tbName)
+
+    timeLine = []
+    coors, extraCoors = [], []
+    if tbName == 'original':
+
+        # query allowing select multi value under a column all at once
+        sql = "select " + ', '.join(colName) + " from " + tbName + " where tid in (" + ','.join(tidList) + ")"
+        pt = queryFromDB.freeQuery(dbConnect, sql)
+        for i in pt:
+            date = i[0].split(' ')[0]
+            timeLine.append(date)
+            lat = i[1]
+            lng = i[2]
+            if lat != None:
+                coors.append((lat, lng))
+
+    else:  # collecting extra info from big tweets table
+        sql = "select " + ', '.join(colName) + " from " + tbName + " where t_reid in (" + ','.join(tidList) + ")"
+        print(sql)
+        pt = queryFromDB.freeQuery(dbConnect, sql)
+        if len(pt) > 0:
+            for j in pt:
+                lat = j[0]
+                lng = j[1]
+                if lat != None:
+                    extraCoors.append((lat, lng))
+    return timeLine, coors, extraCoors
 
 
 def dateCount(dList):
@@ -130,9 +156,15 @@ def dateCredit(dList, locCreitList, rtCreditList):
     return df, df_evl, df_loc, df_evl_loc, df_rt, df_evl_rt
 
 
-eid = 4  # original_credibility_damage(6904 high_high); original_credibility_improved (5562 low_high, 5536 high_high)
 supTIDs = getData("tids", eid)
-timeList = getEvlScore(supTIDs)
+records = getRoc(supTIDs, ["tcreate", "tlat", "tlon"], tb_out_Name_original)
+timeList = records[0]
+print(timeList)
+coors = records[1]
+extraCoors = getRoc(supTIDs, ["tlat", "tlon"], tb_out_Name_tw)[2]
+print('user shared coors')
+print(coors)
+print(extraCoors)
 dt = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
 dates = dt.date
 hours = dt.hour
