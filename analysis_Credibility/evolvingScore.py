@@ -38,18 +38,20 @@ def getData(col, eid):
     :param eid: event id
     :return: list of associated data
     """
-    tb_out_Name = "original_credibility_improved"
+    tb_out_Name = "original_credibility_power"
     sql = "select " + col + " from " + tb_out_Name + " where eid = '" + str(eid) + "'"
     data = queryFromDB.freeQuery(dbConnect, sql)[0][0]
     if isinstance(data, str):
         data = data.split(', ')
-    print(col, data)
+    # print(col, data)
     return data
 
 
 def dateCount(dList):
     """
     Will simply count twitter numbers for each date
+    Cen be upgrade with better sql query:
+    (e.g. select count(*), LEFT(tcreate, 10) from original group by LEFT(tcreate, 10))
 
     :param dList: date list
     :return: a pandas df with sorted dates and associated twitter counts
@@ -66,7 +68,7 @@ def dateCount(dList):
     data = {'date': dateList, 'count': count}
     df = pd.DataFrame(data)
     df = df.sort_values('date', ascending=True)
-    print(df)
+    # print(df)
     return df
 
 
@@ -100,11 +102,12 @@ def dateCredit(dList, locCreitList, rtCreditList):
     data = {'date': dateList, 'credit': creditList}
     df = pd.DataFrame(data)
     df = df.sort_values('date', ascending=True)
+    print("Event match count")
     print(df)
 
     df_evl = df
     df_evl = df_evl.assign(sum_credit=df_evl.credit.cumsum())
-    print(df_evl)
+    # print(df_evl)
 
     ''' Event match credibility score'''
     data_loc = {'date': dateList, 'credit': cl_loc}
@@ -112,6 +115,8 @@ def dateCredit(dList, locCreitList, rtCreditList):
     df_loc = df_loc.sort_values('date', ascending=True)
     df_evl_loc = df_loc
     df_evl_loc = df_evl_loc.assign(sum_credit=df_evl_loc.credit.cumsum())
+    print("Event match credibility score")
+    print(df_evl_loc)
 
     ''' Retweet credibility score'''
     data_rt = {'date': dateList, 'credit': cl_rt}
@@ -119,11 +124,13 @@ def dateCredit(dList, locCreitList, rtCreditList):
     df_rt = df_rt.sort_values('date', ascending=True)
     df_evl_rt = df_rt
     df_evl_rt = df_evl_rt.assign(sum_credit=df_evl_rt.credit.cumsum())
+    print("Retweet credibility score")
+    print(df_evl_rt)
 
     return df, df_evl, df_loc, df_evl_loc, df_rt, df_evl_rt
 
 
-eid = 5536  # original_credibility_damage(6904 high_high); original_credibility_improved (5562 low_high, 5536 high_high)
+eid = 4  # original_credibility_damage(6904 high_high); original_credibility_improved (5562 low_high, 5536 high_high)
 supTIDs = getData("tids", eid)
 timeList = getEvlScore(supTIDs)
 dt = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
@@ -132,6 +139,8 @@ hours = dt.hour
 
 ''' organize by date count'''
 count_df = dateCount(dates)
+print("Twitter count by date")
+print(count_df)
 
 ''' organize by credibility '''
 supLocCredits = getData("loc_credits", eid)
