@@ -55,6 +55,27 @@ def query(dbc, tbn, col, var):
             conn.close()
 
 
+def filterQuery(dbc, filter, filterList, colList, tbName):
+    """
+    Similar to select where OR query, using the filterList for querying all qualified record and return certain
+    attributes (colList) of the record
+
+    :param dbc: database connector
+    :param filter: which column for the filterList to work on
+    :param filterList: list for filtering
+    :param colList: column to collect after locating filtered record
+    :param tbName: table name
+    :return: certain attributes (colList) of the picked record
+    """
+    sql = "select " + ', '.join(colList) + " from " + tbName + " where " + filter + " in (" + ','.join(filterList) + ")"
+    try:
+        pt = freeQuery(dbc, sql)
+    except:
+        pt = None
+
+    return pt
+
+
 def freeQuery(dbc, sql):
     """
     Process any query that a user input
