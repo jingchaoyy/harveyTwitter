@@ -27,7 +27,7 @@ def collectTID(list):
 
 ''' db connection '''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb_in_Name = 'original_gazetteer'  # table to store gazetteers, and associated ground truth match score with tid
+tb_in_Name = 'original_gazetteer_shelter2'  # table to store gazetteers and associated ground truth match score with tid
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
 except:
@@ -41,15 +41,15 @@ places_from_tw = gazetteer_from_fuzzyMatch.places_from_tw
 places_from_url = gazetteer_from_fuzzyMatch.places_from_url
 allGazetteers = [roads_from_tw, places_from_tw, roads_from_url, places_from_url]
 
-''' match scores between gazetteers from text and ground truth '''
-roads_from_tru = gazetteer_from_fuzzyMatch.roads_from_tru
-places_from_tru = gazetteer_from_fuzzyMatch.places_from_tru
-
-roadScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(roads_from_tw, roads_from_tru)
-roadScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(roads_from_url, roads_from_tru)
-placeScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(places_from_tw, places_from_tru)
-placeScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(places_from_url, places_from_tru)
-allScores = [roadScores_tw, placeScores_tw, roadScores_url, placeScores_url]
+# ''' match scores between gazetteers from text and ground truth '''
+# roads_from_tru = gazetteer_from_fuzzyMatch.roads_from_tru
+# places_from_tru = gazetteer_from_fuzzyMatch.places_from_tru
+#
+# roadScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(roads_from_tw, roads_from_tru)
+# roadScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(roads_from_url, roads_from_tru)
+# placeScores_tw = fuzzy_gazatteer.fuzzyLocMatch_wGT(places_from_tw, places_from_tru)
+# placeScores_url = fuzzy_gazatteer.fuzzyLocMatch_wGT(places_from_url, places_from_tru)
+# allScores = [roadScores_tw, placeScores_tw, roadScores_url, placeScores_url]
 
 ''' check is tb exist, if yes, drop and recreate '''
 try:
@@ -67,10 +67,10 @@ try:
                                                "tw_place Text,"
                                                "url_road Text,"
                                                "url_place Text,"
-                                               "tw_road_score double precision,"
-                                               "tw_place_score double precision,"
-                                               "url_road_score double precision,"
-                                               "url_place_score double precision,"
+                                               # "tw_road_score double precision,"
+                                               # "tw_place_score double precision,"
+                                               # "url_road_score double precision,"
+                                               # "url_place_score double precision,"
                                                "tcreate Text,"
                                                "tID bigint);")
     conn.commit()
@@ -79,7 +79,7 @@ except:
     print("create table failed " + tb_in_Name)
 
 ''' insert all tid into the table first, can be used as key for later table update '''
-all_tid = collectTID(allScores)
+all_tid = collectTID(allGazetteers)
 for tid in range(len(all_tid)):
     try:
         cur.execute("insert into " + tb_in_Name + " (eid, tid) values (" + str(tid) + "," + str(all_tid[tid]) + ")")
@@ -100,18 +100,18 @@ for gazetteers in allGazetteers:
         except:
             print("I can't insert gz into " + tb_in_Name)
 
-''' update table with scores based on tid '''
-score_colNames = ['tw_road_score', 'tw_place_score', 'url_road_score', 'url_place_score']  # match with allScores
-for scoreset in allScores:
-    for score in scoreset:
-        print("update " + tb_in_Name + " set " + score_colNames[
-            allScores.index(scoreset)] + " = " + str(score[0]) + " where tid = " + str(score[-1]))
-        try:
-            cur.execute("update " + tb_in_Name + " set " + score_colNames[
-                allScores.index(scoreset)] + " = " + str(score[0]) + " where tid = " + str(score[-1]))
-            conn.commit()
-        except:
-            print("I can't insert score into " + tb_in_Name)
+# ''' update table with scores based on tid '''
+# score_colNames = ['tw_road_score', 'tw_place_score', 'url_road_score', 'url_place_score']  # match with allScores
+# for scoreset in allScores:
+#     for score in scoreset:
+#         print("update " + tb_in_Name + " set " + score_colNames[
+#             allScores.index(scoreset)] + " = " + str(score[0]) + " where tid = " + str(score[-1]))
+#         try:
+#             cur.execute("update " + tb_in_Name + " set " + score_colNames[
+#                 allScores.index(scoreset)] + " = " + str(score[0]) + " where tid = " + str(score[-1]))
+#             conn.commit()
+#         except:
+#             print("I can't insert score into " + tb_in_Name)
 
 ''' update table with tweet time based on tid '''
 tw_tb = "original"

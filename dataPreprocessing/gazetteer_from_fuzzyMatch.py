@@ -36,8 +36,8 @@ matchedEvents_url = queryFromDB.attQueryWJoin(dbConnect, tb1_out_Name, tb3_out_N
 roads_from_url, places_from_url = fuzzy_gazatteer.localGazetter(matchedEvents_url)
 print('fuzzy gazetteers from tweets finished', len(roads_from_url))
 
-'''Collecting shelter data from ground truth external source'''
-allData = pd.read_csv('C:\\Users\\no281\\Documents\\harVeyTwitter\\groundTruthFromExternal\\harveyShelter.csv')
-roads_from_tru = allData['Address'].values.tolist()
-places_from_tru = allData['Address Name'].values.tolist()
-print('true gazetteers from trust source finished')
+# '''Collecting shelter data from ground truth external source'''
+# allData = pd.read_csv('C:\\Users\\no281\\Documents\\harVeyTwitter\\groundTruthFromExternal\\harveyShelter.csv')
+# roads_from_tru = allData['Address'].values.tolist()
+# places_from_tru = allData['Address Name'].values.tolist()
+# print('true gazetteers from trust source finished')
