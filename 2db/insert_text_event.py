@@ -14,8 +14,8 @@ def remove(duList):
     """
     reList = []
     for i in duList:
-        if i[0] not in reList:
-            reList.append(i[0])
+        if i not in reList:
+            reList.append(i)
     return reList
 
 
@@ -55,7 +55,7 @@ except:
 try:
     cur.execute("create table " + tb_in_Name + "("
                                                "eID int PRIMARY KEY NOT NULL,"
-                                               "events Text,"
+                                               "eventkey text,"
                                                "tID bigint"
                                                ");")
     conn.commit()
@@ -65,7 +65,7 @@ except:
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
 for i in range(len(eList)):
-    data = (i, 'events', eList[i])
+    data = (i, eList[i][1], eList[i][0])
     try:
         cur.execute(sql, data)
         conn.commit()
