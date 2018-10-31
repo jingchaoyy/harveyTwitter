@@ -12,11 +12,15 @@ def remove(duList):
     :param duList:
     :return:
     """
-    reList = []
+    idList, keyList = [], []
     for i in duList:
-        if i not in reList:
-            reList.append(i)
-    return reList
+        if i[0] not in idList:
+            idList.append(i[0])
+            keyList.append(i)
+        else:
+            ind = idList.index(i[0])
+            keyList[ind] = (i[0], keyList[ind][-1]+',' + i[-1])
+    return keyList
 
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
@@ -65,7 +69,7 @@ except:
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
 for i in range(len(eList)):
-    data = (i, eList[i][1], eList[i][0])
+    data = (i, eList[i][-1], eList[i][0])
     try:
         cur.execute(sql, data)
         conn.commit()
