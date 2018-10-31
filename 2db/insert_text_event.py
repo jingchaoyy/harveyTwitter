@@ -6,6 +6,20 @@ import psycopg2.extras
 from psqlOperations import queryFromDB
 
 
+def collectTID(duList):
+    """
+
+    :param duList:
+    :return:
+    """
+    idList = []
+    for i in duList:
+        if i[0] not in idList:
+            idList.append(i[0])
+
+    return idList
+
+
 def remove(duList):
     """
 
@@ -19,13 +33,17 @@ def remove(duList):
             keyList.append(i)
         else:
             ind = idList.index(i[0])
-            keyList[ind] = (i[0], keyList[ind][-1]+',' + i[-1])
+            keyList[ind] = (i[0], keyList[ind][-1] + ',' + i[-1])
     return keyList
 
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-events = ['hotel', 'housing', 'shelter']
-tb_in_Name = 'original_events'
+events = ['black out', 'blackout', 'coned', 'dark', 'downed electrical wires', 'POWER down',
+          'POWER not expected', 'POWER off', 'POWER out', 'goodbye POWER', 'knock out POWER',
+          'lose POWER', 'losing POWER', 'lost POWER', 'no POWER', 'noPOWER', 'off the grid', 'powerless',
+          'shut off POWER', 'taken POWER', 'transformer exploding', 'transformer explosion', 'w/o POWER',
+          'wait POWER return', 'without pow']
+tb_in_Name = 'original_events_power2'
 tb_out_Name1 = "original_texteng"
 col_Text1 = "eng_text"
 tb_out_Name2 = "original_urltext"
@@ -38,7 +56,9 @@ url_Events = queryFromDB.likeQuery(dbConnect, tb_out_Name2, col_Text2, events)
 print('event extraction from tws finished', len(url_Events))
 
 eList = tw_Events + url_Events
-eList = remove(eList)
+eList_tw = remove(tw_Events)
+eList_url = remove(url_Events)
+keys = [eList_tw, eList_url]
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
@@ -59,7 +79,8 @@ except:
 try:
     cur.execute("create table " + tb_in_Name + "("
                                                "eID int PRIMARY KEY NOT NULL,"
-                                               "eventkey text,"
+                                               "tw_key text,"
+                                               "url_key text,"
                                                "tID bigint"
                                                ");")
     conn.commit()
@@ -67,13 +88,26 @@ try:
 except:
     print("create table failed " + tb_in_Name)
 
-sql = "insert into " + tb_in_Name + " values (%s, %s, %s)"
-for i in range(len(eList)):
-    data = (i, eList[i][-1], eList[i][0])
+''' insert all tid into the table first, can be used as key for later table update '''
+all_tid = collectTID(eList)
+for tid in range(len(all_tid)):
     try:
-        cur.execute(sql, data)
+        cur.execute("insert into " + tb_in_Name + " (eid, tid) values (" + str(tid) + "," + str(all_tid[tid]) + ")")
         conn.commit()
     except:
-        print("I can't insert into " + tb_in_Name)
+        print("I can't insert tid into " + tb_in_Name)
+
+''' update table with keys based on tid '''
+key_colNames = ['tw_key', 'url_key']
+for key in keys:
+    for k in key:
+        print("update " + tb_in_Name + " set " + key_colNames[
+            keys.index(key)] + " = '" + k[-1] + "' where tid = " + str(k[0]))
+        try:
+            cur.execute("update " + tb_in_Name + " set " + key_colNames[
+                keys.index(key)] + " = '" + k[-1] + "' where tid = " + str(k[0]))
+            conn.commit()
+        except:
+            print("I can't insert gz into " + tb_in_Name)
 
 conn.close()
