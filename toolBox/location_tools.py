@@ -7,6 +7,7 @@ import geograpy
 import re
 from time import sleep
 import googlemaps
+import math
 
 gmaps = googlemaps.Client(key='AIzaSyByJv_mMoTZ9DvB4XeH3Zs4zYg4cKEg2qU')
 
@@ -227,3 +228,19 @@ def roadToCoor(rn):
     # print(loc, g.latlng)
     coors = (coor_Lat, coor_Lng, bbox_NE_Lat, bbox_NE_Lng, bbox_SW_Lat, bbox_SW_Lng)
     return zipCode, coors
+
+
+def eucDist(coor1, coor2):
+    """
+
+    :param coor1: (lat1, lng1)
+    :param coor2: (lat2, lng2)
+    :return: euclidean distance
+    """
+    x1 = coor1[1]
+    y1 = coor1[0]
+    x2 = coor2[1]
+    y2 = coor2[0]
+
+    dist = math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
+    return dist
