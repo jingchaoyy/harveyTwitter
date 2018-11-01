@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2db/insert_gazetteer.py" beforeDir="false" afterPath="$PROJECT_DIR$/2db/insert_gazetteer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/psqlOperations/queryFromDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/psqlOperations/queryFromDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/toolBox/url_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/toolBox/url_tools.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,20 +19,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="insert_text_event.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="82" column="55" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="insert_gazetteer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/2db/insert_gazetteer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="380">
+              <caret line="34" column="60" lean-forward="true" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+              <folding>
+                <element signature="e#106#128#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,8 +34,8 @@
       <file leaf-file-name="gazetteer_from_fuzzyMatch.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+            <state relative-caret-position="543">
+              <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
               <folding>
                 <element signature="e#223#261#0" expanded="true" />
               </folding>
@@ -49,20 +43,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="queryFromDB.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
+      <file leaf-file-name="url_tools.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="429" column="48" selection-start-line="429" selection-start-column="42" selection-end-line="429" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fuzzy_gazatteer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/toolBox/fuzzy_gazatteer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            <state relative-caret-position="460">
+              <caret line="89" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -116,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/testbed.py" />
         <option value="$PROJECT_DIR$/geograpy/places.py" />
         <option value="$PROJECT_DIR$/analysis/location_from_tweets.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/re.py" />
@@ -145,7 +129,6 @@
         <option value="$PROJECT_DIR$/dataPreprocessing/shelterTruth_from_external.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/location_from_urls.py" />
         <option value="$PROJECT_DIR$/2db/insert_locMatch_score.py" />
-        <option value="$PROJECT_DIR$/toolBox/url_tools.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/locMatch_with_GroundTruthEvent.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/location_from_fuzzyMatch.py" />
         <option value="$PROJECT_DIR$/2db/insert_GZMatch_score.py" />
@@ -164,9 +147,11 @@
         <option value="$PROJECT_DIR$/analysis_Credibility/evolvingScore.py" />
         <option value="$PROJECT_DIR$/analysis_SocialScale/socialNetwork.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_event.py" />
-        <option value="$PROJECT_DIR$/2db/insert_gazetteer.py" />
         <option value="$PROJECT_DIR$/psqlOperations/queryFromDB.py" />
+        <option value="$PROJECT_DIR$/dataPreprocessing/ekey_Loc_matchFilter.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" />
+        <option value="$PROJECT_DIR$/toolBox/url_tools.py" />
+        <option value="$PROJECT_DIR$/2db/insert_gazetteer.py" />
       </list>
     </option>
   </component>
@@ -386,7 +371,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.15542677" />
@@ -394,11 +379,11 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.37908497" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.37283236" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.2947977" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.25722542" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.27938342" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3383686" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39980733" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -458,6 +443,11 @@
           <line>410</line>
           <option name="timeStamp" value="150" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="160" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -466,17 +456,24 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="151" />
+      <option name="time" value="161" />
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="matchedEvents_url[7]" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="watch">
+      <expression>
+        <expression-string>matchedEvents_url[7]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/splinter/browser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataReady/webScraping.py" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor" />
@@ -697,20 +694,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/toolBox/location_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="949">
-          <caret line="140" column="35" lean-forward="true" selection-start-line="140" selection-start-column="35" selection-end-line="140" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="940">
-          <caret line="50" column="5" selection-start-line="50" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/toolBox/events_from_tweets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
@@ -728,20 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="82" column="55" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_gazetteer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/toolBox/fuzzy_gazatteer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -752,14 +721,55 @@
     <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
-          <caret line="429" column="48" selection-start-line="429" selection-start-column="42" selection-end-line="429" selection-end-column="48" />
+          <caret line="315" column="4" selection-start-line="315" selection-start-column="4" selection-end-line="315" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toolBox/location_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding>
+            <element signature="e#52#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/ekey_Loc_matchFilter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_gazetteer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="34" column="60" lean-forward="true" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+          <folding>
+            <element signature="e#106#128#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="23" column="46" lean-forward="true" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+        <state relative-caret-position="543">
+          <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
           <folding>
             <element signature="e#223#261#0" expanded="true" />
           </folding>
