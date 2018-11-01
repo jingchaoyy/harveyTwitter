@@ -21,7 +21,7 @@ def assignCredit(events):
     :param events: event list with ['eid', 'road_events', 'place_events', 'tids']
     :return: credibility based on correponding tids
     """
-    tb2_out_Name = "original_gazetteer"
+    tb2_out_Name = "original_gazetteer_power3"
     tb3_out_Name = "original"
     col = "tid"
     eventCredits = []
@@ -91,7 +91,7 @@ def assignCredit(events):
     return eventCredits
 
 
-tb1_out_Name = "original_credibility_improved"
+tb1_out_Name = "original_credibility_power3"
 colList1 = ['eid', 'road_events', 'place_events', 'tids']
 
 data_events = queryFromDB.get_multiColData(dbConnect, tb1_out_Name, colList1)

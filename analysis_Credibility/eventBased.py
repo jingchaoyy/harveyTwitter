@@ -162,7 +162,7 @@ def eventFinalize(eventList):
 
 '''databsed connection variables'''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-gz_tb = "original_gazetteer"
+gz_tb = "original_gazetteer_power3"
 col1 = "tw_road"
 col2 = "tw_place"
 col3 = "url_road"

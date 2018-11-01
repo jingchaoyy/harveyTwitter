@@ -7,7 +7,7 @@ insert all events with location, and associated credibility
 from analysis_Credibility import eventBased
 import psycopg2.extras
 
-tb_in_Name = 'original_credibility_improved'
+tb_in_Name = 'original_credibility_power3'
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
