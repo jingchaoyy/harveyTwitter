@@ -7,7 +7,7 @@ then assign scores based on ground truth (jellyfish fuzzy match)
 """
 # import pandas as pd
 from psqlOperations import queryFromDB
-from toolBox import fuzzy_gazatteer
+from toolBox import fuzzy_gazatteer, url_tools
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 # table storing event associated tid under same theme
@@ -30,7 +30,14 @@ print('fuzzy gazetteers from tweets finished', len(places_from_tw))
 '''select harvey relief events and shelter events from table original_events with url text from table test_urltext'''
 matchedEvents_url = queryFromDB.attQueryWJoin2(dbConnect, tb1_out_Name, tb3_out_Name, "url_key", match_clo,
                                                tb3_clo_text, match_clo)
-roads_from_url, places_from_url = fuzzy_gazatteer.localGazetter(matchedEvents_url)
+
+filtered = []
+for i in matchedEvents_url:
+    if i[0] is not None:
+        filter = url_tools.paragraphPicker(i)
+        filtered.append(filter)
+
+roads_from_url, places_from_url = fuzzy_gazatteer.localGazetter(filtered)
 print('fuzzy gazetteers from tweets finished', len(roads_from_url))
 
 # '''Collecting shelter data from ground truth external source'''
