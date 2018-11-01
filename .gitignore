@@ -1,5 +1,5 @@
 geograpy/data/
-
+.idea\
 geograpy/locs.db
 venv/
 jQuery-Plugin-To-Convert-HTML-Table-To-CSV-tabletoCSV
