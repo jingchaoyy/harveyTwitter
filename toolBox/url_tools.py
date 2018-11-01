@@ -68,3 +68,25 @@ def textExtractor(urlList):
                 except:
                     print('url break, continue')
     return textList
+
+
+def paragraphPicker(record):
+    """
+
+    :param record: record(keys, article)
+    :return: the specific paragraphs that involve the keys
+    """
+    keys = record[0]
+    artical = record[1]
+    tid = record[2]
+
+    result = ('', '', tid)
+
+    keyList = keys.split(',')
+    paragraphs = artical.split('\n\n')
+    for paragraph in paragraphs:
+        for key in keyList:
+            if key.lower() in paragraph.lower():
+                result = (result[0] + ',' + key, result[1] + '\n\n' + paragraph, tid)
+
+    return result
