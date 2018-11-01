@@ -27,7 +27,7 @@ def collectTID(list):
 
 ''' db connection '''
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb_in_Name = 'original_gazetteer_power2'  # table to store gazetteers and associated ground truth match score with tid
+tb_in_Name = 'original_gazetteer_power3'  # table to store gazetteers and associated ground truth match score with tid
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
 except:
