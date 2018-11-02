@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2db/insert_gazetteer.py" beforeDir="false" afterPath="$PROJECT_DIR$/2db/insert_gazetteer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/toolBox/url_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/toolBox/url_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2db/insert_event_selfEva.py" beforeDir="false" afterPath="$PROJECT_DIR$/2db/insert_event_selfEva.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,35 +18,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="insert_gazetteer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/2db/insert_gazetteer.py">
+      <file leaf-file-name="spatialAggregation.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="34" column="60" lean-forward="true" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+            <state relative-caret-position="357">
+              <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
               <folding>
-                <element signature="e#106#128#0" expanded="true" />
+                <element signature="e#270#308#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gazetteer_from_fuzzyMatch.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="543">
-              <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-              <folding>
-                <element signature="e#223#261#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="url_tools.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="89" selection-start-line="89" selection-end-line="89" />
             </state>
           </provider>
         </entry>
@@ -101,7 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/geograpy/places.py" />
         <option value="$PROJECT_DIR$/analysis/location_from_tweets.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/re.py" />
         <option value="$PROJECT_DIR$/articalExtractor/artical_from_url.py" />
@@ -136,30 +113,31 @@
         <option value="$PROJECT_DIR$/2db/insert_events.py" />
         <option value="$PROJECT_DIR$/toolBox/events_from_tweets.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/locMatch_with_selfEvaluate.py" />
-        <option value="$PROJECT_DIR$/toolBox/location_tools.py" />
-        <option value="$PROJECT_DIR$/analysis_Credibility/eventBased.py" />
-        <option value="$PROJECT_DIR$/2db/insert_event_wCredit.py" />
-        <option value="$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py" />
-        <option value="$PROJECT_DIR$/2db/insert_event_selfEva.py" />
         <option value="$PROJECT_DIR$/psqlOperations/queryClean.py" />
         <option value="$PROJECT_DIR$/toolBox/fuzzy_gazatteer.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/evolvingScore.py" />
         <option value="$PROJECT_DIR$/analysis_SocialScale/socialNetwork.py" />
         <option value="$PROJECT_DIR$/2db/insert_text_event.py" />
-        <option value="$PROJECT_DIR$/psqlOperations/queryFromDB.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/ekey_Loc_matchFilter.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" />
         <option value="$PROJECT_DIR$/toolBox/url_tools.py" />
         <option value="$PROJECT_DIR$/2db/insert_gazetteer.py" />
+        <option value="$PROJECT_DIR$/analysis_Credibility/eventBased.py" />
+        <option value="$PROJECT_DIR$/2db/insert_event_wCredit.py" />
+        <option value="$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py" />
+        <option value="$PROJECT_DIR$/2db/insert_event_selfEva.py" />
+        <option value="$PROJECT_DIR$/psqlOperations/queryFromDB.py" />
+        <option value="$PROJECT_DIR$/toolBox/location_tools.py" />
+        <option value="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="24" />
-    <option name="y" value="112" />
-    <option name="width" value="1903" />
-    <option name="height" value="977" />
+    <option name="x" value="458" />
+    <option name="y" value="-9" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -240,8 +218,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.insert_gazetteer">
-    <configuration name="evolvingScore" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.spatialAggregation">
+    <configuration name="eventBased" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -253,13 +231,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis_Credibility/evolvingScore.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis_Credibility/eventBased.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="gazetteer_from_fuzzyMatch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="eventBased_selfEvaluate" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -267,35 +245,17 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataPreprocessing" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis_Credibility" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="insert_gazetteer" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="harveyTwitter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/2db" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2db/insert_gazetteer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="insert_text_event" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="insert_event_selfEva" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -307,13 +267,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2db/insert_text_event.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2db/insert_event_selfEva.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="socialNetwork" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="insert_event_wCredit" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -321,30 +281,48 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis_SocialScale" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/2db" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis_SocialScale/socialNetwork.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2db/insert_event_wCredit.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="spatialAggregation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="harveyTwitter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis_Credibility" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.evolvingScore" />
-      <item itemvalue="Python.socialNetwork" />
-      <item itemvalue="Python.insert_text_event" />
-      <item itemvalue="Python.gazetteer_from_fuzzyMatch" />
-      <item itemvalue="Python.insert_gazetteer" />
+      <item itemvalue="Python.insert_event_wCredit" />
+      <item itemvalue="Python.eventBased_selfEvaluate" />
+      <item itemvalue="Python.insert_event_selfEva" />
+      <item itemvalue="Python.spatialAggregation" />
+      <item itemvalue="Python.eventBased" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.insert_gazetteer" />
-        <item itemvalue="Python.gazetteer_from_fuzzyMatch" />
-        <item itemvalue="Python.insert_text_event" />
-        <item itemvalue="Python.socialNetwork" />
-        <item itemvalue="Python.evolvingScore" />
+        <item itemvalue="Python.spatialAggregation" />
+        <item itemvalue="Python.eventBased" />
+        <item itemvalue="Python.insert_event_selfEva" />
+        <item itemvalue="Python.eventBased_selfEvaluate" />
+        <item itemvalue="Python.insert_event_wCredit" />
       </list>
     </recent_temporary>
   </component>
@@ -371,7 +349,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.15542677" />
@@ -379,11 +357,11 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.37908497" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.37283236" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.25722542" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" weight="0.44412333" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.27938342" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39980733" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39788055" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -434,19 +412,19 @@
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/psqlOperations/queryFromDB.py</url>
-          <line>402</line>
-          <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/psqlOperations/queryFromDB.py</url>
-          <line>410</line>
-          <option name="timeStamp" value="150" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py</url>
           <line>39</line>
           <option name="timeStamp" value="160" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/analysis_Credibility/eventBased.py</url>
+          <line>170</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py</url>
+          <line>68</line>
+          <option name="timeStamp" value="178" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -456,7 +434,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="161" />
+      <option name="time" value="179" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -474,10 +452,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dataReady/webScraping.py" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/geograpy/places.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -500,13 +474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="320">
           <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/level1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1339">
-          <caret line="107" selection-start-line="107" selection-end-line="107" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -555,13 +522,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/locMatch_with_GroundTruthEvent.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/analysis_Credibility/locMatch_with_selfEvaluate.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/psycopg2/extras.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -574,13 +534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="241" selection-start-line="241" selection-end-line="241" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_event_selfEva.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -605,13 +558,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_event_wCredit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="43" column="39" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -621,20 +567,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/2db/insert_selfEva.py">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/eventBased.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1730">
-          <caret line="95" column="90" selection-start-line="95" selection-start-column="90" selection-end-line="95" selection-end-column="90" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="77" column="25" selection-start-line="77" selection-start-column="25" selection-end-line="77" selection-end-column="25" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/2db/insert_text_coor.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -674,16 +606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#103#141#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/analysis_SocialScale/socialNetwork.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -718,13 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="315" column="4" selection-start-line="315" selection-start-column="4" selection-end-line="315" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
@@ -732,27 +647,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/toolBox/location_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding>
-            <element signature="e#52#67#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/ekey_Loc_matchFilter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
         </state>
       </provider>
     </entry>
@@ -768,10 +666,109 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
+        <state relative-caret-position="423">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
           <folding>
             <element signature="e#223#261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/level1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2140">
+          <caret line="107" selection-start-line="107" selection-end-line="107" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/locMatch_with_GroundTruthEvent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="32" column="34" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/urllib3/connectionpool.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2044">
+          <caret line="599" selection-start-line="599" selection-end-line="599" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1069">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_event_wCredit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+          <folding>
+            <element signature="e#113#156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_event_selfEva.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="41" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="41" />
+          <folding>
+            <element signature="e#151#207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="31" column="55" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="31" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/eventBased.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="295">
+          <caret line="170" selection-start-line="170" selection-end-line="170" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="483" selection-start-line="483" selection-end-line="483" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toolBox/location_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="232" column="26" selection-start-line="232" selection-start-column="26" selection-end-line="232" selection-end-column="26" />
+          <folding>
+            <element signature="e#52#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="228" column="112" lean-forward="true" selection-start-line="228" selection-start-column="71" selection-end-line="228" selection-end-column="112" />
+          <folding>
+            <element signature="e#103#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+          <folding>
+            <element signature="e#270#308#0" expanded="true" />
           </folding>
         </state>
       </provider>
