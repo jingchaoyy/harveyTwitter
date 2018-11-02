@@ -237,10 +237,10 @@ def eucDist(coor1, coor2):
     :param coor2: (lat2, lng2)
     :return: euclidean distance
     """
-    x1 = coor1[1]
-    y1 = coor1[0]
-    x2 = coor2[1]
-    y2 = coor2[0]
+    x1 = float(coor1[1])
+    y1 = float(coor1[0])
+    x2 = float(coor2[1])
+    y2 = float(coor2[0])
 
-    dist = math.sqrt((x2 - x1) ^ 2 + (y2 - y1) ^ 2)
+    dist = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
     return dist
