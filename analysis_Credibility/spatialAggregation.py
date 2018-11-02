@@ -20,9 +20,9 @@ def allCoors(tb):
     :param tb:
     :return:
     """
-    sql = "select eid, concat(lat, ', ', lng) as coor, tids from " + tb
+    sql = "select eid, concat(lat, ', ', lng) as coor, tids from " + tb + " where lat is not null"
     print(sql)
-    coorList = queryFromDB.freeQuery(dbConnect, sql)[0][0]
+    coorList = queryFromDB.freeQuery(dbConnect, sql)
 
     return coorList
 
@@ -40,15 +40,20 @@ def findsubsets(S, k):
 def checkDist(setList):
     """
 
-    :param setList:
+    :param setList: e.g. ((437, '38.9029744, -77.0303124', '901611085610016769, 901871542220533760'),
+    (570, '28.0427866, -97.0450004', '901291243258425344, 906344003137814529, 904707460770004992, 901297908896505856'))
     :return:
     """
     for set in setList:
-        coor1 = set[0]
-        coor2 = set[1]
+        rec1 = set[0]
+        rec2 = set[1]
+        coor1 = rec1[1].split(',')
+        coor2 = rec2[1].split(',')
         dist = location_tools.eucDist(coor1, coor2)
         if dist <= 0.01:
-            pass
+            tids1 = rec1[2]
+            tids2 = rec2[2]
+            checkTime(tids1, tids2)
 
 
 def checkTime(tidList1, tidList2):
@@ -58,6 +63,11 @@ def checkTime(tidList1, tidList2):
     :param tidList2:
     :return:
     """
+    sql1 = "select tcreate from original where tid in " + "(" + tidList1 + ")"
+    sql2 = "select tcreate from original where tid in " + "(" + tidList2 + ")"
+    timeSpan1 = queryFromDB.freeQuery(dbConnect, sql1)
+    timeSpan2 = queryFromDB.freeQuery(dbConnect, sql2)
+    # todo: how to merge after having the two time spans
 
 
 coors = allCoors(cre_tb)
