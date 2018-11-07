@@ -275,6 +275,20 @@ def get_multiColData(dbc, tbn, colList):
             conn.close()
 
 
+def get_multiColData_where(dbc, tbn, colList, col):
+    """
+    Input event id from credibility table, and return a list of supporting tids
+    :param col: column name
+    :param eid: event id
+    :return: list of associated data
+    """
+    sql = "select " + ",".join(colList) + " from " + tbn + " where eid = '" + str(col) + "'"
+    data = freeQuery(dbc, sql)[0]
+    # if isinstance(data, str):
+    #     data = data.split(', ')
+    return data
+
+
 def joinQuery(dbc, tbn1, tbn2, col1, col1_1, col2_1):
     """
     :param dbc: db connector
