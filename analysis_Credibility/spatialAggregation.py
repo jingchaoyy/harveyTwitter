@@ -3,8 +3,9 @@ Created on 11/1/2018
 @author: Jingchao Yang
 
 Post direct location merge (the 3-step merge in eventBased.py)
-Using power incidents as example. Those events that happened in the same day and within 1km (0.01 degree) will be
-aggregated and treated as one incident.
+Using power incidents as example. Those events that happened within 1km (0.01 degree) will be
+aggregated and treated as one incident. The our put from this will be stored separately as index for credibility table,
+which can be used as dictionary to match back to credibility table to aggregate info
 """
 from psqlOperations import queryFromDB
 import itertools
@@ -14,7 +15,7 @@ dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='12
 cre_tb = "original_credibility_power3"
 
 
-def allCoors(tb):
+def allData(tb):
     """
 
     :param tb:
@@ -37,39 +38,47 @@ def findsubsets(S, k):
     return set(itertools.combinations(S, k))
 
 
-def checkDist(setList):
+def aggByDist(setList):
     """
 
     :param setList: e.g. ((437, '38.9029744, -77.0303124', '901611085610016769, 901871542220533760'),
     (570, '28.0427866, -97.0450004', '901291243258425344, 906344003137814529, 904707460770004992, 901297908896505856'))
-    :return:
+    :return: merged EIDs
     """
+    mergedEID, eids = [], []
     for set in setList:
         rec1 = set[0]
         rec2 = set[1]
+        eid1 = rec1[0]
+        eid2 = rec2[0]
         coor1 = rec1[1].split(',')
         coor2 = rec2[1].split(',')
         dist = location_tools.eucDist(coor1, coor2)
+
         if dist <= 0.01:
-            tids1 = rec1[2]
-            tids2 = rec2[2]
-            checkTime(tids1, tids2)
+            if eid1 not in eids and eid2 not in eids:
+                mergedEID.append({eid1, eid2})
+                eids.append(eid1)
+                eids.append(eid2)
+            elif eid1 not in eids and eid2 in eids:
+                for merged in mergedEID:
+                    if eid2 in merged:
+                        merged.add(eid1)
+                        eids.append(eid1)
+            elif eid1 in eids and eid2 not in eids:
+                for merged in mergedEID:
+                    if eid1 in merged:
+                        merged.add(eid2)
+                        eids.append(eid2)
+            else:
+                continue
+    return mergedEID, eids
 
 
-def checkTime(tidList1, tidList2):
-    """
-
-    :param tidList1:
-    :param tidList2:
-    :return:
-    """
-    sql1 = "select tcreate from original where tid in " + "(" + tidList1 + ")"
-    sql2 = "select tcreate from original where tid in " + "(" + tidList2 + ")"
-    timeSpan1 = queryFromDB.freeQuery(dbConnect, sql1)
-    timeSpan2 = queryFromDB.freeQuery(dbConnect, sql2)
-    # todo: how to merge after having the two time spans
-
-
-coors = allCoors(cre_tb)
-allSets = findsubsets(coors, 2)  # pair all coordinates fo calculate spatial distance
-aggregation = checkDist(allSets)
+data = allData(cre_tb)
+allIDs = [d[0] for d in data]
+allSets = findsubsets(data, 2)  # pair all coordinates fo calculate spatial distance
+aggregation, aggIDs = aggByDist(allSets)
+otherIDs = set(allIDs) - set(aggIDs)
+format = [{i} for i in otherIDs]
+resultSet = aggregation + format
