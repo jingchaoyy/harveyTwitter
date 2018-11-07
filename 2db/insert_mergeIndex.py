@@ -28,20 +28,29 @@ try:
                                                "eID int PRIMARY KEY NOT NULL,"
                                                "locMerge_ID int,"
                                                "original_ID text,"
-                                               "time text"
+                                               "time text,"
+                                               "loc_Credit double precision,"
+                                               "rt_Credit double precision,"
+                                               "loc_Credits double precision[],"
+                                               "rt_Credits double precision[]"
                                                ");")
     conn.commit()
     print("create table succeeded " + tb_in_Name)
 except:
     print("create table failed " + tb_in_Name)
 
-sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s)"
+sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s,%s, %s, %s, %s)"
 eList = spatialAggregation.resultSet
 for i in range(len(eList)):
     locMerge_ID = eList[i].locMergeID
     original_ID = ','.join([str(j) for j in eList[i].orgID])
     time = ','.join(eList[i].time)
-    data = (i, locMerge_ID, original_ID, time)
+    loc_Credits = eList[i].loc_credits
+    rt_Credits = eList[i].rt_credits
+    loc_Credit = sum(loc_Credits)
+    rt_Credit = sum(rt_Credits)
+
+    data = (i, locMerge_ID, original_ID, time, loc_Credit, rt_Credit, loc_Credits, rt_Credits)
     try:
         cur.execute(sql, data)
         conn.commit()
