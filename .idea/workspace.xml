@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2db/insert_event_selfEva.py" beforeDir="false" afterPath="$PROJECT_DIR$/2db/insert_event_selfEva.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,13 +16,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="spatialAggregation.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="spatialAggregation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+            <state relative-caret-position="410">
+              <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
               <folding>
                 <element signature="e#270#308#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="insert_mergeIndex.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/2db/insert_mergeIndex.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="251">
+              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+              <folding>
+                <element signature="e#52#103#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,7 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/analysis/location_from_tweets.py" />
         <option value="$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/re.py" />
         <option value="$PROJECT_DIR$/articalExtractor/artical_from_url.py" />
         <option value="$PROJECT_DIR$/2db/insert_event.py" />
@@ -130,14 +139,15 @@
         <option value="$PROJECT_DIR$/psqlOperations/queryFromDB.py" />
         <option value="$PROJECT_DIR$/toolBox/location_tools.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" />
+        <option value="$PROJECT_DIR$/2db/insert_mergeIndex.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="458" />
-    <option name="y" value="-9" />
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
+    <option name="x" value="60" />
+    <option name="y" value="-18" />
+    <option name="width" value="1903" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -218,7 +228,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.spatialAggregation">
+  <component name="RunManager" selected="Python.insert_mergeIndex">
     <configuration name="eventBased" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -237,7 +247,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="eventBased_selfEvaluate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="gazetteer_from_fuzzyMatch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -245,11 +255,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis_Credibility" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataPreprocessing" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -273,7 +283,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="insert_event_wCredit" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="insert_mergeIndex" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -285,7 +295,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2db/insert_event_wCredit.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2db/insert_mergeIndex.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -310,19 +320,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.insert_event_wCredit" />
-      <item itemvalue="Python.eventBased_selfEvaluate" />
       <item itemvalue="Python.insert_event_selfEva" />
       <item itemvalue="Python.spatialAggregation" />
       <item itemvalue="Python.eventBased" />
+      <item itemvalue="Python.gazetteer_from_fuzzyMatch" />
+      <item itemvalue="Python.insert_mergeIndex" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.insert_mergeIndex" />
         <item itemvalue="Python.spatialAggregation" />
+        <item itemvalue="Python.gazetteer_from_fuzzyMatch" />
         <item itemvalue="Python.eventBased" />
         <item itemvalue="Python.insert_event_selfEva" />
-        <item itemvalue="Python.eventBased_selfEvaluate" />
-        <item itemvalue="Python.insert_event_wCredit" />
       </list>
     </recent_temporary>
   </component>
@@ -357,11 +367,11 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.37908497" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49947312" weight="0.37283236" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" weight="0.44412333" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.46146435" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.27938342" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39788055" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3468208" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -412,19 +422,19 @@
           <option name="timeStamp" value="146" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="160" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/analysis_Credibility/eventBased.py</url>
           <line>170</line>
           <option name="timeStamp" value="172" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py</url>
-          <line>68</line>
-          <option name="timeStamp" value="178" />
+          <url>file://$PROJECT_DIR$/2db/insert_mergeIndex.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/2db/insert_mergeIndex.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="192" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -434,7 +444,7 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="179" />
+      <option name="time" value="193" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
@@ -452,16 +462,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/geograpy/places.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="158" column="65" selection-start-line="158" selection-start-column="56" selection-end-line="158" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/geograpy/bin/geograpy-nltk">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -640,13 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/ekey_Loc_matchFilter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -660,16 +653,6 @@
           <caret line="34" column="60" lean-forward="true" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
           <folding>
             <element signature="e#106#128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="e#223#261#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -692,33 +675,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2044">
           <caret line="599" selection-start-line="599" selection-end-line="599" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1069">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_event_wCredit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-          <folding>
-            <element signature="e#113#156#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_event_selfEva.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="9" column="41" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="41" />
-          <folding>
-            <element signature="e#151#207#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -763,12 +719,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_event_selfEva.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
+          <folding>
+            <element signature="e#151#207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_text_event.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="940">
+          <caret line="60" column="28" lean-forward="true" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/toolBox/url_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="72" column="4" selection-start-line="72" selection-start-column="4" selection-end-line="72" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#223#261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_event_wCredit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="54" column="12" lean-forward="true" selection-start-line="6" selection-end-line="54" selection-end-column="12" />
+          <folding>
+            <element signature="e#113#156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="69" column="56" selection-start-line="69" selection-start-column="56" selection-end-line="69" selection-end-column="56" />
+        <state relative-caret-position="410">
+          <caret line="79" column="39" selection-start-line="79" selection-start-column="39" selection-end-line="79" selection-end-column="39" />
           <folding>
             <element signature="e#270#308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_mergeIndex.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+          <folding>
+            <element signature="e#52#103#0" expanded="true" />
           </folding>
         </state>
       </provider>
