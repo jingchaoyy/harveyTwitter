@@ -23,28 +23,17 @@ class Event(object):
     locMergeID = 0
     orgID = []
     time = []
+    loc_credits = []
+    rt_credits = []
 
     # The class "constructor" - It's actually an initializer
-    def __init__(self, locMergeID, orgID, time):
+    def __init__(self, locMergeID, orgID, time, loc_credits, rt_credits):
         # self.eventID = eventID
         self.locMergeID = locMergeID
         self.orgID = orgID
         self.time = time
-
-
-def getData(col, eid, tb):
-    """
-    Input event id from credibility table, and return a list of supporting tids
-    :param col: column name
-    :param eid: event id
-    :return: list of associated data
-    """
-    sql = "select " + col + " from " + tb + " where eid = '" + str(eid) + "'"
-    data = queryFromDB.freeQuery(dbConnect, sql)[0][0]
-    if isinstance(data, str):
-        data = data.split(', ')
-    print(col, data)
-    return data
+        self.loc_credits = loc_credits
+        self.rt_credits = rt_credits
 
 
 def getPosttime(tidList, tb):
@@ -133,18 +122,25 @@ def sepByTime(locmerge):
     orgIDS = locmerge[1]
     sep, sepDate = [], []
     for oid in orgIDS:
-        supTIDs = getData("tids", oid, cre_tb)
+        data = queryFromDB.get_multiColData_where(dbConnect, cre_tb, ["tids", "loc_credits", "rt_credits"], oid)
+        supTIDs = data[0].split(', ')
+        loc_credits = data[1]
+        rt_credits = data[2]
         timeList = getPosttime(supTIDs, org_tb)
         # dt = pd.to_datetime(timeList)  # from 12h convert to 24h, and using pandas datetime object
-        for t in timeList:
-            date = t.split(' ')[0]
+        for t in range(len(timeList)):
+            date = timeList[t].split(' ')[0]
+            loc_credit = loc_credits[t]
+            rt_credit = rt_credits[t]
             if date not in sepDate:
-                event = Event(locMergeID, [oid], [t])
+                event = Event(locMergeID, [oid], [timeList[t]], [loc_credit], [rt_credit])
                 sepDate.append(date)
                 sep.append(event)
             else:
                 ind = sepDate.index(date)
-                sep[ind].time.append(t)
+                sep[ind].time.append(timeList[t])
+                sep[ind].loc_credits.append(loc_credit)
+                sep[ind].rt_credits.append(rt_credit)
                 if oid not in sep[ind].orgID:
                     sep[ind].orgID.append(oid)
 
@@ -163,3 +159,5 @@ for merge in range(len(mergedSet)):
     mergedSet[merge] = (merge, mergedSet[merge])  # e.g. (0, {463, 207})
     result = sepByTime(mergedSet[merge])
     resultSet = resultSet + result
+# for i in resultSet:
+#     print(i.locMergeID, i.orgID, i.time, i.loc_credits, i.rt_credits)
