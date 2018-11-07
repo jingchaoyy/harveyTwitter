@@ -26,18 +26,22 @@ except:
 try:
     cur.execute("create table " + tb_in_Name + "("
                                                "eID int PRIMARY KEY NOT NULL,"
-                                               "merge_dict text"
+                                               "locMerge_ID int,"
+                                               "original_ID text,"
+                                               "time text"
                                                ");")
     conn.commit()
     print("create table succeeded " + tb_in_Name)
 except:
     print("create table failed " + tb_in_Name)
 
-sql = "insert into " + tb_in_Name + " values (%s, %s)"
+sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s)"
 eList = spatialAggregation.resultSet
 for i in range(len(eList)):
-    eList[i] = {str(j) for j in eList[i]}
-    data = (i, ', '.join(eList[i]))
+    locMerge_ID = eList[i].locMergeID
+    original_ID = ','.join([str(j) for j in eList[i].orgID])
+    time = ','.join(eList[i].time)
+    data = (i, locMerge_ID, original_ID, time)
     try:
         cur.execute(sql, data)
         conn.commit()
