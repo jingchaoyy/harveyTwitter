@@ -28,6 +28,14 @@ class Event(object):
 
     # The class "constructor" - It's actually an initializer
     def __init__(self, locMergeID, orgID, time, loc_credits, rt_credits):
+        """
+
+        :param locMergeID: newly generated id after gazetteer/ event merged based on location
+        :param orgID: list of original gazetteer/ event id in gazetteer table
+        :param time: posting time list
+        :param loc_credits: list contain location credibility for each supporting tweet
+        :param rt_credits: list contain retweet credibility for each supporting tweet
+        """
         # self.eventID = eventID
         self.locMergeID = locMergeID
         self.orgID = orgID
