@@ -28,9 +28,9 @@ def assignCredit(events):
     resourceType = ['tw', 'url']  # sources list
 
     ''' getting max re tweet number from whole database, for later normalization '''
-    sql = 'select max(t_recount) from ' + tb3_out_Name
-    maxRT = queryFromDB.freeQuery(dbConnect, sql)[0][0]
-    print('Max re tweet number:', maxRT)
+    # sql = 'select max(t_recount) from ' + tb3_out_Name
+    # maxRT = queryFromDB.freeQuery(dbConnect, sql)[0][0]
+    # print('Max re tweet number:', maxRT)
 
     for event in events:
         eid = event[0]
@@ -48,7 +48,7 @@ def assignCredit(events):
             ori = queryFromDB.query(dbConnect, tb3_out_Name, col, tid)
             ori = ori[0]
             rT = ori[10]  # column: t_recount, for retweet count
-            rtCredit.append(rT / maxRT)
+            rtCredit.append(rT)
 
             ''' get extracted gazetteers for the corresponding tid '''
             tw_roads, tw_places, url_roads, url_places = [], [], [], []
