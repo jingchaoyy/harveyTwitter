@@ -27,8 +27,8 @@ except:
 
 try:
     cur.execute(
-        "alter table " + tb_in_Name + " add loc_Credits double precision[], add loc_Credit double precision,"
-                                      " add rt_Credits double precision[], add rt_Credit double precision;")
+        "alter table " + tb_in_Name + " add loc_Credit double precision, add rt_Credit int,"
+                                      " add loc_Credits double precision[], add rt_Credits int[];")
     conn.commit()
     print("add columns succeeded " + tb_in_Name)
 except:
