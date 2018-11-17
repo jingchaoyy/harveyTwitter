@@ -41,14 +41,15 @@ except:
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s,%s, %s, %s, %s)"
 eList = spatialAggregation.resultSet
+maxRT = spatialAggregation.maxRT
 for i in range(len(eList)):
     locMerge_ID = eList[i].locMergeID
     original_ID = ','.join([str(j) for j in eList[i].orgID])
     time = ','.join(eList[i].time)
-    loc_Credits = eList[i].loc_credits
-    rt_Credits = eList[i].rt_credits
-    loc_Credit = sum(loc_Credits)
-    rt_Credit = sum(rt_Credits)
+    loc_Credits = eList[i].loc_credits / maxRT
+    rt_Credits = eList[i].rt_credits / maxRT
+    loc_Credit = sum(loc_Credits) / maxRT
+    rt_Credit = sum(rt_Credits) / maxRT
 
     data = (i, locMerge_ID, original_ID, time, loc_Credit, rt_Credit, loc_Credits, rt_Credits)
     try:
