@@ -44,6 +44,20 @@ class Event(object):
         self.rt_credits = rt_credits
 
 
+def getMaxRT(tidList):
+    """
+
+    :param tb:
+    :return:
+    """
+    tids = ', '.join(tidList)
+    sql = "select max(t_recount) from original where tid in (" + tids + ")"
+    result = queryFromDB.freeQuery(dbConnect, sql)[0][0]
+    print('Max re tweet number:', result)
+
+    return result
+
+
 def getPosttime(tidList, tb):
     """
     Input a list of supporting tids for certain event from credibility table, and locate their post time in original
@@ -157,6 +171,15 @@ def sepByTime(locmerge):
 
 data = allCoor(cre_tb)
 allIDs = [d[0] for d in data]
+
+'''Get all tids and remove duplicates'''
+allTIDs = [d[-1] for d in data]
+allTIDs = ', '.join(allTIDs)
+allTIDList = allTIDs.split(', ')
+allTIDSet = set(allTIDList)
+allTIDList = list(allTIDSet)
+
+maxRT = getMaxRT(allTIDList)
 allSets = findsubsets(data, 2)  # pair all coordinates fo calculate spatial distance
 aggregation, aggIDs = aggByDist(allSets)
 otherIDs = set(allIDs) - set(aggIDs)
