@@ -6,7 +6,7 @@ reference: http://www.postgresqltutorial.com/postgresql-python/query/
 """
 import psycopg2
 import re
-import enchant
+# import enchant
 
 
 def remove_emoji(string):
