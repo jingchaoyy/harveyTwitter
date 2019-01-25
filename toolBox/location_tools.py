@@ -9,7 +9,7 @@ from time import sleep
 import googlemaps
 import math
 
-gmaps = googlemaps.Client(key='AIzaSyByJv_mMoTZ9DvB4XeH3Zs4zYg4cKEg2qU')
+gmaps = googlemaps.Client(key='input your key here')
 
 
 # def coorToLoc(coorList):  # geocoding coordinates, output locations (state)
