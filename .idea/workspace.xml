@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/dataPreprocessing/tableJoin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,11 +28,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataPreprocessing/tableJoin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="52" column="16" lean-forward="true" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+            <state relative-caret-position="80">
+              <caret line="4" column="66" selection-start-line="4" selection-start-column="66" selection-end-line="4" selection-end-column="66" />
               <folding>
                 <element signature="e#44#82#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis_Credibility/postSaTScan.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -110,7 +116,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/analysis/location_from_urls.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/level1.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/level2_mix_1.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/level2.py" />
@@ -160,11 +165,12 @@
         <option value="$PROJECT_DIR$/toolBox/location_tools.py" />
         <option value="$PROJECT_DIR$/2db/insert_event_wCredit.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/eventBased.py" />
+        <option value="$PROJECT_DIR$/analysis_Credibility/postSaTScan.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/tableJoin.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -398,12 +404,12 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.2223393" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.2223393" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.30985916" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.30985916" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.50595886" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -496,7 +502,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/2db/insert_GZMatch_score.py" />
     <entry file="file://$PROJECT_DIR$/2db/insert_events.py" />
     <entry file="file://$PROJECT_DIR$/2db/insert_text_eng.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -814,10 +819,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/postSaTScan.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/tableJoin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="52" column="16" lean-forward="true" selection-start-line="52" selection-start-column="16" selection-end-line="52" selection-end-column="16" />
+        <state relative-caret-position="80">
+          <caret line="4" column="66" selection-start-line="4" selection-start-column="66" selection-end-line="4" selection-end-column="66" />
           <folding>
             <element signature="e#44#82#0" expanded="true" />
           </folding>
