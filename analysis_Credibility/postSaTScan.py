@@ -67,15 +67,28 @@ cluster_list = getCluster(path)
 
 '''match to original tids'''
 cluster_list2 = matchTIDs(path_csv, cluster_list)
-# for c in cluster_list2:
-#     print(c)
+for c in cluster_list2:
+    print(c)
 
 '''match tids with gazetteer table'''
 gazetteer_list = []
 for cl in cluster_list2:
     gazetteer = matchGazetteer('tw_road,tw_place,url_road,url_place', cl[1])
-    joint_gazetteer = [i for sub in gazetteer for i in sub]
-    joint_gazetteer = [x for x in joint_gazetteer if x is not None]
+    duplicate, joint_gazetteer = [], []
+    for sub in gazetteer:
+        for subsub in sub:
+            try:
+                allsub = subsub.split(',')
+                allsub = [i.strip() for i in allsub]
+                # allsub.strip()
+            except:
+                allsub = [subsub]
+
+            for loc in allsub:
+                if loc is not None and loc not in duplicate:
+                    joint_gazetteer.append(loc)
+                    duplicate.append(loc)
+
     gazetteer_list.append((cl[0], joint_gazetteer))
 
 for gl in gazetteer_list:
