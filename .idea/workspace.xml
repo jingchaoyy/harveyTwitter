@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/postSaTScan/dataProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/dataProcessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,34 +17,49 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/postSaTScan/insert_STCluster.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1000">
-              <caret line="50" selection-start-line="50" selection-end-line="50" />
+            <state relative-caret-position="120">
+              <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
               <folding>
-                <element signature="e#53#75#0" expanded="true" />
+                <element signature="e#151#207#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+            <state relative-caret-position="80">
+              <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+              <folding>
+                <element signature="e#53#91#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dataPreprocessing/tableJoin.py">
+        <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="400">
+              <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
               <folding>
-                <element signature="e#120#158#0" expanded="true" />
+                <element signature="e#103#141#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+              <folding>
+                <element signature="e#53#91#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,9 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>8571428571428571</find>
-      <find>333</find>
-      <find>901672684517502977</find>
       <find>tid</find>
       <find>googlemaps</find>
       <find>4601</find>
@@ -90,6 +103,9 @@
       <find>in</find>
       <find>university</find>
       <find>1504</find>
+      <find>tb2_out_Name</find>
+      <find>eid</find>
+      <find>roadE</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,8 +114,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/2db/insert _text_coor_local.py" />
-        <option value="$PROJECT_DIR$/2db/insert_text_engTWs.py" />
         <option value="$PROJECT_DIR$/2db/insert_url_event.py" />
         <option value="$PROJECT_DIR$/2db/insert_url_coor.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/groundTruth_from_external.py" />
@@ -128,8 +142,6 @@
         <option value="$PROJECT_DIR$/dataPreprocessing/ekey_Loc_matchFilter.py" />
         <option value="$PROJECT_DIR$/toolBox/url_tools.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/tempSeparation.py" />
-        <option value="$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py" />
-        <option value="$PROJECT_DIR$/2db/insert_event_selfEva.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/spatialAggregation.py" />
         <option value="$PROJECT_DIR$/2db/insert_mergeIndex.py" />
         <option value="$PROJECT_DIR$/test.py" />
@@ -149,6 +161,10 @@
         <option value="$PROJECT_DIR$/dataPreprocessing/tableJoin.py" />
         <option value="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" />
         <option value="$PROJECT_DIR$/postSaTScan/dataProcessing.py" />
+        <option value="$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py" />
+        <option value="$PROJECT_DIR$/2db/insert_event_selfEva.py" />
+        <option value="$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py" />
+        <option value="$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py" />
       </list>
     </option>
   </component>
@@ -178,6 +194,11 @@
             <path>
               <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
               <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis_Credibility" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
               <item name="dataPreprocessing" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -197,6 +218,9 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\no281\Documents\GitHub\harveyTwitter\postSaTScan" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\no281\Documents\GitHub\harveyTwitter\postSaTScan" />
       <recent name="C:\Users\no281\Documents\GitHub\harveyTwitter\psqlOperations" />
@@ -217,7 +241,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.insert_STCluster">
+  <component name="RunManager" selected="Python.insert_SaTScan_selfEva">
     <configuration name="dataProcessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -231,6 +255,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/postSaTScan/dataProcessing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="eventBased_selfEvaluate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="harveyTwitter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/postSaTScan" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -260,7 +305,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="insert_event_wCredit" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="insert_SaTScan_selfEva" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -268,32 +313,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/2db" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/postSaTScan" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/2db/insert_event_wCredit.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="postSaTScan" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="harveyTwitter" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis_Credibility" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\no281\Documents\GitHub\harveyTwitter\postSaTScan\postSaTScan.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -324,19 +348,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.insert_event_wCredit" />
       <item itemvalue="Python.tableJoin" />
-      <item itemvalue="Python.postSaTScan" />
       <item itemvalue="Python.insert_STCluster" />
       <item itemvalue="Python.dataProcessing" />
+      <item itemvalue="Python.insert_SaTScan_selfEva" />
+      <item itemvalue="Python.eventBased_selfEvaluate" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.insert_SaTScan_selfEva" />
+        <item itemvalue="Python.eventBased_selfEvaluate" />
         <item itemvalue="Python.insert_STCluster" />
         <item itemvalue="Python.dataProcessing" />
         <item itemvalue="Python.tableJoin" />
-        <item itemvalue="Python.postSaTScan" />
-        <item itemvalue="Python.insert_event_wCredit" />
       </list>
     </recent_temporary>
   </component>
@@ -366,13 +390,13 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.2223393" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.2223393" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.33261105" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.48754063" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.27952328" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.44203684" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
@@ -448,6 +472,26 @@
           <line>43</line>
           <option name="timeStamp" value="280" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="285" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="286" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py</url>
+          <line>92</line>
+          <option name="timeStamp" value="287" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="288" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -474,10 +518,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/matplotlib/pyplot.py" />
-    <entry file="file://$PROJECT_DIR$/2db/insert_selfEva.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/psycopg2/extensions.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/psycopg2/__init__.py" />
     <entry file="file://$PROJECT_DIR$/analysis_Credibility/selfEvaluate.py">
@@ -679,50 +719,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-896">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-          <folding>
-            <element signature="e#53#91#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/toolBox/weightGenerator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="19" lean-forward="true" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <element signature="e#53#91#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="88" selection-start-line="88" selection-end-line="88" />
-          <folding>
-            <element signature="e#123#138#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="217" column="17" lean-forward="true" selection-start-line="217" selection-start-column="17" selection-end-line="217" selection-end-column="17" />
-          <folding>
-            <element signature="e#103#141#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -764,26 +764,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_event_selfEva.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="740">
-          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
-          <folding>
-            <element signature="e#151#207#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_event_wCredit.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="55" lean-forward="true" selection-start-line="43" selection-end-line="55" />
-          <folding>
-            <element signature="e#113#156#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pandas/core/indexes/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -821,6 +801,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_event_wCredit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="49" column="30" lean-forward="true" selection-start-line="49" selection-start-column="30" selection-end-line="49" selection-end-column="30" />
+          <folding>
+            <element signature="e#113#156#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="449">
+          <caret line="70" column="48" lean-forward="true" selection-start-line="70" selection-start-column="48" selection-end-line="70" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/postSaTScan/insert_STCluster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1000">
@@ -831,10 +828,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
+    <entry file="file://$PROJECT_DIR$/2db/insert_event_selfEva.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
+        <state relative-caret-position="200">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#151#207#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/eventBased_selfEvaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/psqlOperations/queryFromDB.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4992">
+          <caret line="237" column="4" selection-start-line="237" selection-start-column="4" selection-end-line="237" selection-end-column="4" />
+          <folding>
+            <element signature="e#123#138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding>
+            <element signature="e#103#141#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis_Credibility/evolvingScore2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="3" column="3" lean-forward="true" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="3" />
+          <folding>
+            <element signature="e#53#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
+          <folding>
+            <element signature="e#53#91#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+          <folding>
+            <element signature="e#151#207#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
