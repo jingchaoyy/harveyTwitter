@@ -39,15 +39,15 @@ except:
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s, %s)"
 cluster_tids = dataProcessing.cluster_list2
-cluster_gazetteers = dataProcessing.gazetteer_list
+# cluster_gazetteers = dataProcessing.gazetteer_list
 
 for i in range(len(cluster_tids)):
     id = i
     neighborhood = cluster_tids[i][0] + 1
     try:
-        neighbors = ', '.join(cluster_gazetteers[i][1])
+        neighbors = ', '.join(cluster_tids[i][-1])
     except:
-        neighbors = cluster_gazetteers[i][1]
+        neighbors = cluster_tids[i][-1]
     sup_tws = len(cluster_tids[i][1])
     tIDList = [str(i) for i in cluster_tids[i][1]]
     try:

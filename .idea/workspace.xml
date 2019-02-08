@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/dataPreprocessing/tableJoin.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataPreprocessing/tableJoin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postSaTScan/dataProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/dataProcessing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/postSaTScan/insert_STCluster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="55" column="25" lean-forward="true" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+            <state relative-caret-position="1000">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
               <folding>
                 <element signature="e#53#75#0" expanded="true" />
               </folding>
@@ -27,19 +28,19 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+            <state relative-caret-position="529">
+              <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataPreprocessing/tableJoin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
+            <state relative-caret-position="320">
               <caret line="34" selection-start-line="34" selection-end-line="34" />
               <folding>
                 <element signature="e#120#158#0" expanded="true" />
@@ -145,9 +146,9 @@
         <option value="$PROJECT_DIR$/analysis_Credibility/eventBased.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/postSaTScan.py" />
         <option value="$PROJECT_DIR$/postSaTScan/postSaTScan.py" />
-        <option value="$PROJECT_DIR$/postSaTScan/dataProcessing.py" />
-        <option value="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/tableJoin.py" />
+        <option value="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" />
+        <option value="$PROJECT_DIR$/postSaTScan/dataProcessing.py" />
       </list>
     </option>
   </component>
@@ -168,6 +169,11 @@
             <path>
               <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
               <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="harveyTwitter" type="462c0819:PsiDirectoryNode" />
+              <item name="2db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="harveyTwitter" type="b2602c69:ProjectViewProjectNode" />
@@ -211,7 +217,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tableJoin">
+  <component name="RunManager" selected="Python.insert_STCluster">
     <configuration name="dataProcessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -326,9 +332,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.tableJoin" />
         <item itemvalue="Python.insert_STCluster" />
         <item itemvalue="Python.dataProcessing" />
+        <item itemvalue="Python.tableJoin" />
         <item itemvalue="Python.postSaTScan" />
         <item itemvalue="Python.insert_event_wCredit" />
       </list>
@@ -358,14 +364,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49656752" visible="true" weight="0.2223393" />
       <window_info id="Structure" order="1" sideWeight="0.5034325" side_tool="true" weight="0.24288724" />
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" weight="0.38786566" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.42361864" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.33261105" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.48754063" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32897604" />
@@ -432,19 +439,14 @@
           <option name="timeStamp" value="227" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/postSaTScan/insert_STCluster.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="271" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/postSaTScan/dataProcessing.py</url>
-          <line>47</line>
-          <option name="timeStamp" value="273" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/dataPreprocessing/tableJoin.py</url>
           <line>34</line>
           <option name="timeStamp" value="274" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/postSaTScan/insert_STCluster.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="280" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -650,16 +652,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/2db/insert_gazetteer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-          <folding>
-            <element signature="e#106#128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataPreprocessing/gazetteer_from_fuzzyMatch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -809,10 +801,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dataPreprocessing/tableJoin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
+          <folding>
+            <element signature="e#120#158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/2db/insert_gazetteer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="65" column="62" selection-start-line="65" selection-start-column="47" selection-end-line="65" selection-end-column="62" />
+          <folding>
+            <element signature="e#106#128#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/postSaTScan/insert_STCluster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="55" column="25" lean-forward="true" selection-start-line="55" selection-start-column="25" selection-end-line="55" selection-end-column="25" />
+        <state relative-caret-position="1000">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
           <folding>
             <element signature="e#53#75#0" expanded="true" />
           </folding>
@@ -821,18 +833,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="121" column="25" lean-forward="true" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataPreprocessing/tableJoin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="e#120#158#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="529">
+          <caret line="74" column="22" selection-start-line="74" selection-start-column="22" selection-end-line="74" selection-end-column="22" />
         </state>
       </provider>
     </entry>
