@@ -43,7 +43,7 @@ cluster_gazetteers = dataProcessing.gazetteer_list
 
 for i in range(len(cluster_tids)):
     id = i
-    neighborhood = cluster_tids[i][0]
+    neighborhood = cluster_tids[i][0] + 1
     try:
         neighbors = ', '.join(cluster_gazetteers[i][1])
     except:
