@@ -30,11 +30,12 @@ def matchTime(col, tidList):
     spaceTime = []
     for t in range(len(timeList)):
         if tidList[0] is not None and tidList[1] is not None and timeList[t][0] != '':
-            spaceTime.append((tidList[0], tidList[1], timeList[t][0], str(timeList[t][1])))
+            spaceTime.append(
+                (tidList[0], tidList[1], tidList[2] + ',' + tidList[3], timeList[t][0], str(timeList[t][1])))
     return spaceTime
 
 
-colList = ['lat', 'lng', 'tids']
+colList = ['lat', 'lng', 'road_events', 'place_events', 'tids']
 tidLists = getTids(colList)
 # resultList = []
 # for i in range(len(tidLists)):
@@ -42,7 +43,7 @@ tidLists = getTids(colList)
 #     resultList += result
 #     # print(resultList)
 
-path = 'D:\\harveyTwitter\\power_distribution_old_2.csv'
+path = 'D:\\harveyTwitter\\power_distribution_old_3.csv'
 with open(path, "w", newline='', encoding="utf-8") as csv_file:
     writer = csv.writer(csv_file)
     id = 0
