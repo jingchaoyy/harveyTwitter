@@ -4,7 +4,7 @@ Created on  2/7/2019
 """
 
 import psycopg2.extras
-from postSaTScan import postSaTScan
+from postSaTScan import dataProcessing
 
 tb_in_Name = 'original_credibility_power4'
 
@@ -38,12 +38,25 @@ except:
     print("create table failed " + tb_in_Name)
 
 sql = "insert into " + tb_in_Name + " values (%s, %s, %s, %s, %s)"
-cluster_tids = postSaTScan.cluster_list2
-cluster_gazetteers = postSaTScan.gazetteer_list
+cluster_tids = dataProcessing.cluster_list2
+cluster_gazetteers = dataProcessing.gazetteer_list
 
 for i in range(len(cluster_tids)):
-    data = (
-    i, cluster_tids[i][0], ', '.join(cluster_gazetteers[i][1]), len(cluster_tids[i][1]), ', '.join(cluster_tids[i][0]))
+    id = i
+    neighborhood = cluster_tids[i][0]
+    try:
+        neighbors = ', '.join(cluster_gazetteers[i][1])
+    except:
+        neighbors = cluster_gazetteers[i][1]
+    sup_tws = len(cluster_tids[i][1])
+    tIDList = [str(i) for i in cluster_tids[i][1]]
+    try:
+        tIDs = ', '.join(tIDList)
+    except:
+        tIDs = tIDList[0]
+
+    data = (id, neighborhood, neighbors, sup_tws, tIDs)
+
     try:
         cur.execute(sql, data)
         conn.commit()
