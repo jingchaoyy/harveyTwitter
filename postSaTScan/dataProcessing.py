@@ -8,7 +8,7 @@ from psqlOperations import queryFromDB
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in = 'original_gazetteer_power'
 path_withClusters = 'D:\\harveyTwitter\\SaTScan_HouBry\\result\\result-Copy.txt'
-path_withTIDs = 'D:\\harveyTwitter\\power_distribution_old_2.txt'
+path_withTIDs = 'D:\\harveyTwitter\\power_distribution_old_3.txt'
 path_allIDs = 'D:\\harveyTwitter\\power_Clip_old2_HouBry_TableToExcel.csv'
 
 
@@ -58,25 +58,31 @@ def matchTIDs(dpath, orgCluster):
     data = pd.read_csv(dpath)
     allClusters = []
     for c in orgCluster:
-        tids = []
+        tids, places, duplicate = [], [], []
         for i in c[1]:
             tid = data.loc[data['id'] == int(i)]
             tids.append(tid.iloc[0]['tid'])
-        allClusters.append((c[0], tids))
+            place = tid.iloc[0]['place']
+            place = place.split(',')
+            for p in place:
+                if p is not None and p != '' and p.strip() not in duplicate:
+                    places.append(p.strip())
+                    duplicate.append(p.strip())
+        allClusters.append((c[0], tids, places))
     return allClusters
 
 
-def matchGazetteer(col, tidList):
-    """
-
-    :param colName:
-    :param tidList:
-    :return:
-    """
-    tidList = ", ".join(str(x) for x in tidList)
-    sql = "select " + col + " from " + tb_in + " where tid in (" + tidList + ")"
-    gazetteerList = queryFromDB.freeQuery(dbConnect, sql)
-    return gazetteerList
+# def matchGazetteer(col, tidList):
+#     """
+#
+#     :param colName:
+#     :param tidList:
+#     :return:
+#     """
+#     tidList = ", ".join(str(x) for x in tidList)
+#     sql = "select " + col + " from " + tb_in + " where tid in (" + tidList + ")"
+#     gazetteerList = queryFromDB.freeQuery(dbConnect, sql)
+#     return gazetteerList
 
 
 '''get clusters'''
@@ -110,30 +116,30 @@ cluster_list1 = matchIDs(path_allIDs, cluster_list)
 # for c in cluster_list1:
 #     print(c)
 
-'''match to original tids'''
+'''match to original tids and places'''
 print('start match original IDs to tids')
 cluster_list2 = matchTIDs(path_withTIDs, cluster_list1)
-# for c in cluster_list2:
-#     print(c)
+for c in cluster_list2:
+    print(c)
 
-'''match tids with gazetteer table'''
-print('start match tids with location names')
-gazetteer_list = []
-for cl2 in cluster_list2:
-    gazetteer = matchGazetteer('tw_road,tw_place,url_road,url_place', cl2[1])
-    duplicate, joint_gazetteer = [], []
-    for sub in gazetteer:
-        for subsub in sub:
-            try:
-                allsub = subsub.split(',')
-                allsub = [i.strip() for i in allsub]
-                # allsub.strip()
-            except:
-                allsub = [subsub]
-
-            for loc in allsub:
-                if loc is not None and loc not in duplicate:
-                    joint_gazetteer.append(loc)
-                    duplicate.append(loc)
-    print((cl2[0], joint_gazetteer))
-    gazetteer_list.append((cl2[0], joint_gazetteer))
+# '''match tids with gazetteer table'''
+# print('start match tids with location names')
+# gazetteer_list = []
+# for cl2 in cluster_list2:
+#     gazetteer = matchGazetteer('tw_road,tw_place,url_road,url_place', cl2[1])
+#     duplicate, joint_gazetteer = [], []
+#     for sub in gazetteer:
+#         for subsub in sub:
+#             try:
+#                 allsub = subsub.split(',')
+#                 allsub = [i.strip() for i in allsub]
+#                 # allsub.strip()
+#             except:
+#                 allsub = [subsub]
+#
+#             for loc in allsub:
+#                 if loc is not None and loc not in duplicate:
+#                     joint_gazetteer.append(loc)
+#                     duplicate.append(loc)
+#     print((cl2[0], joint_gazetteer))
+#     gazetteer_list.append((cl2[0], joint_gazetteer))
