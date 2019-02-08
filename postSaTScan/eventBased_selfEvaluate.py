@@ -44,13 +44,15 @@ def assignCredit(events):
             getEvents = events_from_tweets.remove(event[1].split(', '))
         # if event[2] is not None:
         #     placeEvents = events_from_tweets.remove(event[2].split(', '))
-        locCredit, rtCredit = [], []
+        locCredit, rtCredit, timeList = [], [], []
         for tid in tids:
 
             ''' get retweet number for the corresponding tid '''
             ori = queryFromDB.query(dbConnect, tb3_out_Name, col, tid)
             ori = ori[0]
             rT = ori[10]  # column: t_recount, for retweet count
+            time = ori[-1]
+            timeList.append(time)
             rtCredit.append(rT)
 
             ''' get extracted gazetteers for the corresponding tid '''
@@ -90,7 +92,7 @@ def assignCredit(events):
             locCredit.append(tid_locCredit / len(resourceType))
 
         print((eid, sum(locCredit), sum(rtCredit)))
-        eventCredits.append((eid, locCredit, sum(locCredit), rtCredit, sum(rtCredit)))
+        eventCredits.append((eid, locCredit, sum(locCredit), rtCredit, sum(rtCredit), timeList))
     return eventCredits
 
 

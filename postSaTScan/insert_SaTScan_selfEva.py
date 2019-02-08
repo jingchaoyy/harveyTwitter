@@ -18,7 +18,8 @@ except:
 cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
 try:
-    cur.execute("alter table " + tb_in_Name + " drop loc_Credits, drop loc_Credit, drop rt_Credits, drop rt_Credit;")
+    cur.execute(
+        "alter table " + tb_in_Name + " drop loc_Credits, drop loc_Credit, drop rt_Credits, drop rt_Credit, drop time;")
     conn.commit()
     print("drop columns succeeded " + tb_in_Name)
 except:
@@ -29,7 +30,8 @@ except:
 try:
     cur.execute(
         "alter table " + tb_in_Name + " add loc_Credit double precision, add rt_Credit int,"
-                                      " add loc_Credits double precision[], add rt_Credits int[];")
+                                      " add loc_Credits double precision[], add rt_Credits int[],"
+                                      " add time text;")
     conn.commit()
     print("add columns succeeded " + tb_in_Name)
 except:
@@ -37,10 +39,11 @@ except:
 
 eList = eventBased_selfEvaluate.creditList
 for i in range(len(eList)):
+    sql = "update " + tb_in_Name + " set loc_Credits = array" + str(eList[i][1]) + ", loc_Credit = " + str(
+        eList[i][2]) + ", rt_Credits = array" + str(eList[i][3]) + ", rt_Credit = " + str(
+        eList[i][4]) + ", time = '" + ','.join(eList[i][-1]) + "' where eid = " + str(eList[i][0])
     try:
-        cur.execute("update " + tb_in_Name + " set loc_Credits = array" + str(eList[i][1]) +
-                    ", loc_Credit = " + str(eList[i][2]) + ", rt_Credits = array" + str(eList[i][3]) +
-                    ", rt_Credit = " + str(eList[i][4]) + " where eid = " + str(eList[i][0]))
+        cur.execute(sql)
         conn.commit()
     except:
         print("I can't update " + tb_in_Name)
