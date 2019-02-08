@@ -7,9 +7,9 @@ from psqlOperations import queryFromDB
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in = 'original_gazetteer_power'
-path_withClusters = 'D:\\harveyTwitter\\SaTScan_HouBry\\result\\result-Copy.txt'
+path_withClusters = 'D:\\harveyTwitter\\SaTScan_HouBry\\result2\\result-Copy.txt'
 path_withTIDs = 'D:\\harveyTwitter\\power_distribution_old_3.txt'
-path_allIDs = 'D:\\harveyTwitter\\power_Clip_old2_HouBry_TableToExcel.csv'
+path_allIDs = 'D:\\harveyTwitter\\power_distribution_old_2_2_C_TableToExcel.csv'
 
 
 def getCluster(dpath):
