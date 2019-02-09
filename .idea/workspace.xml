@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5853775a-214b-4743-b080-bcd7c9a6095a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postSaTScan/dataProcessing.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/dataProcessing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/postSaTScan/evolvingScore2.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/evolvingScore2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py" beforeDir="false" afterPath="$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,58 +16,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="61" column="34" lean-forward="true" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
-              <folding>
-                <element signature="e#52#71#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/postSaTScan/insert_STCluster.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="50" lean-forward="true" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
-              <folding>
-                <element signature="e#53#75#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#209#256#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
-              <folding>
-                <element signature="e#114#152#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/postSaTScan/evolvingScore2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+            <state relative-caret-position="220">
+              <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -172,11 +119,11 @@
         <option value="$PROJECT_DIR$/2db/insert_event_selfEva.py" />
         <option value="$PROJECT_DIR$/analysis_Credibility/evolvingScore2.py" />
         <option value="$PROJECT_DIR$/dataPreprocessing/tableJoin.py" />
-        <option value="$PROJECT_DIR$/postSaTScan/evolvingScore2.py" />
         <option value="$PROJECT_DIR$/postSaTScan/insert_STCluster.py" />
         <option value="$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py" />
         <option value="$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py" />
         <option value="$PROJECT_DIR$/postSaTScan/dataProcessing.py" />
+        <option value="$PROJECT_DIR$/postSaTScan/evolvingScore2.py" />
       </list>
     </option>
   </component>
@@ -238,7 +185,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.insert_SaTScan_selfEva">
+  <component name="RunManager" selected="Python.evolvingScore2 (1)">
     <configuration name="dataProcessing" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="harveyTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -353,10 +300,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.evolvingScore2 (1)" />
         <item itemvalue="Python.insert_SaTScan_selfEva" />
         <item itemvalue="Python.insert_STCluster" />
         <item itemvalue="Python.dataProcessing" />
-        <item itemvalue="Python.evolvingScore2 (1)" />
         <item itemvalue="Python.tableJoin" />
       </list>
     </recent_temporary>
@@ -392,7 +339,7 @@
       <window_info id="Favorites" order="2" sideWeight="0.502" side_tool="true" weight="0.15437302" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32897604" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.52979416" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.35211268" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.46695557" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -476,7 +423,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/postSaTScan/evolvingScore2.py</url>
-          <line>117</line>
+          <line>118</line>
           <option name="timeStamp" value="311" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -879,29 +826,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/postSaTScan/evolvingScore2.py">
+    <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="104" column="32" selection-start-line="104" selection-start-column="32" selection-end-line="104" selection-end-column="32" />
+        <state relative-caret-position="40">
+          <caret line="2" column="22" lean-forward="true" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
           <folding>
-            <element signature="e#114#152#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="e#209#256#0" expanded="true" />
+            <element signature="e#52#71#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -916,13 +846,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/postSaTScan/dataProcessing.py">
+    <entry file="file://$PROJECT_DIR$/postSaTScan/insert_SaTScan_selfEva.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="61" column="34" lean-forward="true" selection-start-line="61" selection-start-column="34" selection-end-line="61" selection-end-column="34" />
+        <state relative-caret-position="140">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
           <folding>
-            <element signature="e#52#71#0" expanded="true" />
+            <element signature="e#209#256#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postSaTScan/eventBased_selfEvaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="85" column="14" selection-start-line="85" selection-start-column="14" selection-end-line="85" selection-end-column="14" />
+          <folding>
+            <element signature="e#114#152#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/postSaTScan/evolvingScore2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
         </state>
       </provider>
     </entry>

@@ -10,9 +10,9 @@ import pandas as pd
 import csv
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
-tb_out_Event = "original_credibility_power4"
+tb_out_Event = "original_credibility_power5"
 colList = ['time', 'loc_credits', 'rt_credits']
-eid = '33'
+eid = '1787'  # TX A&M University
 
 
 def groupBy(timeList, valueList, groupby):
@@ -27,7 +27,7 @@ def groupBy(timeList, valueList, groupby):
 
     if groupby == 'hour':
         df["'" + groupby + "'"] = pd.to_datetime(df['time']).map(
-            lambda dt: (str(dt.year) + '-' + str(dt.month) + '-' + str(dt.day) + '-' + str(dt.hour)))
+            lambda dt: (str(dt.year) + '-' + str(dt.month) + '-' + str(dt.day) + ' ' + str(dt.hour) + ':00'))
     # print(df["'" + groupby + "'"])
     group = df.groupby("'" + groupby + "'")['Values'].sum()
     print(group)
@@ -89,6 +89,7 @@ mergedAccu = pd.DataFrame({byHour: locAccu[byHour], outputCol2: locAccu[outputCo
 
 ''' Paper Section 4.3.1 '''
 fig, (ax0, ax2, ax4) = plt.subplots(3, sharey=True)
+plt.xticks(rotation=90)
 
 color = 'tab:red'
 # ax0.set_xlabel('Dates')
@@ -114,11 +115,12 @@ ax3 = ax2.twinx()  # instantiate a second axes that shares the same x-axis
 
 color = 'tab:blue'
 ax3.set_ylabel('Re-tweet Evolving', color=color)  # we already handled the x-label with ax1
-ax3.plot(rtAccu[byHour], rtAccu[outputCol2], color=color)
+repl = [i / 180 for i in rtAccu[outputCol2]]
+ax3.plot(rtAccu[byHour], repl, color=color)
 ax3.tick_params(axis='y', labelcolor=color)
 
 color = 'tab:green'
-ax4.set_xlabel('Hour')
+ax4.set_xlabel('Date Time')
 ax4.set_ylabel('Merged Evolving', color=color)
 ax4.plot(mergedAccu[byHour], mergedAccu[outputCol2], color=color)
 ax4.tick_params(axis='y', labelcolor=color)
