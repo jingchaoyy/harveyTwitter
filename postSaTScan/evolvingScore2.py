@@ -90,7 +90,7 @@ mergedAccu = pd.DataFrame({byHour: locAccu[byHour], outputCol2: locAccu[outputCo
 # print(mergedAccu)
 
 ''' Paper Section 4.3.1 '''
-fig, (ax0, ax2, ax4) = plt.subplots(3, sharey=True)
+fig, (ax0, ax2, ax4) = plt.subplots(3)
 plt.xticks(rotation=90)
 
 color = 'tab:red'
@@ -100,12 +100,12 @@ ax0.plot(locGrp[byHour], locGrp[outputCol], color=color)
 ax0.tick_params(axis='y', labelcolor=color)
 ax0.title.set_text('Event' + str(eid))
 
-ax1 = ax0.twinx()  # instantiate a second axes that shares the same x-axis
-
-color = 'tab:blue'
-ax1.set_ylabel('Tweeter Count', color=color)  # we already handled the x-label with ax1
-ax1.plot(countGrp[byHour], countGrp[outputCol], color=color)
-ax1.tick_params(axis='y', labelcolor=color)
+# ax1 = ax0.twinx()  # instantiate a second axes that shares the same x-axis
+#
+# color = 'tab:blue'
+# ax1.set_ylabel('Tweeter Count', color=color)  # we already handled the x-label with ax1
+# ax1.plot(countGrp[byHour], countGrp[outputCol], color=color)
+# ax1.tick_params(axis='y', labelcolor=color)
 
 color = 'tab:red'
 # ax2.set_xlabel('Dates')
