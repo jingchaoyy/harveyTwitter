@@ -27,13 +27,15 @@ def groupBy(timeList, valueList, groupby):
 
     if groupby == 'hour':
         df["'" + groupby + "'"] = pd.to_datetime(df['time']).map(
-            lambda dt: (str(dt.year) + '-' + str(dt.month) + '-' + str(dt.day) + ' ' + str(dt.hour) + ':00'))
+            lambda dt: (str(dt.month) + '/' + str(dt.day) + '/' + str(dt.year) + ' ' + str(dt.hour) + ':00' + ':00'))
     # print(df["'" + groupby + "'"])
     group = df.groupby("'" + groupby + "'")['Values'].sum()
-    print(group)
 
-    # revert back from Series data to DataFrame
+    # revert back from Series data to DataFrame then sort
     result = pd.DataFrame({groupby: group.index, 'Values': group.values})
+    result[groupby] = pd.to_datetime(result.hour)  # string is not applicable, using hardcode hour instead of groupby
+    result = result.sort_values(by=[groupby])
+    print(result)
 
     return result
 
