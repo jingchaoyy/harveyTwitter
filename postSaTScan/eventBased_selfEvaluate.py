@@ -46,57 +46,59 @@ def assignCredit(events):
         #     placeEvents = events_from_tweets.remove(event[2].split(', '))
         locCredit, rtCredit, timeList = [], [], []
         for tid in tids:
+            try:
+                ''' get retweet number for the corresponding tid '''
+                ori = queryFromDB.query(dbConnect, tb3_out_Name, col, tid)
+                ori = ori[0]
+                rT = ori[10]  # column: t_recount, for retweet count
+                time = ori[-1]
+                timeList.append(time)
+                rtCredit.append(rT)
 
-            ''' get retweet number for the corresponding tid '''
-            ori = queryFromDB.query(dbConnect, tb3_out_Name, col, tid)
-            ori = ori[0]
-            rT = ori[10]  # column: t_recount, for retweet count
-            time = ori[-1]
-            timeList.append(time)
-            rtCredit.append(rT)
+                ''' get extracted gazetteers for the corresponding tid '''
+                tw_roads, tw_places, url_roads, url_places = [], [], [], []
+                gazetteer = queryFromDB.query(dbConnect, tb2_out_Name, col, tid)
+                gazetteer = gazetteer[0]
+                if gazetteer[1] is not None:
+                    tw_roads = events_from_tweets.remove(gazetteer[1].split(', '))
+                    # print(tw_roads)
+                if gazetteer[2] is not None:
+                    tw_places = events_from_tweets.remove(gazetteer[2].split(', '))
+                    # print(tw_places)
+                if gazetteer[3] is not None:
+                    url_roads = events_from_tweets.remove(gazetteer[3].split(', '))
+                    # print(url_roads)
+                if gazetteer[4] is not None:
+                    url_places = events_from_tweets.remove(gazetteer[4].split(', '))
+                    # print(url_places)
 
-            ''' get extracted gazetteers for the corresponding tid '''
-            tw_roads, tw_places, url_roads, url_places = [], [], [], []
-            gazetteer = queryFromDB.query(dbConnect, tb2_out_Name, col, tid)
-            gazetteer = gazetteer[0]
-            if gazetteer[1] is not None:
-                tw_roads = events_from_tweets.remove(gazetteer[1].split(', '))
-                # print(tw_roads)
-            if gazetteer[2] is not None:
-                tw_places = events_from_tweets.remove(gazetteer[2].split(', '))
-                # print(tw_places)
-            if gazetteer[3] is not None:
-                url_roads = events_from_tweets.remove(gazetteer[3].split(', '))
-                # print(url_roads)
-            if gazetteer[4] is not None:
-                url_places = events_from_tweets.remove(gazetteer[4].split(', '))
-                # print(url_places)
+                ''' see if any roads from tw matches, if not, check places. Then for the urls
+                For each tid, max location match score is 1 + 1 = 2 '''
+                tid_locCredit = 0
+                if any(twr in getEvents for twr in tw_roads):
+                    tid_locCredit = tid_locCredit + 1
+                    # print('aaaa')
+                elif any(twp in getEvents for twp in tw_places):
+                    tid_locCredit = tid_locCredit + 1
+                    # print('bbbb')
 
-            ''' see if any roads from tw matches, if not, check places. Then for the urls
-            For each tid, max location match score is 1 + 1 = 2 '''
-            tid_locCredit = 0
-            if any(twr in getEvents for twr in tw_roads):
-                tid_locCredit = tid_locCredit + 1
-                # print('aaaa')
-            elif any(twp in getEvents for twp in tw_places):
-                tid_locCredit = tid_locCredit + 1
-                # print('bbbb')
+                if any(urlr in getEvents for urlr in url_roads):
+                    tid_locCredit = tid_locCredit + 1
+                    # print('cccc')
+                elif any(urlp in getEvents for urlp in url_places):
+                    tid_locCredit = tid_locCredit + 1
+                    # print('dddd')
 
-            if any(urlr in getEvents for urlr in url_roads):
-                tid_locCredit = tid_locCredit + 1
-                # print('cccc')
-            elif any(urlp in getEvents for urlp in url_places):
-                tid_locCredit = tid_locCredit + 1
-                # print('dddd')
-
-            locCredit.append(tid_locCredit / len(resourceType))
+                locCredit.append(tid_locCredit / len(resourceType))
+            except:
+                print('skip', event)
 
         print((eid, sum(locCredit), sum(rtCredit)))
         eventCredits.append((eid, locCredit, sum(locCredit), rtCredit, sum(rtCredit), timeList))
     return eventCredits
 
 
-tb1_out_Name = "original_credibility_power4"
+tb1_out_Name = "original_credibility_power5"
 colList1 = ['eid', 'neighbors', 'tids']
 
 data_events = queryFromDB.get_multiColData(dbConnect, tb1_out_Name, colList1)

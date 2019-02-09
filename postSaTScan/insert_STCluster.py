@@ -6,7 +6,7 @@ Created on  2/7/2019
 import psycopg2.extras
 from postSaTScan import dataProcessing
 
-tb_in_Name = 'original_credibility_power4'
+tb_in_Name = 'original_credibility_power5'
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")

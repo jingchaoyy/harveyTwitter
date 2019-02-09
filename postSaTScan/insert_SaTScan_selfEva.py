@@ -8,7 +8,7 @@ Update original_credibility_power4 table with credibility score from eventBased_
 from postSaTScan import eventBased_selfEvaluate
 import psycopg2.extras
 
-tb_in_Name = 'original_credibility_power4'
+tb_in_Name = 'original_credibility_power5'
 
 try:
     conn = psycopg2.connect("dbname='harveyTwitts' user='postgres' host='localhost' password='123456'")
