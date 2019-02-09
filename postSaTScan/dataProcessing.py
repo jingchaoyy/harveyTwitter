@@ -4,10 +4,12 @@ Created on  2/7/2019
 """
 import pandas as pd
 from psqlOperations import queryFromDB
+from datetime import date
+from scipy.spatial import distance
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 tb_in = 'original_gazetteer_power'
-path_withClusters = 'D:\\harveyTwitter\\SaTScan_HouBry\\result2\\result-Copy.txt'
+path_withClusters = 'D:\\harveyTwitter\\SaTScan_HouBry\\result3\\result-Copy.txt'
 path_withTIDs = 'D:\\harveyTwitter\\power_distribution_old_3.txt'
 path_allIDs = 'D:\\harveyTwitter\\power_distribution_old_2_2_C_TableToExcel.csv'
 
@@ -25,27 +27,57 @@ def getCluster(dpath):
     clusters = []
     id = 0
     for d in data:
-        cluster = ("".join(d.split('Coordinates')[0].split('IDs included.:')[1].split())).split(',')
-        clusters.append((id, cluster))
+        cluster = ("".join(d.split('Coordinates / radius..:')[0].split('IDs included.:')[1].split())).split(',')
+        certer = (d.split('Coordinates / radius..:')[1].split('Time frame............:')[0].split('/')[0]).split(',')
+        lat = float(certer[0].split()[0].split('(')[1])
+        lng = float(certer[1].split()[0].split(')')[0])
+        radius = (d.split('Coordinates / radius..:')[1].split('Time frame............:')[0].split('/')[1]).split()[0]
+
+        timeFrame = (d.split('Time frame............:')[1].split('Number of cases.......:')[0])
+        sTime = timeFrame.split('to')[0].strip()
+        sTime = [int(i) for i in sTime.split('/')]
+        sTime = date(sTime[0], sTime[1], sTime[2])
+        eTime = timeFrame.split('to')[1].strip()
+        eTime = [int(i) for i in eTime.split('/')]
+        eTime = date(eTime[0], eTime[1], eTime[2])
+        clusters.append((id, cluster, (lat, -lng), radius, (sTime, eTime)))
         id += 1
     return clusters
 
 
-def matchIDs(dpath, orgCluster):
+def filter(dpath, orgCluster, lastID):
     """
 
     :param dpath:
     :return:
     """
-    data = pd.read_csv(dpath, header=None)
+    data = pd.read_csv(dpath)
     # print(data)
     allClusters = []
-    for c in orgCluster:
-        tids = []
+    for c in orgCluster[:72]:
+
+        neighbors = []
         for i in c[1]:
-            tid = data.loc[data[0] == int(i) - 1]
-            tids.append(str(tid.iloc[0][1]))
-        allClusters.append((c[0], tids))
+            tid = data.loc[data['ori_id'] == int(i)]
+            lat = tid.iloc[0]['lat']
+            lng = tid.iloc[0]['lng']
+            dst = distance.euclidean(c[2], (lat, lng)) * 100
+
+            dtime = tid.iloc[0]['date'].split()[0]
+            dtime = [int(i) for i in dtime.split('-')]
+            ddtime = date(dtime[0], dtime[1], dtime[2])
+
+            if (dst <= float(c[3]) + 0.5) and (
+                    c[4][0] <= ddtime <= c[4][1]):  # within the distance range of 0.5 km buffer and also the time range
+                neighbors.append(i)
+            else:
+                allClusters.append((lastID, [i]))
+                lastID += 1
+
+        allClusters.append((c[0], neighbors))
+    for cc in orgCluster[72:]:
+        allClusters.append(cc)
+
     return allClusters
 
 
@@ -68,6 +100,8 @@ def matchTIDs(dpath, orgCluster):
                 if p is not None and p != '' and p.strip() not in duplicate:
                     places.append(p.strip())
                     duplicate.append(p.strip())
+            else:
+                pass
         allClusters.append((c[0], tids, places))
     return allClusters
 
@@ -94,8 +128,8 @@ allID_in_cluster = set(allID_in_cluster)
 print('allID belong to cluster', allID_in_cluster)
 
 '''get all IDs'''
-allIDs = pd.read_csv(path_allIDs, header=None)
-allIDs = allIDs[0]
+allIDs = pd.read_csv(path_allIDs)
+allIDs = allIDs['id']
 IDList = allIDs.tolist()
 IDList = [str(i + 1) for i in IDList]
 IDSet = set(IDList)
@@ -112,7 +146,7 @@ for nc in nonCluster_IDs:
 
 '''match IDs'''
 print('start match location IDs to original IDs')
-cluster_list1 = matchIDs(path_allIDs, cluster_list)
+cluster_list1 = filter(path_allIDs, cluster_list, clusterID)
 # for c in cluster_list1:
 #     print(c)
 
