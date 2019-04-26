@@ -10,8 +10,8 @@ import pandas as pd
 
 dbConnect = "dbname='harveyTwitts' user='postgres' host='localhost' password='123456'"
 
-tb_out_Event = "original_credibility_improved"
-eid = 5536
+tb_out_Event = "original_credibility_shelter"
+eid = 176
 
 def getEvlScore(tidList):
     """
@@ -135,7 +135,7 @@ credit_df, credit_df_evl, credit_df_loc, credit_df_evl_loc, credit_df_rt, credit
     = dateCredit(dates, supLocCredits, supRTCredits)
 
 ''' Paper Section 4.3.1 '''
-fig, (ax0, ax2, ax4) = plt.subplots(3, sharey=True)
+fig, (ax0, ax2, ax4) = plt.subplots(3)
 
 color = 'tab:red'
 # ax0.set_xlabel('Dates')
@@ -144,12 +144,12 @@ ax0.plot(credit_df['date'], credit_df['credit'], color=color)
 ax0.tick_params(axis='y', labelcolor=color)
 ax0.title.set_text('Event' + str(eid))
 
-ax1 = ax0.twinx()  # instantiate a second axes that shares the same x-axis
-
-color = 'tab:blue'
-ax1.set_ylabel('Tweeter Count', color=color)  # we already handled the x-label with ax1
-ax1.plot(count_df['date'], count_df['count'], color=color)
-ax1.tick_params(axis='y', labelcolor=color)
+# ax1 = ax0.twinx()  # instantiate a second axes that shares the same x-axis
+#
+# color = 'tab:blue'
+# ax1.set_ylabel('Tweeter Count', color=color)  # we already handled the x-label with ax1
+# ax1.plot(count_df['date'], count_df['count'], color=color)
+# ax1.tick_params(axis='y', labelcolor=color)
 
 color = 'tab:red'
 # ax2.set_xlabel('Dates')
