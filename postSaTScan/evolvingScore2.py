@@ -35,7 +35,7 @@ def groupBy(timeList, valueList, groupby):
     result = pd.DataFrame({groupby: group.index, 'Values': group.values})
     result[groupby] = pd.to_datetime(result.hour)  # string is not applicable, using hardcode hour instead of groupby
     result = result.sort_values(by=[groupby])
-    print(result)
+    # print(result)
 
     return result
 
@@ -83,7 +83,9 @@ rtGrp = groupBy(time, rt_credits, byHour)
 outputCol2 = 'sum_credit'
 countAccu = accuDF(countGrp)
 locAccu = accuDF(locGrp)
+print(locAccu)
 rtAccu = accuDF(rtGrp)
+print(rtAccu)
 
 '''merged'''
 mergedAccu = pd.DataFrame({byHour: locAccu[byHour], outputCol2: locAccu[outputCol2] + rtAccu[outputCol2]})
@@ -91,7 +93,7 @@ mergedAccu = pd.DataFrame({byHour: locAccu[byHour], outputCol2: locAccu[outputCo
 
 ''' Paper Section 4.3.1 '''
 fig, (ax0, ax2, ax4) = plt.subplots(3)
-plt.xticks(rotation=90)
+# plt.xticks(rotation=90)
 
 color = 'tab:red'
 # ax0.set_xlabel('Dates')
